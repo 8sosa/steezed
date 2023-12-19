@@ -1,0 +1,5978 @@
+@import url(//fonts.googleapis.com/earlyaccess/nicomoji.css);
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@200;300;400&family=Montagu Slab:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.AppRegister{
+  background-image: url('../../components/images/bg.png') !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10%;
+  margin: 0px !important;
+  min-height: 75vh;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.dColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.page{
+  display: flex;
+  justify-content: center;
+  width: 100% !important;
+  padding: 0px !important;
+  max-width: 100% !important;
+}
+.link {
+  text-decoration: none;
+  color: #0D011B !important;
+}
+@media (max-width: 1440px) {
+  .cart {
+    width: max-content;
+    margin: 0px;
+  }
+  .cartBody {
+    background-color: #d4aafe;
+    padding: 50px !important;
+  }
+  .cartOrder{
+    display: flex;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #9360c6;
+    border-radius: 25px;
+    background-color: #ffffff;
+  }
+  .cartImage{
+    width: 100%;
+    margin-bottom: 0px;
+    height: auto;
+    border: 2px solid #9360c6;
+    border-radius: 15px;
+  }
+  .cartOrderTitle{
+    font-family: 'Montagu Slab', serif !important;
+    text-decoration: 2px underline #d4aafe;
+    font-size: 25px !important;
+    font-weight: 300;
+  }
+  .cartOrderText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: 300;
+    margin: 0px;
+  }
+  .cartFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 25px !important;
+  }
+  .cartBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .payVector {
+    width: 40%;
+  }
+  .page {
+    margin-top: 100px;
+    margin-bottom: 100px !important;
+  }
+  .homePage {
+    margin-bottom: 100px;
+    width: 100% !important;
+    padding: 0px !important;
+    max-width: 100% !important;
+  }
+
+  /* Navigation Items */
+  .navContainer {
+    width: 100%;
+    padding: 0px !important;
+    background-color: transparent !important;
+  }
+  .navbar{
+    width: 100% !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #fff !important;
+  }
+  .SearchBar{
+    display: flex;
+  }
+  .navSearchBar{
+    display: flex;
+    margin-right: auto!important;
+    margin-left: auto!important;
+  }
+  .minNav {
+    background-color: transparent;
+  }
+  .minNavBtns{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logoImage {
+    width: 100px !important; /* Reduce the logo size for smaller screens */
+    height: auto !important;
+  }
+  .searchField{
+    width: 400px;
+    margin-right: 5px;
+    color: #7752B2 !important;
+    border-color: #7752B2 !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .navSearchBtn{
+    width: 75px;
+    border-color: #7752B2 !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    color: #7752B2 !important;
+  }
+  .navSearchBtn:hover{
+    background-color: #7752B2 !important;
+    color: #fefefe !important;
+  }
+  .logBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 2px solid #A66DE0 !important;
+    box-shadow: 0 0 5px 2px #d9d0d0 !important;
+    border-radius: 25px !important;
+    height: 50px !important;
+    width: 100px !important;
+    text-decoration: none !important;
+  }
+  .btnText {
+    font-family: 'Montagu Slab', serif;
+    color: #A66DE0;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    white-space: nowrap;
+  }
+  .helpBtn{
+    height: 50px !important;
+    width: 50px !important;
+    object-fit: contain !important;
+    margin-right: 10px;
+  }
+  .navCartBtn{
+    display: flex;
+    align-items: center;
+    border: 1px solid black !important;
+    border-radius: 15px !important;
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+  }
+  .profileBtn{
+    background-image: url('../../components/images/profile.png');
+    background-size: contain;
+    color: #0D011B;
+    height: 50px !important;
+    width: 65.26px !important;
+    margin-right: 10px;
+  }
+  .footer{
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+  .footerMain{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background-color: #fefefe;
+    color: #0D011B;
+    margin: 0px !important;
+    padding: 0px !important;
+    align-items: center !important;
+  }
+  .footerBottom{
+    width: 100%;
+    justify-content: space-around !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #0D011B !important;
+    color: #fff !important;
+  }
+  .footerText{
+    color: #fff !important;
+  }
+  .footerLogoBox {
+    display: flex;
+    justify-content: center;
+  }
+  .footerLogo{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerLinkBox {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+  }
+  .footerLinks{
+    display: flex !important;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .listHeader{
+    color: #7752B2 !important;
+    font-family: 'Montagu Slab';
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: auto !important;
+  }
+  .listItem{
+    font-family: 'Montagu Slab' !important;
+    font-size: 14px !important;
+    margin-left: 5px !important;
+    text-decoration: none !important;
+  }
+  .steezed{
+    color: #7752B2 !important;
+  }
+  
+  /* Page Items */
+  
+  .hero{
+    width: 100% !important;
+    height: 60vh;
+    background-image: url('../../components/images/hero.png');
+    margin-bottom: 10vh;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+  }
+  .smText {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+    margin: 0px !important;
+  }
+  .bgText {
+    font-family: 'Nico Moji', serif !important;
+    font-size: 40px !important;
+    text-transform: capitalize;
+    text-decoration: underline;
+    white-space: nowrap;
+    margin-bottom: 10px !important;
+  }
+  .loot{
+    max-width: 250px !important;
+    border: 0px !important;
+    padding-bottom: 10px;
+    text-decoration: none !important;
+  }
+  .loot:hover {
+    max-width: 250px !important;
+    border: 1px solid black!important;
+    border-radius: 25px;
+    padding-bottom: 10px;
+    text-decoration: none !important;
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -5px;
+  }
+  .lootImg{
+    width: 100% !important;
+    height: auto !important;
+    border: 1px solid #000;
+    border-radius: 25px;
+  }
+  .lootImg:hover {
+    border: 0px;
+
+  }
+  .lootTitle{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montagu Slab', serif;
+    font-weight: normal;
+    font-size: 14px;
+    white-space: nowrap !important;
+  }
+  .lootDescription{
+    font-family: 'Montagu Slab', serif;
+    font-weight: light;
+    font-size: 10px;
+  }
+  .lootBtn{
+    border-radius: 25px !important;
+    border: 1px solid #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 14px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .lootBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+  }
+  .lootWishBtn{
+    border-radius: 25px !important;
+    border: 1px solid #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    margin-left: 5px;
+  }
+  .lootWishBtn:hover {
+    border-radius: 25px !important;
+    border: 1px solid #0D011B !important;
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+  }
+  .buttonIcon{
+    margin-left: 15px !important;
+  }
+  .lootButtons, .categoryButtons{
+    margin-top: 10px !important;
+  }
+  .categoryCol {
+    display: flex;
+    justify-content: center;
+  }
+  .category{
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    max-width: 250px !important;
+    border: 0px !important;
+    border-radius: 10% !important;
+    text-decoration: none !important;
+    margin: 10px;
+  }
+  .category:hover {
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -2px;
+  }
+  .categoryImg{
+    width: 100% !important;
+    height: auto !important;
+    border: 1px solid #000;
+    border-radius: 25px !important;
+  }
+  .categoryImg:hover {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .categoryTitle{
+    display: flex;
+    justify-content: flex-start !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    white-space: nowrap !important;
+    margin-bottom: 0px !important;
+  }
+  .categoryPrice{
+    font-family: 'Montagu Slab', serif;
+    font-weight: lighter !important;
+    font-size: 16px !important;
+    white-space: nowrap !important;
+  }
+  .sideTitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 30px !important;
+    font-weight: 800 !important;
+    margin-bottom: 15px;
+  }
+  .priceRange{
+    font-family: 'Montagu Slab' !important;
+    font-size: 14px !important;
+    width: 35px !important;
+    border-color: #0D011B !important;
+  }
+  .priceRange::placeholder {
+    font-family: 'Montagu Slab' !important;
+    font-size: 12px !important;
+    width: 35px !important;
+    border-color: #0D011B !important;
+  }
+  .priceCheckBtn{
+    font-family: 'Montagu Slab' !important;
+    font-size: 14px !important;
+    border-color: #0D011B !important;
+    width: 75px;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    color: #7752B2 !important;
+    background-color: #fff !important;
+  }
+  .starContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .CategorySidebar{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .CategoryLoots{
+    background-color: #fefefe;
+    margin: 0;
+    padding: 35px;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .CategoryRating svg {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    color: #0D011B;
+  }
+  .CategoryContent{
+    width: 900px;
+    margin: auto;
+  }
+  .CategoryLoot{
+    width: 170px;
+    height: 240px;
+    border: 0px !important;
+    padding: 0px !important;
+    transition: border 0.2s ease !important;
+  }
+  .top{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px !important;
+  }
+  .filter{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid #0D011B !important;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px !important;
+  }
+  .filter2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 0px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px !important;
+  }
+  .filter1{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid #0D011B !important;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px !important;
+  }
+  .categoryBtn{
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    max-width: 105px !important;
+    white-space: nowrap;
+  }
+  .categoryWishBtn{
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    margin-left: 5px;
+    padding: 6px !important;
+  }
+  .categoryButtonIcon{
+    margin-left: 2px;
+  }
+  .categoryCardBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pagination{
+    padding-top: 2%;
+    justify-content: center !important;
+  }
+  .Category{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 5% !important;
+  }
+  .itemPage{
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+    align-content: center !important;
+  }
+  .payPage{
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+    align-items: center !important;
+  }
+  .cartBox{
+    width: 100%;
+  }
+  .bgLL{
+    background-color: #d4aafe !important;
+  }
+  .cartTable {
+    border: 1px solid #A66DE0 !important;
+    border-radius: 25px;
+    width: 750px !important;
+  }
+  .cartTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 45px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+  }
+  .tableColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cartCheckout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border-left: 2px solid #000; */
+    align-items: center !important;
+  }
+  .cartTotalTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 45px;
+    /* margin-left: 10%; */
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .relatedDrops{
+    margin-top: 50px;
+    border-top: 2px solid #A66DE0;
+    background-color: #fefefe;
+    padding: 5%;
+  }
+  .checkoutPage{
+    display: flex !important;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+    align-items: center;
+  }
+  .checkout{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+    width: fit-content;
+  }
+  .checkoutTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 45px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .paymentTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 50px;
+    padding-bottom: 15px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .checkoutOrderTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 26px;
+    color: #0D011B;
+    padding: 25px !important;
+    align-content: center !important;
+    text-underline-offset: 5px;
+  }
+  .checkoutOrder{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 0px solid #0D011B;
+  }
+  .checkoutCardTotal{
+    padding-top: 10px;
+  }
+  .orderDetail{
+    width: 100%;
+    border: 2px solid #000;
+  }
+  .orderDetailTitle{
+    display: flex !important;
+    justify-content: center;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 400;  
+    font-size: 20px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .orderDetailText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 30px;
+    color: #0D011B;
+    white-space: nowrap;
+    margin-bottom: 5px;
+  }
+  .paymentText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 30px;
+    color: #0D011B;
+    white-space: nowrap;
+    margin-bottom: 5px;
+  }
+  .miniCart{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .miniCartOrders{
+    height: 80vh;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .miniCartOrder{
+    padding: 20px;
+    border-bottom: 2px solid #000;
+  }
+  .miniCartBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .miniCartBtnText{
+    font-family: 'Lilita One', cursive;
+    font-size: 25px;
+    color: #A66DE0;
+    margin-bottom: 0px;
+  }
+  .miniCartOrderQty{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 16px;
+    padding-bottom: 5px !important;
+  }
+  .miniCartTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    font-weight: 500 !important ;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .miniCartOrderPic{
+    width: 75px !important;
+    object-fit: contain;
+  }
+  .miniCartOrderTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 14px;
+    padding-bottom: 5px !important;
+    white-space: nowrap;
+  }
+  .miniCartTotal{
+    margin-top: 15px;
+    padding: 10px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    justify-content: center !important;
+  }
+  .miniCartOrderTotalText{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+  }
+  .miniCheckoutOrderPic{
+    width: 100% !important;
+    object-fit: contain;
+  }
+  .miniCheckoutBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .billingDetails{
+    height: 80vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .billingDetailsLabel{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    align-content: center !important;
+  }
+  .formField {
+    width: 100%;
+  }
+  .formField::placeholder {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px !important;
+    font-weight: lighter !important;
+  }
+  .itemDetails{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  .itemRow{
+    display: flex;
+    width: 100%;
+  }
+  .itemCard{
+    width: 100%;
+    border: 0px !important;
+    align-items: center;
+  }
+  .itemImg{
+    width: 100%;
+    height: auto;
+  }
+  .itemRating svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #A66DE0; /* This sets the color of the icon */
+    fill: #000 !important;
+  }
+  .itemTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 32px;
+    font-weight: 500 !important ;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 10px;
+  }
+  .itemDescription{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: 300 !important ;
+    padding-top: 10px;
+    padding-bottom: 5px !important;
+  }
+  .itemAtt{
+    display: flex;
+    align-items: center;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    font-weight: 500 !important ;
+    padding-top: 10px;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 10px;
+  }
+  .styles{
+    width: 300px;
+    align-items: center !important;
+    white-space: nowrap;
+  }
+  .stylePic{
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .itemQty{
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+  .qtyBtn{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: auto;
+  }
+  .minusBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .numBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+  }
+  .plusBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+  }
+  .delBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 15px !important;
+    margin-left: 10px;
+  }
+  .delBtn:hover{
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-radius: 15px !important;
+  }
+  .minusBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .numBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+  }
+  .plusBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+  }
+  .btnPair{
+    display: flex;
+    align-items: center;
+    justify-content: space-around !important;
+    flex-wrap: nowrap !important;
+    padding: 5px;
+  }
+  .aTCBtn{
+    font-family: 'Montagu Slab', serif !important;  
+    font-size: 20px !important;
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 25px !important;
+    margin-right: 20px !important;
+  }
+  .aTCBtn:hover {
+    font-family: 'Montagu Slab', serif !important;  
+    font-size: 20px !important;
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-radius: 25px !important;
+    margin-right: 20px !important;
+  }
+  .reviews{
+    border-top: 2px solid #A66DE0 !important;
+    border-bottom: 2px solid #A66DE0 !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    justify-content: center;
+  }
+  .review{
+    border: 1px solid #A66DE0 !important;
+    padding: 20px;
+    align-items: center;
+    text-align: justify;
+    object-fit: contain;
+  }
+  .review:hover {
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -5px;
+  }
+  .reviewPic{
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 50% !important;
+  }
+  .reviewTitle{
+    font-family: 'Montagu Slab', sans-serif;
+    font-weight: 600 !important;
+    font-size: 15px;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+  }
+  .reviewText{
+    font-family: 'Montagu Slab', sans-serif;
+    font-weight: 400 !important;
+    font-size: 13px;
+    text-align: justify;
+  }
+  .reviewCard{
+    width: 150px;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 10px !important;
+    margin-bottom: 15px;
+  }
+  .reviewCard:hover{
+    width: 150px;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    box-shadow: 0 6px 6px #A66DE0;
+  }
+ 
+  .reviewCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .reviewCardTitle{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: 600;
+  }
+  .reviewCardText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: 300;
+  }
+  .profilePage{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .profilePageContainer {
+    width: 100%;
+  }
+  .profilePageRow {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .profileCard{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border: 0px !important;
+    border-radius: 25px;
+    text-decoration: none !important;
+    margin: 10px;
+  }
+  .profileCardBody{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .profileImg{
+    box-shadow: 0 0 10px 10px #F5E0FD !important;
+    border: 1px solid #000;
+    border-radius: 50px !important;
+  }
+  .profilePictureBox {
+    width: 100%;
+    overflow: hidden;
+  }
+  .profilePicture {
+    width: 230px;
+    height: 230px;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  .userName{
+    font-family: 'Montagu Slab', serif;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+  }
+  .userType{
+    font-family: 'Montagu Slab', serif;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  .profileCardBtn:hover {
+    min-width: 100px !important;
+    border-radius: 25px !important;
+    border: 1px solid #000 !important;
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 25px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .profileCardBtn{
+    min-width: 100px !important;
+    border-radius: 25px !important;
+    border: 1px solid #000 !important;
+    background-color: #fff !important;
+    color: #A66DE0 !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 25px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .profilePageBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 3px solid #A66DE0 !important;
+    border-radius: 25px !important;
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .profilePageBtn:hover {
+    box-shadow: 0 0 5px 5px #d9d0d0 !important;
+  }
+  .profileBtnTitle{
+    display: flex;
+    align-items: center;
+    font-family: 'Nico Moji', serif;
+    color: #A66DE0;
+    font-size: 15px;
+    text-align: justify;
+  }
+  .profileBtnText{
+    display: flex;
+    align-items: center;
+    font-family: 'Montagu Slab', serif;
+    color: #A66DE0;
+    font-size: 11px;
+    text-align: justify;
+  }
+  .profileModalBody {
+    padding: 30px !important;
+  }
+  .profileModal{
+    display: flex;
+    justify-content: space-between;
+  }
+  .accountDetailsOptions{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 5px !important;
+  }
+  .dateInputContainer {
+    display: flex;
+    gap: 10px;
+  }
+  .dateSegment {
+    width: 30px;
+  }
+  .accountDetailsBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .accountDetailsBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+  }
+  .profileOrder{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: #0D011B !important;
+  }
+  .profileOrder:hover {
+    border: 1px solid #0D011B !important;
+    border-radius: 25px !important;
+    box-shadow: 0 0 5px 5px #d9d0d0 !important;
+    margin-top: -2px !important;
+  }
+  .profileOrderText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 15px;
+    margin-bottom: 5px !important;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  #category-item{
+    white-space: nowrap;
+  }
+  .form-control::placeholder {
+    color: #000 !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px;
+    font-weight: lighter;
+  }
+  .checkoutTotal{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: lighter;
+    font-size: 16px;
+    color: #000;
+  }
+  .table{
+    border: 2px solid black !important;
+    border-radius: 25px !important;
+    table-layout: auto;
+    width: 700px !important;
+    margin-left: 50px !important;
+  }
+  table td {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+  }
+  table th {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+    padding: 20px;
+  }
+  .ratings{
+    /* width: 150px !important; */
+    white-space: nowrap !important;
+  }
+  .SignUpCard{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+    background-image: url('../../components/images/cardbg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 600px;
+    height: auto !important;
+    padding: 50px;
+    border: 3px solid #fefefe !important;
+  }
+  .SignUpCardBody{
+    margin: 10px;
+    margin-top: auto !important;
+  }
+  .registerHeader{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montagu Slab', serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: #fefefe;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+  .input-line {
+    color: #fefefe !important;
+    border: none !important;
+    border-bottom: 2px solid whitesmoke !important;
+    margin-bottom: 2rem;
+    padding: 5rem;
+    border-radius: 0px !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 24px;
+    font-weight: lighter;
+    background-color: rgba(0, 0, 0, 0) !important;
+    width: 450px !important;
+  }
+  .input-line::placeholder {
+    color: #fefefe !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px;
+    font-weight: lighter;
+  }
+  .registerBtn{
+    display: flex;
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    width: 150px;
+  }
+  .loginText{
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: lighter;
+  }
+  .accountDetailsHeader{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 40px;
+    font-weight: normal;
+    text-decoration: underline;
+    text-decoration-color: #7752B2;
+    text-decoration-thickness: 2px;
+    text-decoration-style: double;
+    margin-bottom: 25px !important;
+  }
+  .accountDetailsLabel{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 5%;
+    margin-bottom: 1px !important;
+  }
+  .ordersDetailText{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 16px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .errText{
+    font-size: medium;
+    color: #fefefe;
+  }
+  .steals, .categories, .loots{
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .card-img{
+    border-radius: 20px !important;
+  }
+  .card-header {
+    display: grid;
+    place-items: center;
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-bottom: 0 !important;
+  }
+  .rating{
+    display: flex !important;
+    white-space: nowrap !important;
+    justify-content: space-between;
+  }
+  .orderItem{
+    border-top: 1px solid black;
+  }
+  .textbox{
+    border: 1px solid black;
+  }
+  .profileLink{
+    max-width: 300px;
+    max-height: 100px;
+    white-space: nowrap;
+    border: 2px solid #A66DE0;
+  }
+  .profilePic{
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 45%;
+    margin-bottom: 50px;
+  }
+  .hidden-input {
+    display: none;
+  }
+  .sidebar{
+    width: 100%;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 30px;
+    background-color: #fefefe;
+  }
+  .navLin{
+    display: flex !important;
+    justify-content: center;
+    padding: 0px !important;
+    color: #666666;
+    font-family: 'Montagu Slab', serif;
+    font-size: 10px !important;
+    font-weight: 300;
+    margin-top: 2px !important;
+    margin-bottom: 10px !important;
+    text-underline-offset: 5px;
+  }
+  .searchBtn {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: lighter;
+    border: 1px solid black !important;
+    border-radius: 25px !important;
+    background-color: transparent !important;
+    color: black !important;
+    min-width: 150px !important;
+    margin-bottom: 40px !important;
+  }
+  .searchIcon{
+    margin-right: 5px;
+  }
+  .accordionBtnOpen{
+    width: 100%;
+    min-width: 200px;
+    border: 1px solid black !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .accordionBtnOpen:hover {
+    border: 1px solid #7752B2 !important;
+    color: #7752B2;
+  }
+  .accordionBtnClosed{
+    border: 0px !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .accordionBtnClosed:hover {
+    border: 1px solid black !important;
+  }
+  .content {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 50px;
+    background-color: #fefefe;
+    min-height: 40vh;
+    flex-wrap: nowrap;
+  }
+  .contentPane {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+  }
+  .miniSidebar {
+    display: none;
+  }
+  .paneTitle{
+    font-family: 'Montagu Slab', serif;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 25px;
+    margin-bottom: 20px;
+  }
+  .box{
+    border: 1px solid black !important;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #fefefe;
+    margin-bottom: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .boxTitle {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 30px !important;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: #F0EFEF;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-bottom: 25px;
+  }
+  .orderPic {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  .orderPicBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .orderTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-left: 1px dashed #666666;
+  }
+  .orderText {
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 3px !important;
+    white-space: wrap;
+  }
+  .banBtn{
+    display: flex;
+    border: 1px solid #0D011B;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+  .categoryCard{
+    width: 100%;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 10px !important;
+    margin-bottom: 15px;
+  }
+  .categoryCard:hover{
+    width: 150px;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    box-shadow: 0 6px 6px #A66DE0;
+  }
+  .cardImage{
+    width: 100%
+  }
+  .categoryImage{
+    width: 60%;
+  }
+  .categoryCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .categoryCardTitle{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: 600;
+  }
+  .categoryCardText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: 300;
+  }
+  .backdrop{
+    width: 100% !important;
+  }
+  .fieldLabel{
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    color: #292929;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .payVector {
+    width: 50%;
+  }
+  .page {
+    margin-top: 100px;
+    margin-bottom: 100px !important;
+  }
+  .homePage {
+    margin-bottom: 100px;
+    width: 100% !important;
+    padding: 0px !important;
+    max-width: 100% !important;
+  }
+
+  /* Navigation Items */
+  .navContainer {
+    padding: 0px !important;
+    background-color: transparent !important;
+  }
+  .navbar{
+    width: 100%;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #fff !important;
+    align-items: center !important;
+  }
+  .minNav {
+    background-color: transparent;
+  }
+  .minNavBtns{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logoImage {
+    width: 100px !important; /* Reduce the logo size for smaller screens */
+    height: auto !important;
+  }
+  .searchField{
+    width: 400px;
+    margin-right: 5px;
+    color: #7752B2 !important;
+    border-color: #7752B2 !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .navSearchBtn{
+    width: 75px;
+    border-color: #7752B2 !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    color: #7752B2 !important;
+  }
+  .navSearchBtn:hover{
+    background-color: #7752B2 !important;
+    color: #fefefe !important;
+  }
+  .logBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 2px solid #A66DE0 !important;
+    box-shadow: 0 0 5px 2px #d9d0d0 !important;
+    border-radius: 25px !important;
+    height: 50px !important;
+    width: 100px !important;
+    text-decoration: none !important;
+  }
+  .btnText {
+    font-family: 'Montagu Slab', serif;
+    color: #A66DE0;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    white-space: nowrap;
+  }
+  .helpBtn{
+    height: 50px !important;
+    width: 50px !important;
+    object-fit: contain !important;
+    margin-right: 10px;
+  }
+  .navCartBtn{
+    display: flex;
+    align-items: center;
+    border: 1px solid black !important;
+    border-radius: 15px !important;
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+  }
+  .profileBtn{
+    background-image: url('../../components/images/profile.png');
+    background-size: contain;
+    color: #0D011B;
+    height: 50px !important;
+    width: 65.26px !important;
+    margin-right: 10px;
+  }
+  .footer{
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+  .footerMain{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background-color: #fefefe;
+    color: #0D011B;
+    margin: 0px !important;
+    padding: 0px !important;
+    align-items: center !important;
+  }
+  .footerBottom{
+    width: 100%;
+    justify-content: space-around !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #0D011B !important;
+    color: #fff !important;
+  }
+  .footerText{
+    color: #fff !important;
+  }
+  .footerLogoBox {
+    display: flex;
+    justify-content: center;
+  }
+  .footerLogo{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerLinkBox {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+  }
+  .footerLinks{
+    display: flex !important;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .listHeader{
+    color: #7752B2 !important;
+    font-family: 'Montagu Slab';
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: auto !important;
+  }
+  .listItem{
+    font-family: 'Montagu Slab' !important;
+    font-size: 14px !important;
+    margin-left: 5px !important;
+  }
+  .steezed{
+    color: #7752B2 !important;
+  }
+  
+  /* Page Items */
+  
+  .hero{
+    width: 100% !important;
+    height: 60vh;
+    background-image: url('../../components/images/hero.png');
+    margin-bottom: 10vh;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+  }
+  .smText {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+    margin: 0px !important;
+  }
+  .bgText {
+    font-family: 'Nico Moji', serif !important;
+    font-size: 40px !important;
+    text-transform: capitalize;
+    text-decoration: underline;
+    white-space: nowrap;
+    margin-bottom: 10px !important;
+  }
+  .loot{
+    max-width: 250px !important;
+    border: 0px !important;
+    padding-bottom: 10px;
+    text-decoration: none !important;
+  }
+  .loot:hover {
+    max-width: 250px !important;
+    border: 1px solid black!important;
+    border-radius: 25px;
+    padding-bottom: 10px;
+    text-decoration: none !important;
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -5px;
+  }
+  .lootImg{
+    width: 100% !important;
+    height: auto !important;
+    border: 1px solid #000;
+    border-radius: 25px;
+  }
+  .lootImg:hover {
+    border: 0px;
+
+  }
+  .lootTitle{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Montagu Slab', serif;
+    font-weight: normal;
+    font-size: 14px;
+    white-space: nowrap !important;
+  }
+  .lootDescription{
+    font-family: 'Montagu Slab', serif;
+    font-weight: light;
+    font-size: 10px;
+  }
+  .lootBtn{
+    border-radius: 25px !important;
+    border: 1px solid #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 14px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .lootBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+  }
+  .lootWishBtn{
+    border-radius: 25px !important;
+    border: 1px solid #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    margin-left: 5px;
+  }
+  .lootWishBtn:hover {
+    border-radius: 25px !important;
+    border: 1px solid #0D011B !important;
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+  }
+  .buttonIcon{
+    margin-left: 15px !important;
+  }
+  .lootButtons, .categoryButtons{
+    margin-top: 10px !important;
+  }
+  .categoryCol {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  .category{
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    max-width: 250px !important;
+    border: 0px !important;
+    border-radius: 10% !important;
+    text-decoration: none !important;
+    margin: 10px;
+  }
+  .category:hover {
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -2px;
+  }
+  .categoryImg{
+    width: 100% !important;
+    height: auto !important;
+    border: 1px solid #000;
+    border-radius: 25px !important;
+  }
+  .categoryImg:hover {
+    width: 100% !important;
+    height: auto !important;
+  }
+  .categoryTitle{
+    display: flex;
+    justify-content: flex-start !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 500 !important;
+    font-size: 18px !important;
+    white-space: nowrap !important;
+    margin-bottom: 0px !important;
+  }
+  .categoryPrice{
+    font-family: 'Montagu Slab', serif;
+    font-weight: lighter !important;
+    font-size: 16px !important;
+    white-space: nowrap !important;
+  }
+  .sideTitle {
+    display: flex;
+    justify-content: center;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 30px !important;
+    font-weight: 800 !important;
+    margin-bottom: 15px;
+  }
+  .priceRange{
+    font-family: 'Montagu Slab' !important;
+    font-size: 14px !important;
+    width: 35px !important;
+    border-color: #0D011B !important;
+  }
+  .priceRange::placeholder {
+    font-family: 'Montagu Slab' !important;
+    font-size: 12px !important;
+    width: 35px !important;
+    border-color: #0D011B !important;
+  }
+  .priceCheckBtn{
+    font-family: 'Montagu Slab' !important;
+    font-size: 14px !important;
+    border-color: #0D011B !important;
+    width: 75px;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    color: #7752B2 !important;
+    background-color: #fff !important;
+  }
+  .starContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .CategorySidebar{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .CategoryLoots{
+    background-color: #fefefe;
+    margin: 0;
+    padding: 35px;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .CategoryRating svg {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    color: #0D011B;
+  }
+  .CategoryContent{
+    width: 900px;
+    margin: auto;
+  }
+  .CategoryLoot{
+    width: 170px;
+    height: 240px;
+    border: 0px !important;
+    padding: 0px !important;
+    transition: border 0.2s ease !important;
+  }
+  .top{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px !important;
+  }
+  .filter{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid #0D011B !important;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px !important;
+  }
+  .filter1{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid #0D011B !important;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px !important;
+  }
+  .categoryBtn{
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    max-width: 105px !important;
+    white-space: nowrap;
+  }
+  .categoryWishBtn{
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    margin-left: 5px;
+    padding: 6px !important;
+  }
+  .categoryButtonIcon{
+    margin-left: 2px;
+  }
+  .categoryCardBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pagination{
+    padding-top: 2%;
+    justify-content: center !important;
+  }
+  .Category{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    padding: 5% !important;
+  }
+  .itemPage{
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+    align-content: center !important;
+  }
+  .payPage{
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+    align-items: center !important;
+  }
+  .cartTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 45px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+  }
+  .tableColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cartCheckout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border-left: 2px solid #000; */
+    align-items: center !important;
+  }
+  .cartTotalTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 45px;
+    margin-left: 10%;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .relatedDrops{
+    margin-top: 50px;
+    border-top: 2px solid #A66DE0;
+    background-color: #fefefe;
+    padding: 5%;
+  }
+  .checkoutPage{
+    display: flex !important;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .checkout{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+  }
+  .checkoutTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 45px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .paymentTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 45px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .checkoutOrderTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 26px;
+    color: #0D011B;
+    padding: 25px !important;
+    align-content: center !important;
+    text-underline-offset: 5px;
+  }
+  .checkoutOrder{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 0px solid #0D011B;
+  }
+  .checkoutCardTotal{
+    padding-top: 10px;
+  }
+  .orderDetail{
+    width: 100%;
+    border: 2px solid #000;
+  }
+  .orderDetailTitle{
+    display: flex !important;
+    justify-content: center;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 400;  
+    font-size: 16px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .orderDetailText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 25px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .paymentText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 25px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .miniCart{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .miniCartOrders{
+    height: 80vh;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .miniCartOrder{
+    padding: 20px;
+    border-bottom: 2px solid #000;
+  }
+  .miniCartBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .miniCartBtnText{
+    font-family: 'Lilita One', cursive;
+    font-size: 25px;
+    color: #A66DE0;
+    margin-bottom: 0px;
+  }
+  .miniCartOrderQty{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 16px;
+    padding-bottom: 5px !important;
+  }
+  .miniCartTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    font-weight: 500 !important ;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .miniCartOrderPic{
+    width: 75px !important;
+    object-fit: contain;
+  }
+  .miniCartOrderTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 14px;
+    padding-bottom: 5px !important;
+    white-space: nowrap;
+  }
+  .miniCartTotal{
+    margin-top: 15px;
+    padding: 10px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    justify-content: center !important;
+  }
+  .miniCartOrderTotalText{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+  }
+  .miniCheckoutOrderPic{
+    width: 100% !important;
+    object-fit: contain;
+  }
+  .miniCheckoutBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .billingDetails{
+    height: 80vh;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+  .billingDetailsLabel{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    align-content: center !important;
+  }
+  .formField {
+    width: 100%;
+  }
+  .formField::placeholder {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px !important;
+    font-weight: lighter !important;
+  }
+  .itemDetails{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  .itemRow{
+    display: flex;
+    width: 100%;
+  }
+  .itemCard{
+    width: 100%;
+    border: 0px !important;
+    align-items: center;
+  }
+  .itemImg{
+    width: 100%;
+    height: auto;
+  }
+  .itemRating svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #A66DE0; /* This sets the color of the icon */
+    fill: #000 !important;
+  }
+  .itemTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 32px;
+    font-weight: 500 !important ;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 10px;
+  }
+  .itemDescription{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: 300 !important ;
+    padding-top: 10px;
+    padding-bottom: 5px !important;
+  }
+  .itemAtt{
+    display: flex;
+    align-items: center;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    font-weight: 500 !important ;
+    padding-top: 10px;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 10px;
+  }
+  .styles{
+    width: 300px;
+    align-items: center !important;
+    white-space: nowrap;
+  }
+  .stylePic{
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .itemQty{
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+  .qtyBtn{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: auto;
+  }
+  .minusBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .numBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+  }
+  .plusBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+  }
+  .minusBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .numBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+  }
+  .plusBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+  }
+  .btnPair{
+    display: flex;
+    align-items: center;
+    justify-content: space-around !important;
+    flex-wrap: nowrap !important;
+    padding: 5px;
+  }
+  .aTCBtn{
+    font-family: 'Montagu Slab', serif !important;  
+    font-size: 20px !important;
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 25px !important;
+    margin-right: 20px !important;
+  }
+  .aTCBtn:hover {
+    font-family: 'Montagu Slab', serif !important;  
+    font-size: 20px !important;
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-radius: 25px !important;
+    margin-right: 20px !important;
+  }
+  .reviews{
+    border-top: 2px solid #A66DE0 !important;
+    border-bottom: 2px solid #A66DE0 !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    justify-content: center;
+  }
+  .review{
+    border: 1px solid #A66DE0 !important;
+    padding: 20px;
+    align-items: center;
+    text-align: justify;
+    object-fit: contain;
+  }
+  .review:hover {
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -5px;
+  }
+  .reviewPic{
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 50% !important;
+  }
+  .reviewTitle{
+    font-family: 'Montagu Slab', sans-serif;
+    font-weight: 600 !important;
+    font-size: 15px;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+  }
+  .reviewText{
+    font-family: 'Montagu Slab', sans-serif;
+    font-weight: 400 !important;
+    font-size: 13px;
+    text-align: justify;
+  }
+  .reviewCard{
+    width: 150px;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 10px !important;
+    margin-bottom: 15px;
+  }
+  .reviewCard:hover{
+    width: 150px;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    box-shadow: 0 6px 6px #A66DE0;
+  }
+  .reviewCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .reviewCardTitle{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: 600;
+  }
+  .reviewCardText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: 300;
+  }
+  .profilePage{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .profilePageContainer {
+    width: 100%;
+  }
+  .profilePageRow {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .profileCard{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border: 0px !important;
+    border-radius: 25px;
+    text-decoration: none !important;
+    margin: 10px;
+  }
+  .profileCardBody{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .profileImg{
+    box-shadow: 0 0 10px 10px #F5E0FD !important;
+    border: 1px solid #000;
+    border-radius: 50px !important;
+  }
+  .userName{
+    font-family: 'Montagu Slab', serif;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+  }
+  .userType{
+    font-family: 'Montagu Slab', serif;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  .profileCardBtn:hover {
+    min-width: 100px !important;
+    border-radius: 25px !important;
+    border: 1px solid #000 !important;
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 25px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .profileCardBtn{
+    min-width: 100px !important;
+    border-radius: 25px !important;
+    border: 1px solid #000 !important;
+    background-color: #fff !important;
+    color: #A66DE0 !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 25px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .profilePageBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 3px solid #A66DE0 !important;
+    border-radius: 25px !important;
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  .profilePageBtn:hover {
+    box-shadow: 0 0 5px 5px #d9d0d0 !important;
+  }
+  .profileBtnTitle{
+    display: flex;
+    align-items: center;
+    font-family: 'Nico Moji', serif;
+    color: #A66DE0;
+    font-size: 15px;
+    text-align: justify;
+  }
+  .profileBtnText{
+    display: flex;
+    align-items: center;
+    font-family: 'Montagu Slab', serif;
+    color: #A66DE0;
+    font-size: 11px;
+    text-align: justify;
+  }
+  .profileModalBody {
+    padding: 30px !important;
+  }
+  .profileModal{
+    display: flex;
+    justify-content: space-between;
+  }
+  .accountDetailsOptions{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 5px !important;
+  }
+  .dateInputContainer {
+    display: flex;
+    gap: 10px;
+  }
+  .dateSegment {
+    width: 30px;
+  }
+  .accountDetailsBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .accountDetailsBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+  }
+  .profileOrder{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  .profileOrder:hover {
+    border-radius: 25px !important;
+    box-shadow: 0 0 5px 5px #d9d0d0 !important;
+    margin-top: -2px !important;
+  }
+  .profileOrderText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 15px;
+    margin-bottom: 5px !important;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  #category-item{
+    white-space: nowrap;
+  }
+  .cartOrder{
+    padding: 20px;
+  }
+  .form-control::placeholder {
+    color: #000 !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px;
+    font-weight: lighter;
+  }
+  .checkoutTotal{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: lighter;
+    font-size: 16px;
+    color: #000;
+  }
+  .table{
+    border: 2px solid black !important;
+    border-radius: 25px !important;
+    table-layout: auto;
+    width: 700px !important;
+    margin-left: 50px !important;
+  }
+  table td {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+  }
+  table th {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+    padding: 20px;
+  }
+  .ratings{
+    /* width: 150px !important; */
+    white-space: nowrap !important;
+  }
+  .SignUpCard{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+    background-image: url('../../components/images/cardbg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 600px;
+    height: auto !important;
+    padding: 50px;
+    border: 3px solid #fefefe !important;
+  }
+  .SignUpCardBody{
+    margin: 10px;
+    margin-top: auto !important;
+  }
+  .registerHeader{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montagu Slab', serif;
+    font-size: 44px;
+    font-weight: 400;
+    color: #fefefe;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+  .input-line {
+    color: #fefefe !important;
+    border: none !important;
+    border-bottom: 2px solid whitesmoke !important;
+    margin-bottom: 2rem;
+    padding: 5rem;
+    border-radius: 0px !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 24px;
+    font-weight: lighter;
+    background-color: rgba(0, 0, 0, 0) !important;
+    width: 450px !important;
+  }
+  .input-line::placeholder {
+    color: #fefefe !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px;
+    font-weight: lighter;
+  }
+  .registerBtn{
+    display: flex;
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    width: 150px;
+  }
+  .loginText{
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: lighter;
+  }
+  .accountDetailsHeader{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 36px;
+    font-weight: normal;
+    text-decoration: underline;
+    text-decoration-color: #7752B2;
+    text-decoration-thickness: 2px;
+    text-decoration-style: double;
+    margin-bottom: 20px !important;
+  }
+  .accountDetailsLabel{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 5%;
+    margin-bottom: 1px !important;
+  }
+  .ordersDetailText{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 16px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .errText{
+    font-size: medium;
+    color: #fefefe;
+  }
+  .steals, .categories, .loots{
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .card-img{
+    border-radius: 20px !important;
+  }
+  .card-header {
+    display: grid;
+    place-items: center;
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-bottom: 0 !important;
+  }
+  .rating{
+    display: flex !important;
+    white-space: nowrap !important;
+    justify-content: space-between;
+  }
+  .orderItem{
+    border-top: 1px solid black;
+  }
+  .textbox{
+    border: 1px solid black;
+  }
+  .profileLink{
+    max-width: 300px;
+    max-height: 100px;
+    white-space: nowrap;
+    border: 2px solid #A66DE0;
+  }
+  .profilePic{
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 45%;
+    margin-bottom: 50px;
+  }
+  .hidden-input {
+    display: none;
+  }
+  .sidebar{
+    width: 100%;
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 30px;
+    background-color: #fefefe;
+  }
+  .navLin{
+    display: flex !important;
+    justify-content: center;
+    padding: 0px !important;
+    color: #666666;
+    font-family: 'Montagu Slab', serif;
+    font-size: 10px !important;
+    font-weight: 300;
+    margin-top: 2px !important;
+    margin-bottom: 10px !important;
+    text-underline-offset: 5px;
+  }
+  .searchBtn {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: lighter;
+    border: 1px solid black !important;
+    border-radius: 25px !important;
+    background-color: transparent !important;
+    color: black !important;
+    min-width: 150px !important;
+    margin-bottom: 40px !important;
+  }
+  .searchIcon{
+    margin-right: 5px;
+  }
+  .accordionBtnOpen{
+    width: 100%;
+    min-width: 150px;
+    border: 1px solid black !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .accordionBtnOpen:hover {
+    border: 1px solid #7752B2 !important;
+    color: #7752B2;
+  }
+  .accordionBtnClosed{
+    border: 0px !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .accordionBtnClosed:hover {
+    border: 1px solid black !important;
+  }
+  .content {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 50px;
+    background-color: #fefefe;
+    min-height: 40vh;
+    flex-wrap: nowrap;
+  }
+  .contentPane {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+  }
+  .miniSidebar {
+    display: none;
+  }
+  .paneTitle{
+    font-family: 'Montagu Slab', serif;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 25px;
+    margin-bottom: 20px;
+  }
+  .box{
+    border: 1px solid black !important;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #fefefe;
+    margin-bottom: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .boxTitle {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 30px !important;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: #F0EFEF;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-bottom: 25px;
+  }
+  .orderPic {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  .orderPicBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  .orderTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-left: 1px dashed #666666;
+  }
+  .orderText {
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 3px !important;
+    white-space: wrap;
+  }
+  .banBtn{
+    display: flex;
+    border: 1px solid #0D011B;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px;
+    width: 100%;
+    justify-content: center;
+  }
+  .categoryCard{
+    width: 100%;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 10px !important;
+    margin-bottom: 15px;
+  }
+  .categoryCard:hover{
+    width: 150px;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    box-shadow: 0 6px 6px #A66DE0;
+  }
+  .cardImage{
+    width: 100%
+  }
+  .categoryImage{
+    width: 60%;
+  }
+  .categoryCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .categoryCardTitle{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: 600;
+  }
+  .categoryCardText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: 300;
+  }
+  .backdrop{
+    width: 100% !important;
+  }
+  .fieldLabel{
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    color: #292929;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  .profilePictureBox {
+    width: 100%;
+    overflow: hidden;
+  }
+  .profilePicture {
+    width: 210px;
+    height: 210px;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  .cart {
+    width: max-content;
+    margin: 125px;
+  }
+  .cartBody {
+    background-color: #d4aafe;
+    padding: 50px !important;
+  }
+  .cartOrder{
+    display: flex;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #9360c6;
+    border-radius: 25px;
+    background-color: #ffffff;
+  }
+  .cartImage{
+    width: 100%;
+    margin-bottom: 0px;
+    height: auto;
+    border: 2px solid #9360c6;
+    border-radius: 15px;
+  }
+  .cartOrderTitle{
+    font-family: 'Montagu Slab', serif !important;
+    text-decoration: 2px underline #d4aafe;
+    font-size: 20px !important;
+    font-weight: 300;
+  }
+  .cartOrderText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    font-weight: 300;
+    margin: 0px;
+  }
+  .cartFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 25px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .payVector {
+    width: 50%;
+  }
+  .page {
+    margin-bottom: 100px !important;
+  }
+  
+  /* Navigation Items */
+  
+  .navContainer {
+    padding: 0px !important;
+    background-color: transparent !important;
+  }
+  .navbar{
+    width: 100%;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #fff !important;
+    align-items: center !important;
+  }
+  .minNav {
+    background-color: transparent;
+  }
+  .minNavBtns{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .logoImage {
+    width: 100px !important;
+    height: auto !important;
+  }
+  .searchField{
+    width: 400px;
+    margin-right: 5px;
+    color: #7752B2 !important;
+    border-color: #7752B2 !important;
+    border-radius: 25px !important;
+  }
+  .navSearchBtn{
+    display: none !important;
+  }
+  .logBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 2px solid #A66DE0 !important;
+    box-shadow: 0 0 5px 2px #d9d0d0 !important;
+    border-radius: 25px !important;
+    height: 50px !important;
+    width: 100px !important;
+    text-decoration: none !important;
+  }
+  .btnText {
+    font-family: 'Montagu Slab', serif;
+    color: #A66DE0;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    white-space: nowrap;
+  }
+  .helpBtn{
+    height: 50px !important;
+    width: 50px !important;
+    object-fit: contain !important;
+    margin-right: 10px;
+  }
+  .navCartBtn{
+    display: flex;
+    align-items: center;
+    border: 1px solid black !important;
+    border-radius: 15px !important;
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+  }
+  .profileBtn{
+    background-image: url('../../components/images/profile.png');
+    background-size: contain;
+    color: #0D011B;
+    height: 50px !important;
+    width: 65.26px !important;
+    margin-right: 10px;
+  }
+  .footer{
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+  .footerMain{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background-color: #fefefe;
+    color: #0D011B;
+    margin: 0px !important;
+    padding: 0px !important;
+    align-items: center !important;
+  }
+  .footerBottom{
+    width: 100%;
+    justify-content: space-around !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #0D011B !important;
+    color: #fff !important;
+  }
+  .footerText{
+    font-size: 13px !important;
+    color: #fff !important;
+  }
+  .footerLogoBox {
+    display: flex;
+    justify-content: center;
+  }
+  .footerLogo{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerLinkBox {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  .footerLinks{
+    display: flex !important;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .listHeader{
+    color: #7752B2 !important;
+    font-family: 'Montagu Slab';
+    font-size: 18px !important;
+    color: #111111;
+    font-weight: bold;
+  }
+  .listItem{
+    font-family: 'Montagu Slab' !important;
+    font-size: 10px !important;
+    color: #111111;
+    margin-left: 5px !important;
+  }
+  .steezed{
+    color: #7752B2 !important;
+  }
+  
+  /* Page Items */
+  
+  .hero{
+    width: 100% !important;
+    height: 50vh;
+    background-image: url('../../components/images/hero.png');
+    margin-bottom: 10vh;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+  }
+  .steals, .categories, .loots{
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .loot{
+    width: 100% !important;
+    border: 1px !important;
+    padding-bottom: 10px;
+    text-decoration: none !important;
+  }
+  .loot:hover {
+    border: 1px solid black!important;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -5px;
+  }
+  .lootHeader{
+    display: flex;
+    justify-content: space-between !important;
+  }
+  .lootImg{
+    width: 100% !important;
+    height: auto !important;
+    border: 1px solid #000;
+    border-radius: 10%;
+  }
+  .lootImg:hover {
+    border: 0px;
+  }
+  .lootTitle{
+    display: flex;
+    font-family: 'Montagu Slab', serif;
+    font-weight: normal !important;
+    font-size: 15px !important;
+    white-space: nowrap !important;
+    padding: 0px !important;
+    margin-bottom: 2px !important;
+  }
+  .lootPrice{
+    display: flex;
+    font-family: 'Montagu Slab', serif;
+    font-weight: normal;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+    padding: 0px !important;
+  }
+  .lootDescription{
+    font-family: 'Montagu Slab', serif;
+    font-weight: 200 !important;
+    font-size: 8px !important;
+    max-height: 2rem !important;
+    white-space: normal !important;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+    margin-bottom: 0px !important;
+  }
+  .btnPair{
+    display: flex;
+    align-items: center;
+    justify-content: space-around !important;
+    margin-top: 5px !important;
+  }
+  .lootBtn{
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    justify-content: space-between !important;
+    white-space: nowrap;
+    padding: 5px !important;
+  }
+  .lootWishBtn{
+    border: 1px;
+    border-radius: 50% !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 13px !important;
+    padding: 2px !important;
+    width: 25px !important;
+    height: 25px !important;
+    margin-left: 5px;
+  }
+  .lootButtonIcon{
+    margin-left: 5px;
+  }
+  .lootBtn:hover {
+    border-radius: 25px !important;
+    border: 1px solid #000 !important;
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+  }
+  .buttonIcon{
+    margin-left: 15px !important;
+  }
+  .lootButtons, .categoryButtons{
+    margin-top: 10px !important;
+  }
+  .categoryCol {
+    display: flex;
+    justify-content: center;
+    width: 33% !important;
+  }
+  .category{
+    display: flex;
+    align-items: center;
+    width: 100% !important;
+    border: 0px !important;
+    border-radius: 25px;
+    text-decoration: none !important;
+    margin: 10px;
+  }
+  .category:hover {
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -2px;
+  }
+  .categoryImg{
+    width: 100% !important;
+    height: auto !important;
+    border: 1px solid #000;
+    border-radius: 25px !important;
+  }
+  .categoryImg:hover {
+    border: 0px solid #000;
+  }
+  .categoryTitle{
+    display: flex;
+    justify-content: flex-start !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+    margin-bottom: 0px !important;
+  }
+  .categoryPrice{
+    font-family: 'Montagu Slab', serif;
+    font-weight: lighter !important;
+    font-size: 12px !important;
+    white-space: nowrap !important;
+  }
+  .priceRange{
+    display: none !important;
+  }
+  .priceCheckBtn{
+    display: none !important;
+  }
+  .starContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+  }
+  .Category{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 5% !important;
+    margin: 0px !important;
+  }
+  .CategoryContent{
+    display: flex;
+    margin-right: 0px !important;
+    width: 100% !important;
+  }
+  .CategorySidebar{
+    width: 100% !important;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px !important;
+  }
+  .CategoryLoots{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #fefefe;
+    margin: 0;
+    padding: 10px;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .sideTitle {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 25px !important;
+    margin: 10px;
+  }
+  .CategoryRating svg {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    color: #0D011B;
+  }
+  .sidebarRating {
+    display: flex;
+    justify-content: center;
+    font-size: 10px;
+    color: #0D011B;
+  }
+  .CategoryLoot{
+    width: 100%;
+    height: 240px;
+    border: 0px !important;
+    padding: 0px !important;
+    transition: border 0.2s ease !important;
+  }
+  .top{
+    display: flex !important;
+    align-items: center;
+    margin-bottom: 15px !important;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .filter{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 1px solid #0D011B !important;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    color: #0D011B !important;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 5px !important;
+  }
+  .filter1{
+    display: none;
+  }
+  .smText {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+    margin: 0px !important;
+  }
+  .bgText {
+    font-family: 'Nico Moji', serif !important;
+    font-size: 20px !important;
+    white-space: nowrap;
+    margin-bottom: 10px !important;
+  }
+  .categoryCardBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .pagination {
+    /* Adjust the styles for smaller screens */
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    /* Add any other necessary styles for a more mobile-friendly layout */
+  }
+  
+  .pagination > li {
+    display: none;
+    margin: 0 5px; /* Add some spacing between pagination items */
+  }
+  .itemPage{
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+    align-content: center !important;
+  }
+  .payPage{
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+    align-items: center !important;
+  }
+  .cartTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 35px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+  }
+  .tableColumn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .cartCheckout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* border-left: 2px solid #000; */
+    align-items: center !important;
+  }
+  .cartTotalTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 35px;
+    margin-left: 10%;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .relatedDrops{
+    margin-top: 50px;
+    border-top: 2px solid #A66DE0;
+    background-color: #fefefe;
+    padding: 5%;
+  }
+  .checkoutPage{
+    display: flex !important;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .checkout{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+  }
+  .checkoutTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 35px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .paymentTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 35px;
+    padding-bottom: 25px !important;
+    align-content: center !important;
+    text-decoration: underline 1px solid #A66DE0;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .checkoutOrderTitle{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 26px;
+    color: #0D011B;
+    padding: 25px !important;
+    align-content: center !important;
+    text-underline-offset: 5px;
+  }
+  .checkoutOrder{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 0px solid #0D011B;
+  }
+  .checkoutCardTotal{
+    padding-top: 10px;
+  }
+  .orderDetail{
+    width: 100%;
+    border: 2px solid #000;
+  }
+  .orderDetailTitle{
+    display: flex !important;
+    justify-content: center;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 400;  
+    font-size: 20px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .orderDetailText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 20px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .paymentText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 20px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .miniCart{
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .miniCartOrders{
+    height: 80vh;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .miniCartOrder{
+    padding: 20px;
+    border-bottom: 2px solid #000;
+  }
+  .miniCartBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .miniCartBtnText{
+    font-family: 'Lilita One', cursive;
+    font-size: 25px;
+    color: #A66DE0;
+    margin-bottom: 0px;
+  }
+  .miniCartOrderQty{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 16px;
+    padding-bottom: 5px !important;
+  }
+  .miniCartTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    font-weight: 500 !important ;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 5px;
+  }
+  .miniCartOrderPic{
+    width: 75px !important;
+    object-fit: contain;
+  }
+  .miniCartOrderTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 14px;
+    padding-bottom: 5px !important;
+    white-space: nowrap;
+  }
+  .miniCartTotal{
+    margin-top: 15px;
+    padding: 10px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    justify-content: center !important;
+  }
+  .miniCartOrderTotalText{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+  }
+  .miniCheckoutOrderPic{
+    width: 100% !important;
+    object-fit: contain;
+  }
+  .miniCheckoutBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .billingDetails{
+    height: 80vh;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+  .billingDetailsLabel{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    align-content: center !important;
+  }
+  .formField {
+    width: 100%;
+  }
+  .formField::placeholder {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px !important;
+    font-weight: lighter !important;
+  }
+  .itemDetails{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  .itemRow{
+    display: flex;
+    width: 100%;
+  }
+  .itemCard{
+    width: 100%;
+    border: 0px !important;
+    align-items: center;
+  }
+  .itemImg{
+    width: 100%;
+    height: auto;
+  }
+  .itemRating svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: #A66DE0; /* This sets the color of the icon */
+    fill: #000 !important;
+  }
+  .itemTitle{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 32px;
+    font-weight: 500 !important ;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 10px;
+  }
+  .itemDescription{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: 300 !important ;
+    padding-top: 10px;
+    padding-bottom: 5px !important;
+  }
+  .itemAtt{
+    display: flex;
+    align-items: center;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    font-weight: 500 !important ;
+    padding-top: 10px;
+    padding-bottom: 5px !important;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+    text-underline-offset: 10px;
+  }
+  .styles{
+    width: 300px;
+    align-items: center !important;
+    white-space: nowrap;
+  }
+  .stylePic{
+    width: 75px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .itemQty{
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+  .qtyBtn{
+    display: flex;
+    align-items: center;
+    width: 150px;
+    height: auto;
+  }
+  .minusBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .numBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+  }
+  .plusBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+  }
+  .minusBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .numBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+  }
+  .plusBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+  }
+  .aTCBtn{
+    font-family: 'Montagu Slab', serif !important;  
+    font-size: 20px !important;
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 25px !important;
+    margin-right: 20px !important;
+  }
+  .aTCBtn:hover {
+    font-family: 'Montagu Slab', serif !important;  
+    font-size: 20px !important;
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+    border: 1px solid black !important;
+    border-radius: 25px !important;
+    margin-right: 20px !important;
+  }
+  .reviews{
+    border-top: 2px solid #A66DE0 !important;
+    border-bottom: 2px solid #A66DE0 !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    justify-content: center;
+  }
+  .review{
+    width: 200px ;
+    border: 1px solid #A66DE0 !important;
+    padding: 20px;
+    align-items: center;
+    text-align: justify;
+    object-fit: contain;
+    margin-bottom: 10px !important;
+  }
+  .review:hover {
+    box-shadow: 0 0 5px 5px #e6e2e8 !important;
+    margin-top: -5px;
+  }
+  .reviewPic{
+    width: 50px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 50% !important;
+  }
+  .reviewTitle{
+    font-family: 'Montagu Slab', sans-serif;
+    font-weight: 600 !important;
+    font-size: 15px;
+    text-decoration: underline 1px solid #000 !important;
+    text-decoration-skip-ink: none;
+  }
+  .reviewText{
+    font-family: 'Montagu Slab', sans-serif;
+    font-weight: 400 !important;
+    font-size: 13px;
+    text-align: justify;
+  }
+  .profilePage{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  .profileCard{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border: 0px !important;
+    border-radius: 25px;
+    text-decoration: none !important;
+    margin: 10px;
+  }
+  .profileCardBody{
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .profileImg{
+    box-shadow: 0 0 10px 10px #F5E0FD !important;
+    border: 1px solid #000;
+    border-radius: 50px !important;
+  }
+  .userName{
+    font-family: 'Montagu Slab', serif;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+  }
+  .userType{
+    font-family: 'Montagu Slab', serif;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  .profileCardBtn:hover {
+    min-width: 100px !important;
+    border-radius: 25px !important;
+    border: 1px solid #000 !important;
+    background-color: #A66DE0 !important;
+    color: #fff !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 25px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .profileCardBtn{
+    min-width: 100px !important;
+    border-radius: 25px !important;
+    border: 1px solid #000 !important;
+    background-color: #fff !important;
+    color: #A66DE0 !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 25px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+  }
+  .profilePageBtn{
+    background-color: #fefefe !important;
+    color: #000 !important;
+    border: 3px solid #A66DE0 !important;
+    border-radius: 25px !important;
+    margin-top: 20px;
+    padding: 20px;
+    width: 275px !important;
+    margin-bottom: 20px;
+  }
+  .profilePageBtn:hover {
+    box-shadow: 0 0 5px 5px #d9d0d0 !important;
+  }
+  .profileBtnTitle{
+    display: flex;
+    align-items: center;
+    font-family: 'Nico Moji', serif;
+    color: #A66DE0;
+    font-size: 15px;
+    text-align: justify;
+  }
+  .profileBtnText{
+    display: flex;
+    align-items: center;
+    font-family: 'Montagu Slab', serif;
+    color: #A66DE0;
+    font-size: 11px;
+    text-align: justify;
+  }
+  .profileModalBody {
+    padding: 30px !important;
+  }
+  .profileModal{
+    display: flex;
+    justify-content: space-between;
+  }
+  .accountDetailsOptions{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    margin-bottom: 5px !important;
+  }
+  .dateInputContainer {
+    display: flex;
+    gap: 10px;
+  }
+  .dateSegment {
+    width: 30px;
+  }
+  .accountDetailsBtn{
+    background-color: #fefefe !important;
+    color: #A66DE0 !important;
+    border: 1px solid #000 !important;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 20px;
+    width: max-content !important;
+  }
+  .accountDetailsBtn:hover {
+    background-color: #A66DE0 !important;
+    color: #fefefe !important;
+  }
+  .profileOrder{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+  .profileOrder:hover {
+    border-radius: 25px !important;
+    box-shadow: 0 0 5px 5px #d9d0d0 !important;
+    margin-top: -2px !important;
+  }
+  .profileOrderText{
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 12px;
+    margin-bottom: 5px !important;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  #category-item{
+    white-space: nowrap;
+  }
+  .cartOrder{
+    padding: 20px;
+  }
+  .form-control::placeholder {
+    color: #000 !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px;
+    font-weight: lighter;
+  }
+  .checkoutTotal{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: lighter;
+    font-size: 16px;
+    color: #000;
+  }
+  .table{
+    border: 2px solid black !important;
+    border-radius: 25px !important;
+    table-layout: auto;
+    width: 700px !important;
+    margin-left: 50px !important;
+  }
+  table td {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 20px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px;
+  }
+  table th {
+    font-family: 'Montagu Slab', serif;  
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+    padding: 20px;
+  }
+  .ratings{
+    /* width: 150px !important; */
+    white-space: nowrap !important;
+  }
+  .SignUpCard{
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center !important;
+    background-image: url('../../components/images/cardbg.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 70%;
+    height: auto !important;
+    padding: 15px;
+    border: 3px solid #fefefe !important;
+  }
+  .SignUpCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    margin-top: auto !important;
+  }
+  .registerHeader{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montagu Slab', serif;
+    font-size: 30px;
+    font-weight: 400;
+    color: #fefefe;
+    align-items: center;
+    padding-bottom: 50px;
+  }
+  .inputLine {
+    color: #fefefe !important;
+    border: none !important;
+    border-bottom: 2px solid whitesmoke !important;
+    margin-bottom: 2rem;
+    padding: 5rem;
+    border-radius: 0px !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 14px;
+    font-weight: lighter;
+    background-color: rgba(0, 0, 0, 0) !important;
+    width: 100% !important;
+  }
+  .inputLine::placeholder {
+    color: #fefefe !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px !important;
+    font-weight: lighter;
+  }
+  .registerBtn{
+    display: flex;
+    border: 1px;
+    border-radius: 25px !important;
+    border-color: #0D011B !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    justify-content: space-between !important;
+    height: fit-content !important;
+    width: 50%;
+    margin-bottom: 5px !important;
+  }
+  .loginText{
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 10px !important;
+    font-weight: lighter;
+  }
+  .accountDetailsHeader{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 25px;
+    font-weight: normal;
+    text-decoration: underline;
+    text-decoration-color: #7752B2;
+    text-decoration-thickness: 1px;
+    text-decoration-style: double;
+    margin-bottom: 15px !important;
+  }
+  .accountDetailsLabel{
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 5%;
+    margin-bottom: 1px !important;
+  }
+  .ordersDetailText{
+    display: flex !important;
+    font-family: 'Montagu Slab', serif;
+    font-weight: 300;  
+    font-size: 16px;
+    color: #0D011B;
+    white-space: nowrap;
+  }
+  .errText{
+    font-size: medium;
+    color: #fefefe;
+  }
+  .card-img{
+    border-radius: 20px !important;
+  }
+  .card-header {
+    display: grid;
+    place-items: center;
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-bottom: 0 !important;
+  }
+  .rating{
+    display: flex !important;
+    white-space: nowrap !important;
+    justify-content: space-between;
+  }
+  .orderItem{
+    border-top: 1px solid black;
+  }
+  .textbox{
+    border: 1px solid black;
+  }
+  .profileLink{
+    max-width: 300px;
+    max-height: 100px;
+    white-space: nowrap;
+    border: 2px solid #A66DE0;
+  }
+  .profilePic{
+    max-width: 250px;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 45%;
+    margin-bottom: 50px;
+  }
+  .hiddenInput {
+    display: none;
+  }
+  .sidebar{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 30px;
+    background-color: #fefefe;
+  }
+  .searchBtn {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: lighter;
+    border: 1px solid black !important;
+    border-radius: 25px !important;
+    background-color: transparent !important;
+    color: black !important;
+    min-width: 150px !important;
+    margin-bottom: 40px !important;
+  }
+  .searchIcon{
+    margin-right: 5px;
+  }
+  .accordionBtnOpen{
+    min-width: 100px;
+    border: 1px solid black !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .accordionBtnOpen:hover {
+    border: 1px solid #7752B2 !important;
+    color: #7752B2;
+  }
+  .accordionBtnClosed{
+    border: 0px !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .accordionBtnClosed:hover {
+    border: 1px solid black !important;
+  }
+  .content{
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 30px;
+    background-color: #fefefe;
+    min-height: 40vh;
+    flex-wrap: nowrap;
+  }
+  .contentPane {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+  }
+  .miniSidebar {
+    display: none;
+  }
+  .paneTitle{
+    font-family: 'Montagu Slab', serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 25px;
+    margin-bottom: 20px;
+  }
+  .box{
+    border: 1px solid black !important;
+    border-radius: 15px;
+    padding: 15px;
+    background-color: #fefefe;
+    margin-bottom: 50px;
+  }
+  .boxTitle {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: bolder;
+    margin-bottom: 20px;
+  }
+  .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 100%;
+    background-color: #F0EFEF;
+    border: 1px solid black;
+    border-radius: 15px;
+    margin-bottom: 25px;
+  }
+  .orderPic {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  .orderPicBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .orderTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-left: 1px dashed #666666;
+  }
+  .orderText {
+    font-family: 'Montagu Slab', serif;
+    font-size: 12px;
+    font-weight: 300;
+    margin-bottom: 3px !important;
+  }
+  .banBtn{
+    display: flex;
+    border: 1px solid #0D011B;
+    border-radius: 25px !important;
+    background-color: #fff !important;
+    color: #0D011B !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px;
+    width: 100%;
+    justify-content: center;
+  }
+  .reviewCard{
+    width: 150px;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 10px !important;
+    margin-bottom: 15px;
+  }
+  .reviewCard:hover{
+    width: 150px;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    margin-bottom: 10px;
+    margin-top: -5px;
+    box-shadow: 0 6px 6px #A66DE0;
+  }
+  .cardImage{
+    width: 100%;
+  }
+  .categoryImage{
+    width: 80%;
+  }
+  .reviewCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .reviewCardTitle{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: 600;
+  }
+  .reviewCardText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: 300;
+  }
+  .backdrop{
+    width: 100% !important;
+  }
+  .fieldLabel{
+    font-family: 'Montagu Slab', serif;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  .profilePictureBox {
+    width: 100%;
+    overflow: hidden;
+  }
+  .profilePicture {
+    width: 160px;
+    height: 212px;
+    border: 1px solid black;
+    border-radius: 15px;
+  }
+  .cart {
+    width: max-content;
+  }
+  .cartBody {
+    background-color: #d4aafe;
+    padding: 50px !important;
+  }
+  .cartOrder{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: 20px;
+    border: 2px solid #9360c6;
+    border-radius: 25px;
+    background-color: #ffffff;
+  }
+  .cartImage{
+    width: 300px;
+    margin-bottom: 10px;
+    height: auto;
+    border: 2px solid #9360c6;
+    border-radius: 15px;
+  }
+  .cartOrderTitle{
+    font-family: 'Montagu Slab', serif !important;
+    text-decoration: 2px underline #d4aafe;
+    font-size: 25px !important;
+    font-weight: 300;
+  }
+  .cartOrderText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: 300;
+    margin: 0px;
+  }
+  .cartFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 25px !important;
+  }
+}
+
+@media (max-width: 425px) {
+  .payVector {
+    width: 50%;
+  }
+.page {
+  margin-top: 50px;
+  margin-bottom: 50px !important;
+}
+
+/* Navigation Items */
+
+.navContainer {
+  padding: 0px !important;
+  background-color: transparent !important;
+}
+.navbar{
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+  background-color: #fff !important;
+}
+.minNav {
+  background-color: transparent;
+}
+.minNavBtns{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.logoImage {
+  width: 100px !important;
+  height: auto !important;
+}
+.searchField{
+  width: 400px;
+  margin-right: 5px;
+  color: #7752B2 !important;
+  border-color: #7752B2 !important;
+  border-radius: 25px !important;
+}
+.navSearchBtn{
+  display: none !important;
+}
+.logBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fefefe !important;
+  color: #000 !important;
+  border: 2px solid #A66DE0 !important;
+  box-shadow: 0 0 5px 2px #d9d0d0 !important;
+  border-radius: 25px !important;
+  height: 50px !important;
+  width: 100px !important;
+  text-decoration: none !important;
+}
+.btnText {
+  font-family: 'Montagu Slab', serif;
+  color: #A66DE0;
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  padding: 0px !important;
+  margin: 0px !important;
+  white-space: nowrap;
+}
+.helpBtn{
+  height: 50px !important;
+  width: 50px !important;
+  object-fit: contain !important;
+  margin-right: 10px;
+}
+.navCartBtn{
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border: 1px solid black !important;
+  border-radius: 15px !important;
+  background-color: #A66DE0 !important;
+  color: #fefefe !important;
+}
+.profileBtn{
+  background-image: url('../../components/images/profile.png');
+  background-size: contain;
+  color: #0D011B;
+  height: 50px !important;
+  width: 65.26px !important;
+  margin-right: 10px;
+}
+.footer{
+  padding: 0px !important;
+}
+.footerMain{
+  display: flex;
+  flex-direction: column-reverse;
+  height: fit-content;
+  background-color: #fefefe;
+  color: #0D011B;
+  margin: 0px !important;
+  padding: 0px !important;
+  align-items: center !important;
+}
+.footerBottom{
+  display: flex;
+  flex-direction: column;
+  padding-left: 5% !important;
+  padding-right: 5% !important;
+  background-color: #0D011B !important;
+  color: #fff !important;
+}
+.footerText{
+  font-size: 10px !important;
+  color: #fff !important;
+}
+.footerLogoBox {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.footerLogo{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footerLinkBox {
+  display: flex;
+  justify-content: center;
+}
+.footerLinks{
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+}
+.listHeader{
+  color: #7752B2 !important;
+  font-family: 'Montagu Slab';
+  font-size: 14px !important;
+  color: #111111;
+  font-weight: bold;
+}
+.listItem{
+  font-family: 'Montagu Slab' !important;
+  font-size: 10px !important;
+  color: #111111;
+  margin-left: 5px !important;
+}
+.steezed{
+  color: #7752B2 !important;
+}
+
+/* Page Items */
+
+.hero{
+  width: 100% !important;
+  height: 30vh;
+  background-image: url('../../components/images/hero.png');
+  margin-bottom: 10vh;
+  padding: 0 !important;
+  margin: 0 !important;
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat; 
+}
+.steals, .categories, .loots{
+  background-color: #fefefe;
+  margin: 5%;
+  padding: 5%;
+  border-radius: 25px;
+  border: 0px !important;
+}
+.loot{
+  width: 100% !important;
+  border: 1px !important;
+  padding-bottom: 10px;
+  text-decoration: none !important;
+}
+.loot:hover {
+  border: 1px solid black!important;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 5px #e6e2e8 !important;
+  margin-top: -5px;
+}
+.lootHeader{
+  display: flex;
+  justify-content: space-between !important;
+}
+.lootImg{
+  width: 100% !important;
+  height: auto !important;
+  border: 1px solid #000;
+  border-radius: 10%;
+}
+.lootImg:hover {
+  border: 0px;
+}
+.lootTitle{
+  display: flex;
+  font-family: 'Montagu Slab', serif;
+  font-weight: normal;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+  padding: 0px !important;
+}
+.lootPrice{
+  display: flex;
+  font-family: 'Montagu Slab', serif;
+  font-weight: normal;
+  font-size: 10px !important;
+  white-space: nowrap !important;
+  padding: 0px !important;
+}
+.lootDescription{
+  font-family: 'Montagu Slab', serif;
+  font-weight: 200 !important;
+  font-size: 8px !important;
+  max-height: 2rem !important;
+  white-space: normal !important;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+  margin-bottom: 0px !important;
+}
+.btnPair{
+  display: flex;
+  align-items: center;
+  justify-content: space-around !important;
+  margin-top: 5px !important;
+}
+.lootBtn{
+  border: 1px;
+  border-radius: 25px !important;
+  border-color: #0D011B !important;
+  background-color: #fff !important;
+  color: #0D011B !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  justify-content: space-between !important;
+  white-space: nowrap;
+  padding: 5px !important;
+}
+.lootWishBtn{
+  border: 1px;
+  border-radius: 50% !important;
+  border-color: #0D011B !important;
+  background-color: #fff !important;
+  color: #0D011B !important;
+  font-family: 'Montagu Slab', serif !important;
+  padding: 2px !important;
+  width: 30px !important;
+  height: 30px !important;
+  margin-left: 5px;
+}
+.lootButtonIcon{
+  margin-left: 5px;
+}
+.lootBtn:hover {
+  border-radius: 25px !important;
+  border: 1px solid #000 !important;
+  background-color: #A66DE0 !important;
+  color: #fff !important;
+}
+.buttonIcon{
+  margin-left: 15px !important;
+}
+.lootButtons, .categoryButtons{
+  margin-top: 10px !important;
+}
+.categoryCol {
+  display: flex;
+  justify-content: center;
+  width: 33% !important;
+}
+.category{
+  display: flex;
+  align-items: center;
+  width: 100% !important;
+  border: 0px !important;
+  border-radius: 25px;
+  text-decoration: none !important;
+  margin: 10px;
+}
+.category:hover {
+  box-shadow: 0 0 5px 5px #e6e2e8 !important;
+  margin-top: -2px;
+}
+.categoryImg{
+  width: 100% !important;
+  height: auto !important;
+  border: 1px solid #000;
+  border-radius: 12px !important;
+}
+.categoryImg:hover {
+  border: 0px solid #000;
+}
+.categoryTitle{
+  display: flex;
+  justify-content: flex-start !important;
+  font-family: 'Montagu Slab', serif;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  white-space: nowrap !important;
+  margin-bottom: 0px !important;
+}
+.categoryPrice{
+  font-family: 'Montagu Slab', serif;
+  font-weight: lighter !important;
+  font-size: 12px !important;
+  white-space: nowrap !important;
+}
+.priceRange{
+  display: none !important;
+}
+.priceCheckBtn{
+  display: none !important;
+}
+.starContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+}
+.Category{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 5% !important;
+  margin: 0px !important;
+}
+.CategoryContent{
+  display: flex;
+  margin-right: 0px !important;
+  width: 100% !important;
+}
+.sidebarPane {
+  display: none;
+}
+.mainPane {
+  display: flex;
+  width: 100% !important;
+}
+.CategorySidebar{
+  display: flex !important;
+  margin-top: 0px !important;
+  width: 100% !important;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0px !important;
+}
+.CategoryLoots{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: #fefefe;
+  margin: 0;
+  padding: 10px;
+  border-radius: 25px;
+  border: 0px !important;
+}
+.sideTitle {
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 15px !important;
+}
+.CategoryRating svg {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  color: #0D011B;
+}
+.sidebarRating {
+  display: flex;
+  justify-content: center;
+  font-size: 10px;
+  color: #0D011B;
+}
+.CategoryLoot{
+  width: 100%;
+  height: 240px;
+  border: 0px !important;
+  padding: 0px !important;
+  transition: border 0.2s ease !important;
+}
+.top{
+  display: flex !important;
+  align-items: center;
+  margin-bottom: 15px !important;
+  justify-content: center;
+  flex-direction: row;
+}
+.filter{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border: 1px solid #0D011B !important;
+  border-radius: 25px !important;
+  background-color: #fff !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  color: #0D011B !important;
+  height: 35px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 5px !important;
+}
+.filter1{
+  display: none;
+}
+.menu{
+  border: 0px !important;
+  background-color: #fff !important;
+  font-size: 30px !important;
+  color: #0D011B !important;
+  align-items: flex-end;
+}
+.smText {
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 12px !important;
+  white-space: nowrap;
+  margin: 0px !important;
+}
+.bgText {
+  font-family: 'Nico Moji', serif !important;
+  font-size: 18px !important;
+  white-space: nowrap;
+  margin: 10px !important;
+}
+.categoryCardBody{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.categoryBtn{
+  border: 1px;
+  border-radius: 25px !important;
+  border-color: #0D011B !important;
+  background-color: #fff !important;
+  color: #0D011B !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  justify-content: space-between !important;
+  height: fit-content !important;
+  max-width: 80px !important;
+  white-space: nowrap;
+}
+.categoryWishBtn{
+  border: 1px;
+  border-radius: 25px !important;
+  border-color: #0D011B !important;
+  background-color: #fff !important;
+  color: #0D011B !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 12px !important;
+  justify-content: space-between !important;
+  height: fit-content !important;
+  margin-left: 5px;
+  padding: 4px !important;
+}
+.categoryButtonIcon{
+  margin-left: 5px;
+}
+.pagination {
+  /* Adjust the styles for smaller screens */
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  /* Add any other necessary styles for a more mobile-friendly layout */
+}
+
+.pagination > li {
+  display: none;
+  margin: 0 5px; /* Add some spacing between pagination items */
+}
+.itemPage{
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  width: 80% !important;
+  border-radius: 25px;
+  border: 0px !important;
+  align-content: center !important;
+}
+.payPage{
+  display: flex;
+  flex-direction: column;
+  background-color: #fefefe;
+  width: 80% !important;
+  border-radius: 25px;
+  border: 0px !important;
+  align-items: center !important;
+}
+.cartTitle{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 30px;
+  padding-bottom: 25px !important;
+  align-content: center !important;
+}
+.tableColumn{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cartCheckout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-left: 0px;
+  align-items: center !important;
+}
+.cartTotalTitle{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 30px;
+  margin-left: 10%;
+  padding-bottom: 25px !important;
+  align-content: center !important;
+  text-decoration: underline 1px solid #A66DE0;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 5px;
+}
+.relatedDrops{
+  margin-top: 50px;
+  border-top: 2px solid #A66DE0;
+  background-color: #fefefe;
+  padding: 5%;
+}
+.checkoutPage{
+  width: 90% !important;
+  display: flex !important;
+  flex-direction: column;
+  background-color: #fefefe;
+  margin: 5%;
+  padding: 5%;
+  border-radius: 25px;
+  border: 0px !important;
+}
+.checkout{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center !important;
+}
+.checkoutTitle{
+  display: flex !important;
+  font-family: 'Montagu Slab', serif;  
+  font-size: 30px;
+  padding-bottom: 25px !important;
+  align-content: center !important;
+  text-decoration: underline 1px solid #A66DE0;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 5px;
+}
+.paymentTitle{
+  display: flex !important;
+  font-family: 'Montagu Slab', serif;  
+  font-size: 15px;
+  padding-bottom: 2px !important;
+  align-content: center !important;
+  text-decoration: underline 1px solid #A66DE0;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 5px;
+}
+.checkoutOrderTitle{
+  display: flex !important;
+  font-family: 'Montagu Slab', serif;  
+  font-size: 20px;
+  color: #0D011B;
+  padding: 25px !important;
+  align-content: center !important;
+  text-underline-offset: 5px;
+}
+.checkoutOrder{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 0px solid #0D011B;
+}
+.checkoutCardTotal{
+  padding-top: 10px;
+}
+.orderDetail{
+  width: 100%;
+  border: 2px solid #000;
+}
+.orderDetailTitle{
+  display: flex !important;
+  justify-content: center;
+  font-family: 'Montagu Slab', serif;
+  font-weight: 400;  
+  font-size: 15px;
+  color: #0D011B;
+  white-space: nowrap;
+}
+.orderDetailText{
+  display: flex !important;
+  margin-top: 10px;  
+  justify-content: center;
+  font-family: 'Montagu Slab', serif;
+  font-weight: 300;  
+  font-size: 20px;
+  color: #0D011B;
+  white-space: nowrap;
+}
+.paymentText{
+  display: flex !important;
+  margin-top: 10px;  
+  justify-content: center;
+  font-family: 'Montagu Slab', serif;
+  font-weight: 300;  
+  font-size: 10px;
+  color: #0D011B;
+  white-space: nowrap;
+}
+.miniCart{
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.miniCartOrders{
+  height: 80vh;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+.miniCartOrder{
+  padding: 20px;
+  border-bottom: 2px solid #000;
+}
+.miniCartBtn{
+  background-color: #fefefe !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  width: max-content !important;
+}
+.miniCartBtnText{
+  font-family: 'Lilita One', cursive;
+  font-size: 25px;
+  color: #A66DE0;
+  margin-bottom: 0px;
+}
+.miniCartOrderQty{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 14px;
+  padding-bottom: 5px !important;
+}
+.miniCartTitle{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 20px;
+  font-weight: 500 !important ;
+  padding-bottom: 5px !important;
+  text-decoration: underline 1px solid #000 !important;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 5px;
+}
+.miniCartOrderPic{
+  width: 75px !important;
+  object-fit: contain;
+}
+.miniCartOrderTitle{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 16px;
+  padding-bottom: 5px !important;
+  white-space: nowrap;
+}
+.miniCartTotal{
+  margin-top: 15px;
+  padding: 10px;
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  justify-content: center !important;
+}
+.miniCartOrderTotalText{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 15px;
+}
+.miniCheckoutOrderPic{
+  width: 100% !important;
+  object-fit: contain;
+}
+.miniCheckoutBtn{
+  background-color: #fefefe !important;
+  color: #000 !important;
+  border: 1px solid #000 !important;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  width: max-content !important;
+}
+.billingDetails{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.billingDetailsLabel{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 15px;
+  font-weight: normal;
+  align-content: center !important;
+}
+.formField {
+  width: 100%;
+}
+.formField::placeholder {
+  font-family: 'Montagu Slab', serif;  
+  font-size: 15px !important;
+  font-weight: lighter !important;
+}
+.itemDetails{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  padding-bottom: 20px;
+}
+.itemRow{
+  display: flex;
+  width: 100%;
+}
+.itemCol{
+  width: max-content;
+}
+.itemCard{
+  width: 270px;
+  margin-bottom: 25px;
+  border: 0px !important;
+  align-items: center;
+}
+.itemImg{
+  width: 100%;
+  height: auto;
+}
+.itemRating svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  color: #A66DE0; /* This sets the color of the icon */
+  fill: #000 !important;
+}
+.itemTitle{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 32px;
+  font-weight: 500 !important ;
+  padding-bottom: 5px !important;
+  text-decoration: underline 1px solid #000 !important;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 10px;
+}
+.itemDescription{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 15px;
+  font-weight: 300 !important ;
+  padding-top: 10px;
+  padding-bottom: 5px !important;
+}
+.itemAtt{
+  display: flex;
+  align-items: center;
+  font-family: 'Montagu Slab', serif;  
+  font-size: 20px;
+  font-weight: 500 !important ;
+  padding-top: 10px;
+  padding-bottom: 5px !important;
+  text-decoration: underline 1px solid #000 !important;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 10px;
+}
+.styles{
+  width: 300px;
+  align-items: center !important;
+  white-space: nowrap;
+}
+.stylePic{
+  width: 75px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 5px;
+}
+.itemQty{
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.qtyBtn{
+  display: flex;
+  align-items: center;
+  width: 100px;
+  height: 20px;
+}
+.minusBtn{
+  background-color: #fefefe !important;
+  color: #A66DE0 !important;
+  border: 1px solid #A66DE0 !important;
+  border-top-left-radius: 25px !important;
+  border-bottom-left-radius: 25px !important;
+}
+.numBtn{
+  background-color: #fefefe !important;
+  color: #A66DE0 !important;
+  border: 1px solid #A66DE0 !important;
+}
+.plusBtn{
+  background-color: #fefefe !important;
+  color: #A66DE0 !important;
+  border: 1px solid #A66DE0 !important;
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+}
+.minusBtn:hover {
+  background-color: #A66DE0 !important;
+  color: #fefefe !important;
+  border: 1px solid black !important;
+  border-top-left-radius: 25px !important;
+  border-bottom-left-radius: 25px !important;
+}
+.numBtn:hover {
+  background-color: #A66DE0 !important;
+  color: #fefefe !important;
+  border: 1px solid black !important;
+}
+.plusBtn:hover {
+  background-color: #A66DE0 !important;
+  color: #fefefe !important;
+  border: 1px solid black !important;
+  border-top-right-radius: 25px !important;
+  border-bottom-right-radius: 25px !important;
+}
+.aTCBtn{
+  font-family: 'Montagu Slab', serif !important;  
+  font-size: 20px !important;
+  background-color: #fefefe !important;
+  color: #A66DE0 !important;
+  border: 1px solid #A66DE0 !important;
+  border-radius: 25px !important;
+  margin-right: 20px !important;
+}
+.aTCBtn:hover {
+  font-family: 'Montagu Slab', serif !important;  
+  font-size: 20px !important;
+  background-color: #A66DE0 !important;
+  color: #fefefe !important;
+  border: 1px solid black !important;
+  border-radius: 25px !important;
+  margin-right: 20px !important;
+}
+.reviews{
+  border-top: 2px solid #A66DE0 !important;
+  border-bottom: 2px solid #A66DE0 !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  justify-content: center;
+}
+.review{
+  width: 200px ;
+  border: 1px solid #A66DE0 !important;
+  padding: 20px;
+  align-items: center;
+  text-align: justify;
+  object-fit: contain;
+  margin-bottom: 10px !important;
+}
+.review:hover {
+  box-shadow: 0 0 5px 5px #e6e2e8 !important;
+  margin-top: -5px;
+}
+.reviewPic{
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 50% !important;
+}
+.reviewTitle{
+  font-family: 'Montagu Slab', sans-serif;
+  font-weight: 600 !important;
+  font-size: 15px;
+  text-decoration: underline 1px solid #000 !important;
+  text-decoration-skip-ink: none;
+}
+.reviewText{
+  font-family: 'Montagu Slab', sans-serif;
+  font-weight: 400 !important;
+  font-size: 13px;
+  text-align: justify;
+}
+.profilePage{
+  display: flex;
+  justify-content: space-around;
+}
+.profileCard{
+  display: flex;
+  align-items: center;
+  width: 300px;
+  border: 0px !important;
+  border-radius: 25px;
+  text-decoration: none !important;
+  margin: 10px;
+}
+.profileCardBody{
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.profileImg{
+  box-shadow: 0 0 10px 10px #F5E0FD !important;
+  border: 1px solid #000;
+  border-radius: 50px !important;
+}
+.userName{
+  font-family: 'Montagu Slab', serif;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+}
+.userType{
+  font-family: 'Montagu Slab', serif;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+.profileCardBtn:hover {
+  min-width: 100px !important;
+  border-radius: 25px !important;
+  border: 1px solid #000 !important;
+  background-color: #A66DE0 !important;
+  color: #fff !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 25px !important;
+  justify-content: space-between !important;
+  height: fit-content !important;
+}
+.profileCardBtn{
+  min-width: 100px !important;
+  border-radius: 25px !important;
+  border: 1px solid #000 !important;
+  background-color: #fff !important;
+  color: #A66DE0 !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 25px !important;
+  justify-content: space-between !important;
+  height: fit-content !important;
+}
+.profilePageBtn{
+  background-color: #fefefe !important;
+  color: #000 !important;
+  border: 3px solid #A66DE0 !important;
+  border-radius: 25px !important;
+  margin-top: 20px;
+  padding: 20px;
+  width: 275px !important;
+  margin-bottom: 20px;
+}
+.profilePageBtn:hover {
+  box-shadow: 0 0 5px 5px #d9d0d0 !important;
+}
+.profileBtnTitle{
+  display: flex;
+  align-items: center;
+  font-family: 'Nico Moji', serif;
+  color: #A66DE0;
+  font-size: 15px;
+  text-align: justify;
+}
+.profileBtnText{
+  display: flex;
+  align-items: center;
+  font-family: 'Montagu Slab', serif;
+  color: #A66DE0;
+  font-size: 11px;
+  text-align: justify;
+}
+.profileModalBody {
+  padding: 30px !important;
+}
+.profileModal{
+  display: flex;
+  justify-content: space-between;
+}
+.accountDetailsOptions{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 15px;
+  font-weight: normal;
+  margin-bottom: 5px !important;
+}
+.dateInputContainer {
+  display: flex;
+  gap: 10px;
+}
+.dateSegment {
+  width: 30px;
+}
+.accountDetailsBtn{
+  background-color: #fefefe !important;
+  color: #A66DE0 !important;
+  border: 1px solid #000 !important;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  width: max-content !important;
+}
+.accountDetailsBtn:hover {
+  background-color: #A66DE0 !important;
+  color: #fefefe !important;
+}
+.profileOrder{
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.profileOrder:hover {
+  border-radius: 25px !important;
+  box-shadow: 0 0 5px 5px #d9d0d0 !important;
+  margin-top: -2px !important;
+}
+.profileOrderText{
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-end;
+  font-family: 'Montagu Slab', serif;
+  font-weight: 300;  
+  font-size: 10px;
+  margin-bottom: 5px !important;
+  color: #0D011B;
+  white-space: nowrap;
+}
+
+
+
+
+#category-item{
+  white-space: nowrap;
+}
+.cartOrder{
+  padding: 20px;
+}
+.form-control::placeholder {
+  color: #000 !important;
+  font-style: italic;
+  font-family: 'Montagu Slab', serif;  
+  font-size: 13px;
+  font-weight: lighter;
+}
+.checkoutTotal{
+  display: flex !important;
+  font-family: 'Montagu Slab', serif;
+  font-weight: lighter;
+  font-size: 16px;
+  color: #000;
+}
+.table{
+  border: 2px solid black !important;
+  border-radius: 25px !important;
+  table-layout: auto;
+  width: 700px !important;
+  margin-left: 50px !important;
+}
+table td {
+  font-family: 'Montagu Slab', serif;  
+  font-size: 20px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px;
+}
+table th {
+  font-family: 'Montagu Slab', serif;  
+  font-size: 25px;
+  font-weight: 300;
+  text-align: center;
+  padding: 20px;
+}
+.ratings{
+  /* width: 150px !important; */
+  white-space: nowrap !important;
+}
+.SignUpCard{
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center !important;
+  background-image: url('../../components/images/cardbg.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 70%;
+  height: auto !important;
+  padding: 15px;
+  border: 3px solid #fefefe !important;
+}
+.SignUpCardBody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+  margin-top: auto !important;
+}
+.registerHeader{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Montagu Slab', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: #fefefe;
+  align-items: center;
+  padding-bottom: 50px;
+}
+.inputLine {
+  color: #fefefe !important;
+  border: none !important;
+  border-bottom: 2px solid whitesmoke !important;
+  margin-bottom: 2rem;
+  padding: 5rem;
+  border-radius: 0px !important;
+  font-family: 'Montagu Slab', serif;
+  font-size: 14px;
+  font-weight: lighter;
+  background-color: rgba(0, 0, 0, 0) !important;
+  width: 100% !important;
+}
+.inputLine::placeholder {
+  color: #fefefe !important;
+  font-style: italic;
+  font-family: 'Montagu Slab', serif;  
+  font-size: 13px !important;
+  font-weight: lighter;
+}
+.registerBtn{
+  display: flex;
+  border: 1px;
+  border-radius: 25px !important;
+  border-color: #0D011B !important;
+  background-color: #fff !important;
+  color: #0D011B !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  justify-content: space-between !important;
+  height: fit-content !important;
+  width: 50%;
+  margin-bottom: 5px !important;
+}
+.loginText{
+  color: #fefefe !important;
+  font-family: 'Montagu Slab', serif;  
+  font-size: 10px !important;
+  font-weight: lighter;
+}
+.accountDetailsHeader{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 25px;
+  font-weight: bolder;
+  text-decoration: underline;
+  text-decoration-color: #7752B2;
+  text-decoration-thickness: 1px;
+  text-decoration-style: double;
+  margin-bottom: 25px !important;
+}
+.accountDetailsLabel{
+  font-family: 'Montagu Slab', serif;  
+  font-size: 15px;
+  font-weight: normal;
+  margin-left: 5%;
+  margin-bottom: 1px !important;
+}
+.ordersDetailText{
+  display: flex !important;
+  font-family: 'Montagu Slab', serif;
+  font-weight: 300;  
+  font-size: 16px;
+  color: #0D011B;
+  white-space: nowrap;
+}
+.errText{
+  font-size: medium;
+  color: #fefefe;
+}
+.offcanvasStyle {
+  width: 50% !important;
+}
+.card-img{
+  border-radius: 20px !important;
+}
+.card-header {
+  display: grid;
+  place-items: center;
+  color: #fefefe !important;
+  font-family: 'Montagu Slab', serif;
+  font-size: 20px;
+  padding: 0 !important;
+  margin: 0 !important;
+  border-bottom: 0 !important;
+}
+.rating{
+  display: flex !important;
+  white-space: nowrap !important;
+  justify-content: space-between;
+}
+.orderItem{
+  border-top: 1px solid black;
+}
+.textbox{
+  border: 1px solid black;
+}
+.profileLink{
+  max-width: 300px;
+  max-height: 100px;
+  white-space: nowrap;
+  border: 2px solid #A66DE0;
+}
+.profilePic{
+  max-width: 250px;
+  max-height: 250px;
+  object-fit: contain;
+  border-radius: 45%;
+  margin-bottom: 50px;
+}
+.hiddenInput {
+  display: none;
+}
+
+.sidebar{
+  display: none;
+}
+.navLin{
+  display: flex !important;
+  justify-content: center;
+  padding: 0px !important;
+  color: #666666;
+  font-family: 'Montagu Slab', serif;
+  font-size: 10px !important;
+  font-weight: 300;
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  text-underline-offset: 5px;
+}
+.searchBtn {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  font-weight: lighter;
+  border: 1px solid black !important;
+  border-radius: 15px !important;
+  background-color: transparent !important;
+  color: black !important;
+  min-width: 30px !important;
+  margin-bottom: 40px !important;
+  margin-top: 10px !important;
+  width: 50%;
+  padding: 5px !important;
+
+}
+.searchIcon{
+  margin-right: 5px;
+}
+.accordionBtnOpen{
+  width: 100%;
+  min-width: 100px;
+  border: 1px solid black !important;
+  border-radius: 15px;
+  background-color: transparent !important;
+  display: flex;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  font-weight: lighter;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+.accordionBtnOpen:hover {
+  border: 1px solid #7752B2 !important;
+  color: #7752B2;
+}
+.accordionBtnClosed{
+  border: 0px !important;
+  border-radius: 15px;
+  background-color: transparent !important;
+  display: flex;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  font-weight: lighter;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+.accordionBtnClosed:hover {
+  border: 1px solid black !important;
+}
+.content{
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 40px;
+  background-color: #fefefe;
+  min-height: 30vh;
+  flex-wrap: nowrap;
+}
+.contentPane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+.miniSidebar {
+  display: flex;
+  justify-content: flex-end;
+}
+.paneTitle{
+  font-family: 'Montagu Slab', serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 25px;
+  margin-bottom: 20px;
+}
+.box{
+  width: 100%;
+  border: 1px solid black !important;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #fefefe;
+  margin-bottom: 50px;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.boxTitle {
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 15px !important;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+  background-color: #F0EFEF;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-bottom: 25px;
+}
+.orderPic {
+  width: 100%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.orderPicBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 5px !important;
+}
+.orderTextBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  border-left: 1px dashed #666666;
+}
+.orderText {
+  font-family: 'Montagu Slab', serif;
+  font-size: 8px;
+  font-weight: 300;
+  margin-bottom: 3px !important;
+}
+.banBtn{
+  display: flex;
+  border: 1px solid #0D011B;
+  border-radius: 25px !important;
+  background-color: #fff !important;
+  color: #0D011B !important;
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 8px;
+  width: 100%;
+  justify-content: center;
+}
+.categoryCard{
+  width: 150px;
+  border: 1px solid #A66DE0 !important;
+  border-radius: 10px !important;
+  margin-bottom: 15px;
+}
+.categoryCard:hover{
+  width: 150px;
+  border: 1px solid #000 !important;
+  border-radius: 10px !important;
+  margin-bottom: 10px;
+  margin-top: -5px;
+  box-shadow: 0 6px 6px #A66DE0;
+}
+.cardImage{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.categoryImage{
+  width: 80%;
+}
+.categoryCardBody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.categoryCardTitle{
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 20px !important;
+  font-weight: 600;
+}
+.categoryCardText{
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  font-weight: 300;
+}
+.cart {
+  width: max-content;
+  margin: 10px;
+}
+.cartBody {
+  background-color: #d4aafe;
+  padding: 20px !important;
+}
+.cartOrder{
+  padding: 20px;
+  margin: 20px;
+  border: 2px solid #9360c6;
+  border-radius: 25px;
+  background-color: #ffffff;
+}
+.cartImage{
+  width: 200px;
+  margin-bottom: 5px;
+  height: auto;
+  border: 1px solid #9360c6;
+  border-radius: 5px;
+}
+.cartOrderTitle{
+  font-family: 'Montagu Slab', serif !important;
+  text-decoration: 2px underline #d4aafe;
+  font-size: 15px !important;
+  font-weight: 300;
+}
+.cartOrderText{
+  font-family: 'Montagu Slab', serif !important;
+  font-size: 10px !important;
+  font-weight: 300;
+  margin: 0px;
+}
+.cartFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 25px !important;
+}
+.backdrop{
+  width: 90% !important;
+}
+.fieldLabel{
+  font-family: 'Montagu Slab', serif;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.profilePictureBox {
+  width: 100%;
+  overflow: hidden;
+}
+.profilePicture {
+  width: 119px;
+  height: 210px;
+  border: 1px solid black;
+  border-radius: 15px;
+}
+}
