@@ -28,8 +28,8 @@ export default function SteezedRouter() {
                   <Route path='/admin' element={<AdminHome />} exact/>
                   <Route path='/register' element={<SignUp/>} exact/>
                   <Route path='/login' element={<SignIn/>} exact/>
-                  <Route path='/merchant/register' element={<MerchantSignUp />} exact/>
-                  <Route path='/merchant/login' element={<MerchantSignIn/>} exact/>
+                  <Route path='/seller/register' element={<MerchantSignUp />} exact/>
+                  <Route path='/seller/login' element={<MerchantSignIn/>} exact/>
                   <Route path='/shopper/:_id' element={<Profile/>} exact/>
                   <Route path='/category/:id/products' element={<Category/>} exact/>
                   <Route path='/api/products/:_id' element={<Loot/>} exact/>

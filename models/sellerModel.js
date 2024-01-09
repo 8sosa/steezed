@@ -61,6 +61,10 @@ const sellerSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  shopDescription: {
+    type: String,
+    required: true,
+  },
   rating: {
     type: Number,
     min: 0,

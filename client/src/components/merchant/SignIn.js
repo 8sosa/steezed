@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import styles from './index.module.css'
-
 import { useNavigate } from 'react-router-dom';
 import { Card, Container, Form, Button } from 'react-bootstrap'
 import { useLocation } from 'react-router-dom'
@@ -11,17 +10,16 @@ export default function MerchantSignIn() {
     const [seller, setSeller] = useState({ email: '', password: ''})
     const [err, setErr] = useState('')
     const location = useLocation();
-    const backgroundClass = location.pathname === '/merchant/login' ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname === '/seller/login' ? `${styles.AppRegister}` : `${styles.App}`; 
     const [isLogin, setIsLogin] = useState([])
 
-    if (window.location.pathname === '/merchant/login') {
+    if (window.location.pathname === '/seller/login') {
         localStorage.clear();
       }
 
     useEffect(() =>{
         const checkLogin = async () =>{
             const token = localStorage.getItem('tokenStore')
-            console.log(token)
             if(token){
               const verified = await axios.get('/seller/verify/m',{
                 headers:{ Authorization: token}
@@ -57,6 +55,7 @@ export default function MerchantSignIn() {
           console.log(id)
           navigate(`/seller/${id}/shop`)
       } catch (error) {
+        setErr(error.response.data.msg)
         console.log(error)
       }
     }
@@ -79,7 +78,7 @@ export default function MerchantSignIn() {
                         </Button>
                         </div>
                     </Form>
-                    <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/register'>Sign up!</a></p>
+                    <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/seller/register' className={styles.loginLink}>Sign up!</a></p>
                 </Card.Body>
                 <h3 className={styles.errText}>{err}</h3>
             </Card>

@@ -18,9 +18,8 @@ const auth = (req, res, next) => {
   
       jwt.verify(token, process.env.TOKEN_SECRET, (err, user) => {
         if (err) {
-          return res.status(401).json({ msg: 'Invalid Token' });
-        }
-  
+          return res.status(400).json({ msg: 'Authorization not valid.', err });
+        }  
         req.user = user;
         next();
       });

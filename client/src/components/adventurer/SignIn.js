@@ -79,7 +79,7 @@ export default function SignIn() {
                       </Button>
                     </div>
                 </Form>
-                <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/register'>Sign up!</a></p>
+                <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/register' className={styles.loginText}>Sign up!</a></p>
             </Card.Body>
             <h3 className={styles.errText}>{err}</h3>
         </Card>

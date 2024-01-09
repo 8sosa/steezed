@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-import {useParams, Link} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 import { Container, Row, Col, Button, Dropdown, Offcanvas } from 'react-bootstrap'
-// import { GoStar, GoStarFill } from 'react-icons/go';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './index.module.css';
 import Product from '../Product';
@@ -11,6 +10,7 @@ import { HiMenuAlt2 } from "react-icons/hi";
 
 export default function Category(){
     const Sidebar = () => {
+        const navigate = useNavigate();
         const [categories, setCategories] = useState([]);
         const [sellers, setSellers] = useState([]);
 
@@ -22,7 +22,15 @@ export default function Category(){
         const getSellers = async (token) => {
             const res = await axios.get('/seller')
             setSellers(res.data)
-          }
+        }
+        const handleCategoryChange = (categoryId) => {
+            // Update the URL and trigger a re-render with the new product ID
+            navigate(`/category/${categoryId}/products`);
+        };
+        const handleSellerChange = (sellerId) => {
+            // Update the URL and trigger a re-render with the new product ID
+            navigate(`/seller/${sellerId}`);
+        };
 
         useEffect(() =>{
             getCategories()
@@ -37,66 +45,25 @@ export default function Category(){
                                     <li className={styles.listHeader}>Categories</li>
                                     {
                                         categories.map(category => (
-                                            <li  className={styles.listItem}><Link to={{ pathname: `/category/${category._id}/products` }} className={styles.link}>{category.name}</Link></li>
+                                            <li>
+                                                <Button className={styles.listItem} onClick={() => handleCategoryChange(category._id)}>
+                                                   {category.name}
+                                                </Button>
+                                            </li>
                                         ))
                                     }
                                 </ul>
                             </div>
-                            {/* <div className="ms-2 me-auto">
-                                <ul className="list-unstyled">
-                                    <li className={styles.listHeader}>Rating</li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
-                                    </li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStar />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
-                                    </li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStar />
-                                                <GoStar />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
-                                    </li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStar />
-                                                <GoStar />
-                                                <GoStar />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
-                                    </li>
-                                </ul>
-                            </div> */}
                             <div className="ms-2 me-auto">
                                 <ul className="list-unstyled">
                                     <li className={styles.listHeader}>Shops</li>
                                     {
                                         sellers.map(seller => (
-                                            <li  className={styles.listItem}><Link to={{ pathname: `/seller/${seller._id}` }} className={styles.link}>{seller.shopName}</Link></li>
+                                            <li>
+                                                <Button className={styles.listItem} onClick={() => handleSellerChange(seller._id)}>
+                                                    {seller.shopName}
+                                                </Button>
+                                            </li>
                                         ))
                                     }
                                 </ul>
@@ -197,16 +164,13 @@ export default function Category(){
         useEffect(() =>{
             getCategoryProducts()
             getCategoryName()
-        }, [])
+        }, [category_id])
     
         return (
           <Container className={styles.CategoryContent}>
-            { <section className={styles.CategoryLoots}>
+            {<section className={styles.CategoryLoots}>
                 <h2 className={styles.sideTitle}>{categoryName}</h2>
                 <Row className={styles.top}>
-                    <Col className='d-flex justify-content-start'>
-                        <div className={styles.filter1}>16 of 174 Loots</div>                                                    
-                    </Col>
                     <Col className={styles.miniSidebar}>
                         <Button onClick={handleShow} className={styles.filter2}><HiMenuAlt2 /></Button>
                         <Offcanvas show={show} onHide={handleClose} placement='start'>
@@ -233,7 +197,7 @@ export default function Category(){
                     </Col>
                         
                 </Row>
-                <Row xs={3} sm={4} md={4} lg={4} className="d-flex justify-content-center g-6">
+                <Row xs={2} sm={2} md={4} lg={4} className="d-flex justify-content-center g-6">
                     {
                         products.map(product => (
                             <Col className={styles.categoryCol}>     
@@ -242,19 +206,6 @@ export default function Category(){
                         ))
                     }
                 </Row>
-                {/* <Row className={styles.pagination}>
-                    <Pagination >
-                        <Pagination.First className={styles.paginationItem}/>
-                        <Pagination.Prev className={styles.paginationItem}/>
-                        <Pagination.Item className={styles.paginationItem} active>{1}</Pagination.Item>
-                        <Pagination.Item className={styles.paginationItem}>{2}</Pagination.Item>
-                        <Pagination.Ellipsis className={styles.paginationItem}/>
-                        <Pagination.Item className={styles.paginationItem} >{19}</Pagination.Item>
-                        <Pagination.Item className={styles.paginationItem}>{20}</Pagination.Item>
-                        <Pagination.Next className={styles.paginationItem}/>
-                        <Pagination.Last className={styles.paginationItem}/>
-                    </Pagination>
-                </Row> */}
             </section>}
           </Container>
         );

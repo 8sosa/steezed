@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext} from 'react'
 import axios from 'axios'
-import {useParams} from 'react-router-dom'
+import {useParams, useNavigate} from 'react-router-dom'
 import { Accordion, AccordionContext, Button, Card, Col, Container, Form, Image, Nav, Row, Tab, Tabs, useAccordionButton} from 'react-bootstrap'
 import styles from './index.module.css'
 import Backdrop from '../images/backdrop.png'
@@ -10,6 +10,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { AiOutlineStar } from 'react-icons/ai'
 import { TbCash } from 'react-icons/tb'
 import { PiUserFocusThin } from 'react-icons/pi'
+import { AiOutlineUserDelete } from "react-icons/ai";
 import { FaClipboardList } from 'react-icons/fa'
 import { GiMoneyStack } from 'react-icons/gi'
 import { CiSearch } from 'react-icons/ci'
@@ -45,6 +46,7 @@ function ContextAwareToggle({ children, eventKey, callback }) {
 export default function Home(props) {
 
   const [activeTab, setActiveTab] = useState('shop');
+  const navigate = useNavigate();
   const uniqueStatuses = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
   const [tokenStore, setToken] = useState('');
   const handleTabSelect = (selectedTab) => { setActiveTab(selectedTab) };
@@ -88,6 +90,35 @@ export default function Home(props) {
     }
   }
 
+  const deleteSeller = async () => {
+    try {
+      const token = localStorage.getItem('tokenStore')
+      console.log('Token:', token);
+      const res = await axios.delete(`/seller/${_id}`, {
+        headers: {Authorization: token}
+      })
+      console.log(res.data)
+      navigate(`/merchant/login`)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const updateSeller = async (e) => {
+    e.preventDefault(); 
+    try {
+        const form = document.forms.namedItem("merchant");
+        const formData = new FormData(form)
+        const token = localStorage.getItem('tokenStore');
+        const res = await axios.put(`/seller/${_id}`, formData, {
+            headers: {Authorization: token}
+        })
+        setSeller(res.data)
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
   const getProductsBySeller = async (token) => {
     try {
       const res = await axios.get(`/seller/${_id}/products`, {
@@ -98,20 +129,6 @@ export default function Home(props) {
       console.error('Error fetching product data:', error);
     }
   }
-  
-  // const getProductById = async (productId) => {
-  //   try {
-  //     const res = await axios.get(`/api/products/${productId}`)
-  //     setOrderProduct(res.data)
-  //   } catch (error) {
-  //     console.error('Error fetching product data:', error);
-  //   }
-  // }
-
-  // order.forEach((orderItem) => {
-  //     const productId = orderItem.product;
-  //     getProductById(productId);
-  //   });
 
   const ChangeInput = d => {
     const {name, value} = d.target;
@@ -159,7 +176,7 @@ export default function Home(props) {
               <Col xs={4} className='d-flex'>
               <section className={styles.sidebar}>
                 <Button className={styles.searchBtn}><CiSearch className={styles.searchIcon} /> Search</Button>
-              <Nav variant='underline'>
+                <Nav variant='underline'>
                 <Nav.Item>
                     <Accordion flush>
                       <Nav.Link className={styles.navLin} disabled><li><ContextAwareToggle>Shop Manager</ContextAwareToggle></li></Nav.Link>
@@ -205,7 +222,8 @@ export default function Home(props) {
                         </Accordion.Collapse>
                     </Accordion>
                 </Nav.Item>
-              </Nav>
+                </Nav>
+                <Button onClick={() => deleteSeller()} className={styles.someButton}>Delete Account <AiOutlineUserDelete size={25} /></Button>
               </section>
               </Col>
               <Col xs={8}>
@@ -214,45 +232,38 @@ export default function Home(props) {
                     <Tab.Pane eventKey='shop'>
                       <div className={styles.contentPane}>
                         <h1 className={styles.paneTitle}>Shop Details</h1>
-                        <Form>
-                              <Form.Group className={styles.imgSection}>
+                        <Form onSubmit={(e) => updateSeller(e, updateSeller)} name='merchant'>
+                          <Form.Group className={styles.imgSection}>
                                 <Image src={Backdrop} fluid className={styles.backdrop}/>
                                 <badge className={styles.logoBadge}><Image src={Logo} fluid className={styles.shopLogo}/></badge>
-                              </Form.Group>
-                            <div className={styles.pageSection}>
+                          </Form.Group>
+                          <div className={styles.pageSection}>
                               <Form.Group className={styles.fullbox}>
                                 <Form.Label className={styles.fieldLabel}>Shop Name</Form.Label>
-                                <Form.Control type="text" className={styles.textbox} placeholder={seller.shopName}/>
+                                <Form.Control type="text" name='shopName' className={styles.textbox} placeholder={seller.shopName}/>
                               </Form.Group>
                               <Form.Group className={styles.fullbox}>
                                 <Form.Label className={styles.fieldLabel}>Shop Description</Form.Label>
-                                <Form.Control as="textarea" rows={3} className={styles.checkBox} placeholder="At Nature's Haven, we believe ..."/>
+                                <Form.Control as="textarea" name='shopDescription' rows={3} className={styles.checkBox} placeholder={seller.shopDescription}/>
                               </Form.Group>
-                            </div>
-                          <Row xs={1} md={2} className='mb-5'>
-                            <Col className={styles.fullbox}>
+                              <Form.Group className={styles.fullbox}>
+                                <Form.Label className={styles.fieldLabel}>User Name</Form.Label>
+                                <Form.Control type="text" name='userName' className={styles.textbox} placeholder={seller.userName}/>
+                              </Form.Group>
+                          </div>
+                          <div className='mb-5'>
+                            <div className={styles.fullbox}>
                               <Form.Label className={styles.fieldLabel}>Contact Details</Form.Label>
                               <Form.Group className={styles.checkBox}>
                                 <Form.Label className={styles.textLabel}>Phone Number</Form.Label>
-                                <Form.Control type="num" placeholder={seller.phoneNumber} className={styles.textbox}/>
+                                <Form.Control type="num" name='phoneNumber' placeholder={seller.phoneNumber} className={styles.textbox}/>
                                 <Form.Label className={styles.textLabel}>Email Address</Form.Label>
-                                <Form.Control type="email" placeholder={seller.email} className={styles.textbox}/>
+                                <Form.Control type="email" name='email' placeholder={seller.email} className={styles.textbox}/>
                                 <Form.Label className={styles.textLabel}>Shop Address</Form.Label>
-                                <Form.Control type="text" placeholder={seller.shopAddress} className={styles.textbox}/>
+                                <Form.Control type="text" name='shopAddress' placeholder={seller.shopAddress} className={styles.textbox}/>
                               </Form.Group>
-                            </Col>
-                            <Col className={styles.fullbox}>
-                              <Form.Label className={styles.fieldLabel}>Operating Hours</Form.Label>
-                                <Form.Group className={styles.checkBox}>
-                                  <Form.Label className={styles.textLabel}>Weekdays (Mon - Fri)</Form.Label>
-                                  <Form.Control type="text" placeholder="Open 8am - 8pm" className={styles.textbox}/>
-                                  <Form.Label className={styles.textLabel}>Weekends (Sat - Sun)</Form.Label>
-                                  <Form.Control type="text" placeholder="Open 10am - 6pm" className={styles.textbox}/>
-                                  <Form.Label className={styles.textLabel}>Holidays</Form.Label>
-                                  <Form.Control type="text" placeholder="Closed" className={styles.textbox}/>
-                                </Form.Group>
-                            </Col>
-                          </Row>
+                            </div>
+                          </div>
                           <div className={styles.invisibleBox}>
                             <Form.Label className={styles.fieldLabel}>Change Password</Form.Label>
                             <Form.Group className={styles.checkBox}>
@@ -269,6 +280,9 @@ export default function Home(props) {
                               <Button className={styles.btn}>Confirm</Button>
                             </Form.Group>
                           </div>
+                          <div className='d-flex justify-content-center'>
+                            <Button className={styles.accountDetailsBtn} type="submit">Update</Button>
+                          </div>
                         </Form>
                       </div>
                     </Tab.Pane>
@@ -282,12 +296,6 @@ export default function Home(props) {
                             <Form.Label className={styles.fieldLabel}>Product Image</Form.Label>
                             <Form.Group className='mb-3'>
                               <input name='file' type='file' onChange={e => setFile(e.target.files[0])}/>
-                            </Form.Group>
-                            <Form.Label className={styles.fieldLabel}>Style</Form.Label>
-                            <Form.Group className={styles.style}>
-                              <Image src={Loot} className={styles.productImageStyle}/>
-                              <Image src={Loot} className={styles.productImageStyle}/>
-                              <Image src={Loot} className={styles.productImageStyle}/>
                             </Form.Group>
                             <Form.Label className={styles.fieldLabel}>Product Category</Form.Label>
                             <Form.Group>

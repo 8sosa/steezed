@@ -121,20 +121,19 @@ export default function Home() {
                           className="mb-3"
                         >
                           <Tab eventKey="shoppers" title="Adventurers">
-                          <div className={styles.dColumn}>
+                          <div className={styles.user}>
                             {
                               shoppers.map(shopper => (
-                                <Row className={styles.user}>
-                                  <Col xs={3} className={styles.orderPicBox}>
+                                <Row className={styles.fullWidht}>
+                                  <Col className={styles.orderPicBox}>
                                     <img src={Pic} alt='loot' className={styles.orderPic}/>
                                   </Col>
-                                  <Col xs={4} className={styles.orderTextBox}>
+                                  <Col className={styles.orderTextBox}>
                                     <p className={styles.orderText}>{shopper.userName}</p>
                                     <p className={styles.orderText}>{shopper.email}</p>
                                     <p className={styles.orderText}>{shopper.phoneNumber}</p>
                                   </Col>
-                                  <Col xs={4} className={styles.orderTextBox}>
-                                    <button className={styles.banBtn}>Suspend</button>
+                                  <Col className={styles.orderBtnBox}>
                                     <button className={styles.banBtn}>Delete</button>
                                   </Col>
                                 </Row>
@@ -156,8 +155,7 @@ export default function Home() {
                                       <p className={styles.orderText}>{seller.email}</p>
                                       <p className={styles.orderText}>{seller.userName}</p>
                                     </Col>
-                                    <Col xs={4} className={styles.orderTextBox}>
-                                      <button className={styles.banBtn}>Suspend</button>
+                                    <Col xs={4} className={styles.orderBtnBox}>
                                       <button className={styles.banBtn}>Delete</button>
                                     </Col>
                                   </Row>

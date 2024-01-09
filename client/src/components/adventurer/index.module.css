@@ -41,7 +41,43 @@ code {
   text-decoration: none;
   color: #0D011B !important;
 }
+
 @media (max-width: 1440px) {
+  .someButton {
+    margin-top: 50px;
+    background-color: #fff !important;
+    color: #c02121 !important;
+    border: 1px solid #942d2d !important;
+  }
+  .inputLine {
+    color: #fefefe !important;
+    border: none !important;
+    border-bottom: 2px solid whitesmoke !important;
+    margin-bottom: 2rem;
+    padding: 5rem;
+    border-radius: 0px !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 14px;
+    font-weight: lighter;
+    background-color: rgba(0, 0, 0, 0) !important;
+    width: 100% !important;
+  }
+  .inputLine::placeholder {
+    color: #fefefe !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px !important;
+    font-weight: lighter;
+  }
+  .profileImage {
+    width: 150px;
+    margin-bottom: 15px;
+  }
+  .selectedImage {
+    width: 100%;
+    border: 1px solid white;
+    border-radius: 15px;
+  }
   .cart {
     width: max-content;
     margin: 0px;
@@ -258,6 +294,14 @@ code {
     font-size: 14px !important;
     margin-left: 5px !important;
     text-decoration: none !important;
+    background-color: transparent !important;
+    border: 1px solid #7752B2 !important;
+    color: #000 !important;
+  }
+  .listItem:hover, .listItem:active, .listItem:focus {
+    background-color: #000 !important;
+    color: #fff !important;
+    border: 1px solid #7752B2 !important;
   }
   .steezed{
     color: #7752B2 !important;
@@ -1030,7 +1074,7 @@ code {
   .reviewCardBody{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   .reviewCardTitle{
     font-family: 'Montagu Slab', serif !important;
@@ -1260,6 +1304,9 @@ code {
     border: 3px solid #fefefe !important;
   }
   .SignUpCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 10px;
     margin-top: auto !important;
   }
@@ -1310,6 +1357,7 @@ code {
     font-family: 'Montagu Slab', serif;  
     font-size: 15px;
     font-weight: lighter;
+    margin-top: 15px;
   }
   .accountDetailsHeader{
     font-family: 'Montagu Slab', serif;  
@@ -1560,6 +1608,8 @@ code {
     box-shadow: 0 6px 6px #A66DE0;
   }
   .cardImage{
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
     width: 100%
   }
   .categoryImage{
@@ -1593,6 +1643,34 @@ code {
 }
 
 @media (max-width: 1024px) {
+  .someButton {
+    margin-top: 50px;
+    background-color: #fff !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: small !important;
+    color: #c02121 !important;
+    border: 1px solid #942d2d !important;
+  }
+  .inputLine {
+    color: #fefefe !important;
+    border: none !important;
+    border-bottom: 2px solid whitesmoke !important;
+    margin-bottom: 2rem;
+    padding: 5rem;
+    border-radius: 0px !important;
+    font-family: 'Montagu Slab', serif;
+    font-size: 14px;
+    font-weight: lighter;
+    background-color: rgba(0, 0, 0, 0) !important;
+    width: 100% !important;
+  }
+  .inputLine::placeholder {
+    color: #fefefe !important;
+    font-style: italic;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 13px !important;
+    font-weight: lighter;
+  }
   .payVector {
     width: 50%;
   }
@@ -2481,11 +2559,11 @@ code {
   .reviewCardBody{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   .reviewCardTitle{
     font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
+    font-size: 15px !important;
     font-weight: 600;
   }
   .reviewCardText{
@@ -3002,6 +3080,8 @@ code {
     box-shadow: 0 6px 6px #A66DE0;
   }
   .cardImage{
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
     width: 100%
   }
   .categoryImage{
@@ -3086,6 +3166,14 @@ code {
 }
 
 @media (max-width: 768px) {
+  .someButton {
+    margin-top: 50px;
+    background-color: #fff !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: small !important;
+    color: #c02121 !important;
+    border: 1px solid #942d2d !important;
+  }
   .payVector {
     width: 50%;
   }
@@ -4289,7 +4377,7 @@ code {
   .accordionBtnOpen{
     min-width: 100px;
     border: 1px solid black !important;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: transparent !important;
     display: flex;
     font-family: 'Montagu Slab', serif !important;
@@ -4297,7 +4385,7 @@ code {
     font-weight: lighter;
     align-items: center;
     justify-content: center;
-    padding: 10px;
+    padding: 8px;
   }
   .accordionBtnOpen:hover {
     border: 1px solid #7752B2 !important;
@@ -4415,6 +4503,8 @@ code {
     box-shadow: 0 6px 6px #A66DE0;
   }
   .cardImage{
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important;
     width: 100%;
   }
   .categoryImage{
@@ -4423,11 +4513,11 @@ code {
   .reviewCardBody{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   .reviewCardTitle{
     font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
+    font-size: 15px !important;
     font-weight: 600;
   }
   .reviewCardText{
@@ -4498,16 +4588,34 @@ code {
 }
 
 @media (max-width: 425px) {
+  .someButton {
+    margin-top: 50px;
+    background-color: #fff !important;
+    color: #c02121 !important;
+    border: 1px solid #942d2d !important;
+  }
   .payVector {
     width: 50%;
   }
-.page {
-  margin-top: 50px;
-  margin-bottom: 50px !important;
-}
-
-/* Navigation Items */
-
+  .page {
+    margin-top: 50px;
+    margin-bottom: 50px !important;
+  }
+  .reviewCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .reviewCardTitle{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: 600;
+  }
+  .reviewCardText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: 300;
+  }
 .navContainer {
   padding: 0px !important;
   background-color: transparent !important;
@@ -5748,9 +5856,9 @@ table th {
   background-color: transparent !important;
   color: black !important;
   min-width: 30px !important;
-  margin-bottom: 40px !important;
+  margin-bottom: 15px !important;
   margin-top: 10px !important;
-  width: 50%;
+  width: 100%;
   padding: 5px !important;
 
 }
@@ -5761,7 +5869,7 @@ table th {
   width: 100%;
   min-width: 100px;
   border: 1px solid black !important;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: transparent !important;
   display: flex;
   font-family: 'Montagu Slab', serif !important;
@@ -5769,7 +5877,7 @@ table th {
   font-weight: lighter;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 5px;
 }
 .accordionBtnOpen:hover {
   border: 1px solid #7752B2 !important;
@@ -5895,6 +6003,8 @@ table th {
   box-shadow: 0 6px 6px #A66DE0;
 }
 .cardImage{
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
   width: 100%;
   margin-bottom: 10px;
 }

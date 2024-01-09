@@ -10,9 +10,10 @@ import { BiPlus, BiMinus } from "react-icons/bi"
 
 export default function Cart() {
 
-    const [cart, setCart] = useState([])
-    const [total, setTotal] = useState([])
-    const navigate = useNavigate()
+    const [cart, setCart] = useState([]);
+    const [total, setTotal] = useState([]);
+    const [order, setOrder] = useState([]);
+    const navigate = useNavigate();
 
     const getCart = async (token) => {
         try {
@@ -25,6 +26,36 @@ export default function Cart() {
             console.log(error)
         }
     }
+
+    const createOrder = async (token) => {
+        try {
+            const cartArray = cart.map((loot) => ({
+                productId: loot.product,
+                quantity: loot.quantity,
+            }));
+            const token = localStorage.getItem('tokenStore');
+            const res = await axios.post('/order', { productsArray: cartArray }, {
+                headers: { Authorization: token }
+            });
+            setOrder(res.data.order);
+
+            const result = await axios.post('/checkout', {orderId: res.data.order._id}, {
+                headers: { Authorization: token }
+            })
+            if(result.data.status === true){
+
+                const authorizationUrl = result.data.data.authorization_url;
+                console.log(authorizationUrl);
+
+                window.location.replace(authorizationUrl);
+            }
+            console.log(result.data)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    console.log(order);
+
 
     const handleIncreaseQuantity = (productId, currentQuantity) => {
         const newQuantity = currentQuantity + 1;
@@ -70,7 +101,7 @@ export default function Cart() {
         } else {
             navigate('/login')
         }
-    }, [navigate])
+    }, [])
 
   return (
     <>
@@ -122,8 +153,8 @@ export default function Cart() {
                             </div>
                         </Card.Body>
                         <Card.Footer className={styles.cartFooter}>
-                            <h1 className={styles.cartOrderTitle}>Cart Total: {total}</h1>
-                            <Button href='/checkout' className={styles.cartBtn}><p className={styles.miniCartBtnText}>CHECKOUT</p></Button>
+                            <h1 className={styles.cartOrderTitle}>Cart Total: # {total}</h1>
+                            <Button onClick={createOrder} className={styles.cartBtn}><p className={styles.miniCartBtnText}>CHECKOUT</p></Button>
                         </Card.Footer>
                     </Card>
             </section>

@@ -36,9 +36,12 @@ export default function Profile() {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const navigate = useNavigate()
-    const [shopper, setShopper] = useState({})
+    const navigate = useNavigate();
+    const [shopper, setShopper] = useState({});
     const {_id} = useParams();
+    const [updatedImage, setUpdatedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState('/Images/gg.jpeg');
+    const [file, setFile] = useState()
     const uniqueStatuses = ['Pending', 'Processing', 'Shipped', 'Delivered', 'Cancelled'];
 
 
@@ -62,16 +65,21 @@ export default function Profile() {
                 headers: {Authorization: token}
             })
             setShopper(res.data)
+            console.log(res.data.image)
+            setUpdatedImage(res.data.image)
+            console.log(updatedImage)
         } catch (error) {
             console.log(error)
         }
     }
-    const deleteShopper = async (token) => {
+    const deleteShopper = async () => {
         try {
+            const token = localStorage.getItem('tokenStore')
             const res = await axios.delete(`/shopper/${_id}`, {
                 headers: {Authorization: token}
             })
             console.log(res.data)
+            navigate(`/login`)
         } catch (error) {
             console.log(error)
         }
@@ -86,28 +94,14 @@ export default function Profile() {
                 headers: {Authorization: token}
             })
             console.log(formData)
+            console.log(file)
             setShopper(res.data)
             
         } catch (error) {
             console.log(error)
         }
     }
-    // const UpdateShopper = async (e, shopperId) => {
-    //     try {
-    //       e.preventDefault();
-    //       const form = document.forms.namedItem("adventurer");
-    //       const formData = new FormData(form);
-      
-    //       // Make a PUT request to update the shopper
-    //       const res = await axios.put(`/shopper/${shopperId}/update`, formData);
-      
-    //       console.log(res);
-    //       navigate('/');
-    //     } catch (error) {
-    //       console.error(error);
-    //       // Handle error appropriately, e.g., show a user-friendly message
-    //     }
-    //   };
+    
     const getOrders = async (token) => {
         try {
             const res = await axios.get(`/order`, {
@@ -149,7 +143,7 @@ export default function Profile() {
                         <Nav.Link className={styles.navLin} eventKey="third"><ContextAwareToggle>Wishlist</ContextAwareToggle></Nav.Link>
                         </Nav.Item>
                     </Nav>
-                    <Button onClick={deleteShopper}>Delete Account <AiOutlineUserDelete size={25} /></Button>
+                    <Button onClick={deleteShopper} className={styles.someButton}><AiOutlineUserDelete />Delete Account</Button>
                 </section>
                 </Col>
                 <Col xs={8} className={styles.mainPane}>
@@ -158,7 +152,7 @@ export default function Profile() {
                         <Offcanvas.Header closeButton>
                         </Offcanvas.Header>
                         <Offcanvas.Body className={styles.billingDetails}>
-                        <Button className={styles.searchBtn}><CiSearch className={styles.searchIcon}/>Search</Button>
+                            <Button className={styles.searchBtn}><CiSearch className={styles.searchIcon}/>Search</Button>
                             <Nav className={styles.dColumn}>
                                 <Nav.Item>
                                     <Nav.Link className={styles.navLin} eventKey="first"><ContextAwareToggle>Bio Data</ContextAwareToggle></Nav.Link>
@@ -169,10 +163,8 @@ export default function Profile() {
                                 <Nav.Item>
                                 <Nav.Link className={styles.navLin} eventKey="third"><ContextAwareToggle>Wishlist</ContextAwareToggle></Nav.Link>
                                 </Nav.Item>
-                                <Nav.Item>
-                                <Nav.Link className={styles.navLin} eventKey="fourth"><ContextAwareToggle>Billing & Shipping</ContextAwareToggle></Nav.Link>
-                                </Nav.Item>
                             </Nav>
+                            <Button onClick={deleteShopper} className={styles.someButton}>Delete Account <AiOutlineUserDelete size={25} /></Button>
                         </Offcanvas.Body>
                     </Offcanvas>
                     <Tab.Content>
@@ -180,41 +172,71 @@ export default function Profile() {
                             <Button onClick={handleShow} className={styles.menu}><BiMenu /></Button>
                         </div>
                     <Tab.Pane eventKey="first">
-                            <h1 className={styles.accountDetailsHeader}>Account Details</h1>
+                            <h1 className={styles.accountDetailsHeader}>Bio Data</h1>
                             <Form onSubmit={(e) => updateShopper(e, updateShopper)} name='adventurer'>
-                                {/* <Row className='d-flex align-items-flex-start mb-5'> */}
-                                    {/* <Col xs={5}>
-                                        <Form.Group className={styles.profilePictureBox}>
-                                            <Form.Label className={styles.billingDetailsLabel}>Profile Picture</Form.Label>
-                                            <img src={require(`../../../../Avatar/${shopper.imageName}`)} alt='profile' className={styles.profilePicture}/>
-                                        </Form.Group>
-                                    </Col> */}
-                                    {/* <Col xs={7}> */}
+                                <Form.Group className={styles.profileImage}>
+                                    <input 
+                                        id="imageInput" 
+                                        name='file' 
+                                        type='file' 
+                                        onChange={e => {
+                                        setFile(e.target.files[0]);
+                                        setSelectedImage(URL.createObjectURL(e.target.files[0]));
+                                        }}
+                                        style={{ display: 'none' }}
+                                    />
+                                    <label htmlFor="imageInput">
+                                        {/* {updatedImage ? (
+                                        <img
+                                            src={require(`../../../../Images/${shopper.imageName}`)}
+                                            alt="Updated"
+                                            className={styles.selectedImage}
+                                        />
+                                        ) : ( */}
+                                        <img
+                                            src={selectedImage}
+                                            alt="Selected"
+                                            className={styles.selectedImage}
+                                        />
+                                        {/* )} */}
+                                    </label>
+                                    <p className={styles.billingDetailsLabel}>Set Profile Image</p>
+                                </Form.Group>
+                                <Row>
+                                    <Col>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                             <Form.Label className={styles.billingDetailsLabel}>First Name</Form.Label>
                                             <Form.Control className={styles.formField} type="text" name='firstName' placeholder={shopper.firstName} />
                                         </Form.Group>
+                                    </Col>
+                                    <Col>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                             <Form.Label className={styles.billingDetailsLabel}>Last Name</Form.Label>
                                             <Form.Control className={styles.formField} type="text" name='lastName' placeholder={shopper.lastName} />
                                         </Form.Group>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col>
                                         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                             <Form.Label className={styles.billingDetailsLabel}>Username</Form.Label>
                                             <Form.Control className={styles.formField} name='userName' type="text" placeholder={shopper.userName} />
                                         </Form.Group>
-                                    {/* </Col>
-                                </Row> */}
-                                <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                    <Form.Label className={styles.billingDetailsLabel}>Address</Form.Label>
-                                    <Form.Control className={styles.formField} type="text" name='address' placeholder={shopper.address} />
-                                </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                                            <Form.Label className={styles.billingDetailsLabel}>Phone Number</Form.Label>
+                                            <Form.Control className={styles.formField} type="tel" name='phoneNumber' placeholder={shopper.phoneNumber} />
+                                        </Form.Group>
+                                    </Col>
+                                </Row>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                     <Form.Label className={styles.billingDetailsLabel}>Email address</Form.Label>
                                     <Form.Control className={styles.formField} type="email" name='email' placeholder={shopper.email} />
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                    <Form.Label className={styles.billingDetailsLabel}>Phone Number</Form.Label>
-                                    <Form.Control className={styles.formField} type="tel" name='phoneNumber' placeholder={shopper.phoneNumber} />
+                                    <Form.Label className={styles.billingDetailsLabel}>Address</Form.Label>
+                                    <Form.Control className={styles.formField} type="text" name='address' placeholder={shopper.address} />
                                 </Form.Group>
                                 <div className='d-flex justify-content-center'>
                                     <Button className={styles.accountDetailsBtn} type="submit">Update</Button>
@@ -222,6 +244,7 @@ export default function Profile() {
                             </Form>
                     </Tab.Pane>
                     <Tab.Pane eventKey="second">
+                    <h1 className={styles.accountDetailsHeader}>Orders</h1>
                     <Tabs
                         defaultActiveKey="All"
                         id="uncontrolled-tab-example"
@@ -464,7 +487,8 @@ export default function Profile() {
                     </Tabs>
                     </Tab.Pane>
                     <Tab.Pane eventKey="third">
-                        <Row sm={1} md={2} lg={3} xl={4}>
+                    <h1 className={styles.accountDetailsHeader}>Wishlist</h1>
+                        <Row xs={2} sm={2} md={3} lg={4}>
                             {
                                 wishlist.map(wishlistItem => (
                                     <Col className='d-flex justify-content-center'>

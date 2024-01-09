@@ -29,6 +29,7 @@ code {
   max-width: 100% !important;
 }
 .link {
+  width: 100%;
   text-decoration: none;
 }
 .searchResults {
@@ -239,16 +240,16 @@ code {
     margin-bottom: 10px !important;
   }
   .loot{
-    max-width: 250px !important;
+    display: flex;
+    align-items: center;
+    max-width: 100% !important;
     border: 0px !important;
     padding-bottom: 10px;
     text-decoration: none !important;
   }
   .loot:hover {
-    max-width: 250px !important;
     border: 1px solid black!important;
     border-radius: 5px 5px 20px 20px;
-    padding-bottom: 10px;
     text-decoration: none !important;
     box-shadow: 0 0 5px 5px #e6e2e8 !important;
     margin-top: -5px;
@@ -267,8 +268,8 @@ code {
     display: flex;
     justify-content: space-between;
     font-family: 'Montagu Slab', serif;
-    font-weight: normal;
-    font-size: 14px;
+    font-weight: normal !important;
+    font-size: 14px !important;
     white-space: nowrap !important;
   }
   .lootDescription{

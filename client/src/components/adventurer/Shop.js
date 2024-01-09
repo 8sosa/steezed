@@ -239,26 +239,13 @@ export default function Shop(){
                 </Row>
                 <Row sm={2} className="d-flex justify-content-center g-6">
                     {
-                        products.map(product => (
+                        products.map(relatedProduct => (
                         <Col className='d-flex justify-content-center'>
-                            <Product product={product} />
+                            <Product relatedProduct={relatedProduct} />
                         </Col>
                         ))
                     }
                 </Row>
-                {/* <Row className={styles.pagination}>
-                    <Pagination >
-                        <Pagination.First className={styles.paginationItem}/>
-                        <Pagination.Prev className={styles.paginationItem}/>
-                        <Pagination.Item className={styles.paginationItem} active>{1}</Pagination.Item>
-                        <Pagination.Item className={styles.paginationItem}>{2}</Pagination.Item>
-                        <Pagination.Ellipsis className={styles.paginationItem}/>
-                        <Pagination.Item className={styles.paginationItem} >{19}</Pagination.Item>
-                        <Pagination.Item className={styles.paginationItem}>{20}</Pagination.Item>
-                        <Pagination.Next className={styles.paginationItem}/>
-                        <Pagination.Last className={styles.paginationItem}/>
-                    </Pagination>
-                </Row> */}
             </section>}
           </Container>
         );

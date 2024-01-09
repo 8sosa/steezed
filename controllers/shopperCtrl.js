@@ -39,22 +39,26 @@ const shopperCtrl = {
           if (existingShopper) {
             return res.status(400).json({ msg: 'Email already in use, another Adventurer beat you to it it seems...' });
           }
-        
-          // register a new shopper
-          const passwordHash = await bcrypt.hash(password, 15)
-          const newShopper = new Shopper({
-            firstName: firstName, 
-            lastName: lastName,
-            userName: userName,
-            image: {
+          let image = {};
+          if (req.file) {
+            image = {
               data: req.file.filename,
               contentType: 'image/png'
-            },
-            imageName: req.file.filename,
-            email: email,
+            };
+          }
+  
+          // Register a new shopper
+          const passwordHash = await bcrypt.hash(password, 15);
+          const newShopper = new Shopper({
+            firstName,
+            lastName,
+            userName,
+            image,
+            imageName: req.file ? req.file.filename : '', // handle the case when no file is uploaded
+            email,
             password: passwordHash,
-            phoneNumber: phoneNumber, 
-            address: address
+            phoneNumber,
+            address
           });
 
           // Save the new shopper to the database
@@ -104,7 +108,7 @@ const shopperCtrl = {
               data: req.file.filename,
               contentType: 'image/png'
             };
-            existingShopper.imageName = imageName || req.file.filename;
+            existingShopper.imageName = req.file.filename;
           }
   
           // Save the updated shopper to the database

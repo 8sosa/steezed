@@ -34,15 +34,17 @@ li{
   margin-top: 100px !important;
   margin-bottom: 100px !important;
 }
-
+.fullWidht{
+  width: 100%;
+}
 /* Home */
 @media (max-width: 1440px) {
   .adminNavbar{
-    background-color: #fff;
-    background-position: center;
-    border: 1px solid black;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
+    width: 100%;
+    background-color: #fff !important;
+    align-items: center !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
   }
   .logoImage {
     width: 100px !important; /* Reduce the logo size for smaller screens */
@@ -234,7 +236,7 @@ li{
   .user {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: center;
     height: 100%;
     background-color: #F0EFEF;
     border: 1px solid black;
@@ -254,6 +256,13 @@ li{
     padding: 10px;
   }
   .orderTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-left: 1px dashed #666666;
+  }
+  .orderBtnBox {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -548,6 +557,13 @@ li{
     align-items: flex-start;
     border-left: 1px dashed #666666;
   }
+  .orderBtnBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-left: 1px dashed #666666;
+  }
   .orderText {
     font-family: 'Montagu Slab', serif;
     font-size: 15px;
@@ -818,6 +834,13 @@ li{
     align-items: center;
   }
   .orderTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-left: 1px dashed #666666;
+  }
+  .orderBtnBox {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -1117,6 +1140,13 @@ li{
     padding: 5px !important;
   }
   .orderTextBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    border-left: 1px dashed #666666;
+  }
+  .orderBtnBox {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

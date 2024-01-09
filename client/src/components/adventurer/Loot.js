@@ -23,28 +23,29 @@ export default function Loot(props) {
     const [cart, setCart] = useState([])
     const [total, setTotal] = useState(0)
     const [wishlist, setWishlist] = useState([])
-    const [categoryProducts, setCategoryProducts] = useState([])
+    const [relatedProducts, setRelatedProducts] = useState([]);
+    const excludedProductId = _id; 
+
    
     const getProductById = async () =>{
         try {
             if (_id) {
                 const res = await axios.get(`/api/products/${_id}`)
                 setProduct(res.data)
-                getCategoryProducts(res.data.category)
+                getRelatedProducts(res.data.category)
             }
         } catch (error) {
             console.error('Error fetching product data:', error);
         }
     };
-    const getCategoryProducts = async (category_id) => {
+    const getRelatedProducts = async (category_id) => {
         try {
             const res = await axios.get(`/category/${category_id}/products`);
-            setCategoryProducts(res.data);
+            setRelatedProducts(res.data);
         } catch (error) {
             console.log(error);
         }
     };
-    console.log(categoryProducts)
 
     const getCart = async (token) => {
         try {
@@ -143,7 +144,11 @@ export default function Loot(props) {
             console.log(err)
         }
     };
-
+    const handleRelatedProductClick = (productId) => {
+        // Update the URL and trigger a re-render with the new product ID
+        navigate(`/api/products/${productId}`);
+      };
+    
     useEffect(() => {
         getProductById()
         const token = localStorage.getItem('tokenStore')
@@ -151,8 +156,11 @@ export default function Loot(props) {
             setAccessToken(token)
             getCart(token)
         } 
-    }, [])
-
+        if (_id) {
+            getRelatedProducts(_id);
+        }
+    }, [_id])
+    
   return (
     <>
         <Container className={styles.itemPage}>
@@ -204,7 +212,7 @@ export default function Loot(props) {
                                             </h1>
                                             </Col>
                                             <Col>
-                                                <div>
+                                                <div className='mt-3'>
                                                     <ButtonGroup aria-label="Basic example" className={styles.qtyBtn}>
                                                         <Button variant="secondary" className={styles.minusBtn} onClick={() => handleDecreaseQuantity(cartItem.product._id, cartItem.quantity)}><BiMinus /></Button>
                                                         <Button variant="secondary" className={styles.numBtn} disabled value={JSON.stringify(cartItem.quantity)}>{cartItem.quantity}</Button>
@@ -225,7 +233,7 @@ export default function Loot(props) {
                                         <p className={styles.miniCartOrderTotalText}>£ {total}</p>
                                         </Col>
                                     </Row>
-                                    <Button href='/cart' className={styles.miniCartBtn}><p className={styles.miniCartBtnText}>CART</p></Button>
+                                    <Button href='/cart' className={styles.miniCartBtn}><p className={styles.miniCartBtnText}>Go To Cart</p></Button>
                                 </div>
                             </Offcanvas.Body>
                         </Offcanvas>
@@ -236,9 +244,9 @@ export default function Loot(props) {
                 <h2 className={styles.bgText}>Related Drops</h2>                        
                 <Row xs={2} sm={2} md={3} lg={5} className="d-flex justify-content-center g-6">
                     {
-                        categoryProducts.slice(0, 4).map(categoryProduct => (
-                            <Col className='d-flex justify-content-center' key={product._id}>
-                                <CategoryProductCard categoryProduct={categoryProduct}/>
+                        relatedProducts.filter(relatedProduct => relatedProduct._id !== excludedProductId).slice(0, 4).map(relatedProduct => (
+                            <Col className='d-flex justify-content-center' key={product._id} onClick={() => handleRelatedProductClick(relatedProduct._id)}>
+                                <CategoryProductCard relatedProduct={relatedProduct}/>
                             </Col>
                         ))
                     }

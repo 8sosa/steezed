@@ -8,20 +8,23 @@ export default function NavBar() {
 
   return (
     <>
-        <Navbar className={style.adminNavbar}>
+        <Navbar expand="md" className={style.adminNavbar}>
             <Container fluid>
                 <Navbar.Brand href="/" className={style.logo}>
                     <img src={logo} alt="Your Logo" className={style.logoImage}/>
                 </Navbar.Brand>
-                <Form className={style.search}>
-                    <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className={style.searchField}
-                    aria-label="Search"
-                    />
-                    <Button variant="outline-success" className={style.navSearchBtn}><GoSearch /></Button>
-                </Form>
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                <Navbar.Collapse id='responsive-navbar-nav'>
+                    <Form className={style.search}>
+                        <Form.Control
+                        type="search"
+                        placeholder="Search"
+                        className={style.searchField}
+                        aria-label="Search"
+                        />
+                        <Button variant="outline-success" className={style.navSearchBtn}><GoSearch /></Button>
+                    </Form>
+                </Navbar.Collapse>
             </Container>
         </Navbar>
     </>

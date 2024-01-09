@@ -11,9 +11,9 @@ export default function MerchantSignUp() {
     const [err, setErr] = useState('')
     const [file, setFile] = useState()
     const location = useLocation();
-    const backgroundClass = location.pathname === '/merchant/register' ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname === '/seller/register' ? `${styles.AppRegister}` : `${styles.App}`; 
 
-    if (window.location.pathname === '/merchant/register') {
+    if (window.location.pathname === '/seller/register') {
         localStorage.clear();
     }
     
@@ -34,6 +34,7 @@ export default function MerchantSignUp() {
         console.log(res)
         navigate('/');
     } catch (err) {
+        setErr(err.response.data.msg)
         console.log(err)
     }
 }
@@ -73,7 +74,7 @@ export default function MerchantSignUp() {
                         </Button>
                         </div>
                     </Form>
-                    <p className={styles.loginText}>Already have an account?&nbsp;<a href='/merchant/login'> Sign In!</a></p>
+                    <p className={styles.loginText}>Already have an account?&nbsp;<a href='/seller/login' className={styles.loginLink}> Sign In!</a></p>
                 </Card.Body>
                 <h3 className={styles.errText}>{err}</h3>
             </Card>

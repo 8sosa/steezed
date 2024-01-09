@@ -37,6 +37,11 @@ ul {
   display: flex;
   flex-direction: row;
 }
+.someButton {
+  background-color: #fff !important;
+  color: #A66DE0 !important;
+  border: 1px solid #A66DE0 !important;
+}
 /* Home */
 @media (max-width: 1440px) {
   .page {
@@ -623,6 +628,15 @@ ul {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+  }
+  .loginLink{
+    display: flex;
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
   }
   .errText{
     font-size: medium;
@@ -1216,6 +1230,15 @@ ul {
     align-items: center;
     margin-top: 30px;
   }
+  .loginLink{
+    display: flex;
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
+  }
   .errText{
     font-size: medium;
     color: #fefefe;
@@ -1796,6 +1819,15 @@ ul {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+  }
+  .loginLink{
+    display: flex;
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
   }
   .errText{
     font-size: medium;
@@ -2419,6 +2451,15 @@ ul {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+  }
+  .loginLink{
+    display: flex;
+    color: #fefefe !important;
+    font-family: 'Montagu Slab', serif;  
+    font-size: 15px;
+    font-weight: lighter;
+    justify-content: center;
+    align-items: center;
   }
   .errText{
     font-size: medium;

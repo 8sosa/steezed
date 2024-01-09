@@ -43,7 +43,7 @@ const sellerCtrl = {
           return res.json(err)
         } 
         else {
-          const {userName, email, password, phoneNumber, shopName, shopAddress} = req.body;
+          const {userName, shopDescription, email, password, phoneNumber, shopName, shopAddress} = req.body;
 
           // Check if the email already exists
           const existingSeller = await Seller.findOne({ email });
@@ -64,6 +64,7 @@ const sellerCtrl = {
             password: passwordHash,
             phoneNumber: phoneNumber, 
             shopName: shopName,
+            shopDescription: shopDescription,
             shopAddress: shopAddress,
             image: {
               data: req.file.filename,
@@ -123,35 +124,62 @@ const sellerCtrl = {
 
   updateSeller: async (req, res) => {
     try {
-      const { userName, email, password, phoneNumber, shopname, shopAddress } = req.body;
+      upload(req, res, async (err) => {
+        if (err) {
+          return res.json(err);
+        } else {
+          const { shopName, shopDescription, userName, email, password, phoneNumber, shopAddress } = req.body;
+          const sellerId = req.params.id; // Assuming you pass the seller's ID in the URL parameters
+  
+          // Check if the seller with the given ID exists
+          const existingSeller = await Seller.findById(sellerId);
+  
+          if (!existingSeller) {
+            return res.status(404).json({ msg: 'seller not found.' });
+          }
 
-      // Find the seller by ID
-      const seller = await Seller.findById(req.params.id);
-
-      if (!seller) {
-        return res.status(404).json({ msg: 'Merchant missing...' });
-      }
-
-      // Update the seller's information
-      const passwordHash = await bcrypt.hash(password, 15);
-      Object.assign(seller, { userName, email, password: passwordHash, phoneNumber, shopname, shopAddress });
-
-      // Save the updated seller to the database
-      await seller.save();
-
-      res.json({ msg: 'Merchant information updated successfully' });
+          // Update seller details
+          existingSeller.shopName = shopName;
+          existingSeller.shopDescription = shopDescription;
+          existingSeller.userName = userName;
+          existingSeller.email = email;
+          existingSeller.phoneNumber = phoneNumber;
+          existingSeller.shopAddress = shopAddress;
+  
+          // Check if the password is provided and update it if necessary
+          if (password) {
+            const passwordHash = await bcrypt.hash(password, 15);
+            existingSeller.password = password || passwordHash;
+          }
+  
+          // Check if an image is uploaded and update it if necessary
+          if (req.file) {
+            existingSeller.image = {
+              data: req.file.filename,
+              contentType: 'image/png'
+            };
+            existingSeller.imageName = imageName || req.file.filename;
+          }
+  
+          // Save the updated seller to the database
+          await existingSeller.save();
+  
+          res.json(existingSeller);
+        }
+      });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
 
   deleteSeller: async (req, res) => {
-    // try {
-    //   await Seller.findByIdAndDelete(req.params.id);
+    try {
+      console.log('Token in Controller:', req.header('Authorization'));
+      await Seller.findByIdAndDelete(req.params.id);
       res.json({ msg: 'Merchant deleted successfully' });
-    // } catch (err) {
-    //   return res.status(500).json({ msg: err.message });
-    // }
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
   },
 
   loginSeller: async (req, res) => {
