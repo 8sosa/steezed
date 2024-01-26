@@ -6,23 +6,20 @@ const multer  = require('multer')
 const path = require('path')
 
 
-  const adminRouter = require('./routes/adminRouter')
-  const shopperRouter = require('./routes/shopperRouter')
-  const sellerRouter = require('./routes/sellerRouter')
-  const productRouter = require('./routes/productRouter')
-  const categoryRouter = require('./routes/categoryRouter')
-  const wishlistRouter = require('./routes/wishlistRouter')
-  const orderRouter = require('./routes/orderRouter')
-  const cartRouter = require('./routes/cartRouter')
-  const checkoutRouter = require('./routes/checkoutRouter')
-
-
+const adminRouter = require('./routes/adminRouter')
+const shopperRouter = require('./routes/shopperRouter')
+const sellerRouter = require('./routes/sellerRouter')
+const productRouter = require('./routes/productRouter')
+const categoryRouter = require('./routes/categoryRouter')
+const wishlistRouter = require('./routes/wishlistRouter')
+const orderRouter = require('./routes/orderRouter')
+const cartRouter = require('./routes/cartRouter')
+const checkoutRouter = require('./routes/checkoutRouter')
 
 const app = express()
-app.use(express.static("public"));
 app.use(express.json( { limit: '20mb' } ))
 app.use(cors())
-
+app.use(express.static("client/build"));
 
 //ROUTES
 app.use('/secret/admin', adminRouter)
@@ -34,6 +31,11 @@ app.use('/order', orderRouter)
 app.use('/wishlist', wishlistRouter)
 app.use('/cart', cartRouter)
 app.use('/checkout', checkoutRouter)
+
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
 
 const PORT = process.env.PORT
 const URI = process.env.MONGODB_URL
