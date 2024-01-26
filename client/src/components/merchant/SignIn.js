@@ -10,7 +10,7 @@ export default function MerchantSignIn() {
     const [seller, setSeller] = useState({ email: '', password: ''})
     const [err, setErr] = useState('')
     const location = useLocation();
-    const backgroundClass = location.pathname === '/seller/login' ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname.includes('/seller') ? `${styles.AppRegister}` : `${styles.App}`; 
     const [isLogin, setIsLogin] = useState([])
 
     if (window.location.pathname === '/seller/login') {
@@ -62,6 +62,7 @@ export default function MerchantSignIn() {
     
   return (
          <Container fluid className={`app-container ${backgroundClass}`}>
+          <div>
             <Card fluid className={styles.SignUpCard}>
                 <Card.Body className={styles.SignUpCardBody}>
                     <h1 className={styles.registerHeader}>login</h1>
@@ -82,6 +83,7 @@ export default function MerchantSignIn() {
                 </Card.Body>
                 <h3 className={styles.errText}>{err}</h3>
             </Card>
+          </div>
         </Container>
     )
 }

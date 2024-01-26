@@ -1,14 +1,6 @@
 const mongoose = require('mongoose');
 
-const shopperSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true
-  },
-  lastName: {
-    type: String,
-    required: true
-  },
+const adminSchema = new mongoose.Schema({
   userName: {
     type: String,
     required: true,
@@ -17,7 +9,7 @@ const shopperSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
@@ -27,11 +19,8 @@ const shopperSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true
-  },
-  address: {
-    type: String,
-    required: true,
   }
 });
 
-module.exports = mongoose.model('Shoppers', shopperSchema);
+
+module.exports = mongoose.model('Admins', adminSchema);

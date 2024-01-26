@@ -30,338 +30,108 @@ li{
   flex-direction: column;
   align-items: center;
 }
-.page {
-  margin-top: 100px !important;
-  margin-bottom: 100px !important;
-}
-.fullWidht{
-  width: 100%;
-}
+
 /* Home */
-@media (max-width: 1440px) {
-  .adminNavbar{
-    width: 100%;
-    background-color: #fff !important;
-    align-items: center !important;
-    padding-left: 5% !important;
-    padding-right: 5% !important;
-  }
-  .logoImage {
-    width: 100px !important; /* Reduce the logo size for smaller screens */
-    height: auto !important;
-  }
-  .search{
-    display: flex;
-    justify-content: flex-end;
-  }
-  .searchField{
-    width: 400px;
-    margin-right: 5px;
-    border-color: #7752B2 !important;
-    border-top-left-radius: 25px !important;
-    border-bottom-left-radius: 25px !important;
-  }
-  .navSearchBtn{
-    width: 75px;
-    border-color: #7752B2 !important;
-    border-top-right-radius: 25px !important;
-    border-bottom-right-radius: 25px !important;
-    color: #7752B2 !important;
-  }
-  .footer{
-    width: 100%;
-    padding: 0px !important;
-    margin: 0px !important;
-  }
-  .footerMain{
-    display: flex;
-    width: 100%;
-    height: fit-content;
-    background-color: #fefefe;
-    color: #0D011B;
-    margin: 0px !important;
-    padding: 0px !important;
-    align-items: center !important;
-  }
-  .footerBottom{
-    width: 100%;
-    justify-content: space-around !important;
-    padding-left: 5% !important;
-    padding-right: 5% !important;
-    background-color: #0D011B !important;
-    color: #fff !important;
-  }
-  .footerText{
-    color: #fff !important;
-  }
-  .footerLogoBox {
-    display: flex;
-    justify-content: center;
-  }
-  .footerLogo{
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .footerLinkBox {
-    display: flex;
-    justify-content: center;
-    padding: 50px;
-  }
-  .footerLinks{
-    display: flex !important;
-    align-items: flex-start;
-    padding: 20px;
-  }
-  .listHeader{
-    font-family: 'Montserrat';
-    font-size: 18px;
-    font-weight: bold;
-    vertical-align: auto !important;
-  }
-  .listItem{
-    font-family: 'Montserrat' !important;
-    font-size: 14px !important;
-    margin-left: 5px !important;
-  }
-  .sidebar{
-    width: 100%;
+@media (min-width: 1440px) {
+  .logBox{
+    width: fit-content;
+    min-width: 720px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 30px;
+    margin: 5%;
+    padding: 5%;
     background-color: #fefefe;
-  }
-  .navLin{
-    display: flex !important;
-    justify-content: center;
-    padding: 0px !important;
-    color: #666666;
-    font-family: 'Montagu Slab', serif;
-    font-size: 10px !important;
-    font-weight: 300;
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
-    text-underline-offset: 5px;
-  }
-  .searchBtn {
-    display: flex !important;
-    align-items: center;
-    justify-content: flex-start;
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 15px !important;
-    font-weight: lighter;
-    border: 1px solid black !important;
-    border-radius: 25px !important;
-    background-color: transparent !important;
-    color: black !important;
-    min-width: 150px !important;
-    margin-bottom: 40px !important;
-  }
-  .searchIcon{
-    margin-right: 5px;
-  }
-  .accordionBtnOpen{
-    width: 100%;
-    border: 1px solid black !important;
-    border-radius: 15px;
-    background-color: transparent !important;
-    display: flex;
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
-    font-weight: lighter;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-  }
-  .accordionBtnOpen:hover {
-    border: 1px solid #7752B2 !important;
-    color: #7752B2;
-  }
-  .accordionBtnClosed{
+    border-radius: 25px;
     border: 0px !important;
-    border-radius: 15px;
-    background-color: transparent !important;
-    display: flex;
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
-    font-weight: lighter;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 25px;
   }
-  .accordionBtnClosed:hover {
-    border: 1px solid black !important;
-  }
-  .content {
-    margin-right: 50px;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 50px;
-    background-color: #fefefe;
-    min-height: 40vh;
-    flex-wrap: nowrap;
-  }
-  .contentPane {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 5px;
-  }
-  .paneTitle{
+  .logBoxTitle{
     font-family: 'Montagu Slab', serif;
-    font-size: 48px;
+    font-size: 30px;
     font-weight: 600;
-    margin: 25px;
-    margin-bottom: 20px;
-  }
-  .box{
-    border: 1px solid black !important;
-    border-radius: 15px;
-    padding: 15px;
-    background-color: #fefefe;
-    margin-bottom: 50px;
-    margin-left: 0px;
-    margin-right: 0px;
-  }
-  .boxTitle {
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 30px !important;
-    font-weight: bolder;
-    margin-bottom: 20px;
-  }
-  .user {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: 100%;
-    background-color: #F0EFEF;
-    border: 1px solid black;
-    border-radius: 15px;
     margin-bottom: 25px;
+    text-transform: capitalize;
+    text-align: center;
   }
-  .orderPic {
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 15px;
-  }
-  .orderPicBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
-  .orderTextBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderBtnBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderText {
+  .logBoxErr{
     font-family: 'Montagu Slab', serif;
-    font-size: 20px;
-    font-weight: 300;
-    margin-bottom: 3px !important;
-    white-space: wrap;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    text-align: center;
   }
-  .banBtn{
+  .logBoxForm{
     display: flex;
-    border: 1px solid #0D011B;
-    border-radius: 25px !important;
-    background-color: #fff !important;
-    color: #0D011B !important;
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 20px;
-    width: 100%;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
   }
-  .categoryCard{
-    width: 100%;
-    border: 1px solid #A66DE0 !important;
-    border-radius: 10px !important;
-    margin-bottom: 15px;
+  .logBoxFormInput{
+    width: 100% !important;
+    margin-bottom: 1rem !important;
   }
-  .categoryCard:hover{
-    width: 150px;
+  .logBoxBtn{
+    margin-top: 15px !important;
+    margin-bottom: 30px;
     border: 1px solid #000 !important;
     border-radius: 10px !important;
-    margin-bottom: 10px;
-    margin-top: -5px;
-    box-shadow: 0 6px 6px #A66DE0;
-  }
-  .cardImage{
-    width: 100%;
-  }
-  .categoryImage{
-    width: 60%;
-  }
-  .categoryCardBody{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .categoryCardTitle{
+    width: fit-content !important;
+    padding: 10px !important;
     font-family: 'Montagu Slab', serif !important;
     font-size: 20px !important;
-    font-weight: 600;
+    color: #000 !important;
+    background-color: #fff !important;
   }
-  .categoryCardText{
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 10px !important;
-    font-weight: 300;
+  .logBoxBtn:hover{
+    background-color: #000 !important;
+    border: 2px solid #7752B2 !important;
+    color: #fff !important;
   }
-  .backdrop{
-    width: 100% !important;
+  .page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: 80vh;
+    width: 100vw;
+    max-width: 100% !important;
   }
-  .fieldLabel{
-    font-family: 'Montagu Slab', serif;
-    font-size: 20px;
-    color: #292929;
-    font-weight: bold;
-    margin-bottom: 0px;
+  .pageContent {
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: flex-start !important;
+    padding: 50px;
   }
-}
-
-@media (max-width: 1024px) {
   .adminNavbar{
     background-color: #fff;
     background-position: center;
     border: 1px solid black;
     padding-left: 20px !important;
     padding-right: 20px !important;
+    height: 100px !important;
   }
   .logo{
-    width: 50%;
+    width: 20%;
+    height: auto;
   }
   .logoImage {
-    width: 100px !important; /* Reduce the logo size for smaller screens */
-    height: auto !important;
+    width: 100px !important;
   }
   .search{
     display: flex;
     justify-content: flex-end;
   }
   .searchField{
-    width: 400px;
+    width: 80% !important;
     margin-right: 5px;
     border-color: #7752B2 !important;
     border-top-left-radius: 25px !important;
     border-bottom-left-radius: 25px !important;
   }
   .navSearchBtn{
-    width: 75px;
+    width: 50px !important;
+    font-size: 15px !important;
     border-color: #7752B2 !important;
     border-top-right-radius: 25px !important;
     border-bottom-right-radius: 25px !important;
@@ -371,6 +141,7 @@ li{
     width: 100%;
     padding: 0px !important;
     margin: 0px !important;
+    height: fit-content;
   }
   .footerMain{
     display: flex;
@@ -379,7 +150,7 @@ li{
     background-color: #fefefe;
     color: #0D011B;
     margin: 0px !important;
-    padding: 0px !important;
+    padding: 50px !important;
     align-items: center !important;
   }
   .footerBottom{
@@ -391,14 +162,16 @@ li{
     color: #fff !important;
   }
   .footerText{
+    font-size: 13px !important;
     color: #fff !important;
   }
   .footerLogoBox {
     display: flex;
     justify-content: center;
+    width: 40%;
   }
   .footerLogo{
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -406,7 +179,7 @@ li{
   .footerLinkBox {
     display: flex;
     justify-content: center;
-    padding: 50px;
+    padding: 20px;
   }
   .footerLinks{
     display: flex !important;
@@ -414,18 +187,19 @@ li{
     padding: 20px;
   }
   .listHeader{
-    font-family: 'Montserrat';
-    font-size: 18px;
+    font-family: 'Montagu Slab';
+    font-size: 20px !important;
+    color: #111111;
     font-weight: bold;
-    vertical-align: auto !important;
   }
   .listItem{
-    font-family: 'Montserrat' !important;
-    font-size: 14px !important;
+    font-family: 'Montagu Slab' !important;
+    font-size: 15px !important;
+    color: #111111;
     margin-left: 5px !important;
   }
   .sidebar{
-    width: 100%;
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -433,18 +207,6 @@ li{
     border-radius: 15px;
     padding: 30px;
     background-color: #fefefe;
-  }
-  .navLin{
-    display: flex !important;
-    justify-content: center;
-    padding: 0px !important;
-    color: #666666;
-    font-family: 'Montagu Slab', serif;
-    font-size: 10px !important;
-    font-weight: 300;
-    margin-top: 2px !important;
-    margin-bottom: 2px !important;
-    text-underline-offset: 5px;
   }
   .searchBtn {
     display: flex !important;
@@ -469,7 +231,7 @@ li{
     background-color: transparent !important;
     display: flex;
     font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
+    font-size: 15px !important;
     font-weight: lighter;
     align-items: center;
     justify-content: center;
@@ -495,13 +257,10 @@ li{
     border: 1px solid black !important;
   }
   .content{
-    margin-right: 50px;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 50px;
     background-color: #fefefe;
-    min-height: 50vh;
-    flex-wrap: nowrap;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
   }
   .contentPane {
     display: flex;
@@ -509,125 +268,161 @@ li{
     width: 100%;
     padding: 5px;
   }
+  .paneTitleBlock{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
   .paneTitle{
     font-family: 'Montagu Slab', serif;
     font-size: 30px;
     font-weight: 600;
     margin: 0px;
-    margin-bottom: 20px;
   }
-  .box{
-    border: 1px solid black !important;
-    border-radius: 15px;
-    padding: 15px;
-    background-color: #fefefe;
-    margin-bottom: 50px;
+  .filter {
+    display: none !important;
   }
-  .boxTitle {
+  .tabTitle {
     font-family: 'Montagu Slab', serif !important;
-    font-size: 25px !important;
-    font-weight: bolder;
-    margin-bottom: 20px;
+    font-size: 20px !important;
+    font-weight: 400;
   }
-  .user {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 100%;
-    background-color: #F0EFEF;
-    border: 1px solid black;
-    border-radius: 15px;
-    margin-bottom: 25px;
-  }
-  .orderPic {
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 15px;
-  }
-  .orderPicBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  .orderTextBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderBtnBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderText {
-    font-family: 'Montagu Slab', serif;
-    font-size: 15px;
-    font-weight: 300;
-    margin-bottom: 3px !important;
-  }
-  .banBtn{
-    display: flex;
-    border: 1px solid #0D011B;
-    border-radius: 25px !important;
-    background-color: #fff !important;
-    color: #0D011B !important;
+  .tHead {
     font-family: 'Montagu Slab', serif !important;
-    font-size: 15px;
-    width: 100%;
-    justify-content: center;
+    font-size: 15px !important;
+    font-weight: 200;
   }
-  .reviewCard{
-    width: 150px;
+  .tBody {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    font-weight: lighter;
+  }
+  .categoryCard{
+    width: fit-content;
+    min-width: 150px !important;
     border: 1px solid #A66DE0 !important;
     border-radius: 10px !important;
     margin-bottom: 15px;
   }
-  .reviewCard:hover{
-    width: 150px;
+  .categoryCard:hover{
     border: 1px solid #000 !important;
-    border-radius: 10px !important;
-    margin-bottom: 10px;
-    margin-top: -5px;
     box-shadow: 0 6px 6px #A66DE0;
   }
   .cardImage{
     width: 100%;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
   }
   .categoryImage{
-    width: 70%;
+    font-size: 10px;
   }
-  .reviewCardBody{
+  .categoryCardBody{
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .reviewCardTitle{
+  .categoryCardText{
     font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
-    font-weight: 600;
-  }
-  .reviewCardText{
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 10px !important;
+    font-size: 15px !important;
     font-weight: 300;
   }
-  .backdrop{
-    width: 100% !important;
+  .saveBtn {
+    border: 1px solid #000 !important;
+    background-color: transparent !important;
+    width: fit-content;
+    padding: 10px !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    color: #000 !important;
+  }
+  .saveBtn:hover {
+    border: 1px solid #A66DE0 !important;
+    color: #A66DE0 !important;
   }
   .fieldLabel{
     font-family: 'Montagu Slab', serif;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 0px;
   }
+  .inputField {
+    border-bottom: 1px solid #000 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-radius: 0px !important;
+  }
+  .inputField::placeholder {
+    font-family: 'Montagu Slab', serif;
+    font-size: 12px;
+    font-weight: 300;
+  }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .logBox{
+    width: fit-content;
+    min-width: 720px;
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    padding: 5%;
+    background-color: #fefefe;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .logBoxTitle{
+    font-family: 'Montagu Slab', serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+  .logBoxForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+  }
+  .logBoxFormInput{
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  .logBoxBtn{
+    margin-top: 15px !important;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    width: fit-content !important;
+    padding: 10px !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+  .logBoxBtn:hover{
+    background-color: #000 !important;
+    border: 2px solid #7752B2 !important;
+    color: #fff !important;
+  }
+  .page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: 80vh;
+    width: 100vw;
+  }
+  .pageContent {
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: flex-start !important;
+    padding: 50px;
+  }
   .adminNavbar{
     background-color: #fff;
     background-position: center;
@@ -639,7 +434,7 @@ li{
     width: 20%;
   }
   .logoImage {
-    width: 100% !important;
+    width: 100px !important;
   }
   .search{
     display: flex;
@@ -692,7 +487,7 @@ li{
     justify-content: center;
   }
   .footerLogo{
-    width: 90%;
+    width: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -778,13 +573,10 @@ li{
     border: 1px solid black !important;
   }
   .content{
-    margin-right: 50px;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 15px;
     background-color: #fefefe;
-    min-height: 40vh;
-    flex-wrap: nowrap;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
   }
   .contentPane {
     display: flex;
@@ -792,125 +584,160 @@ li{
     width: 100%;
     padding: 5px;
   }
+  .paneTitleBlock{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
   .paneTitle{
     font-family: 'Montagu Slab', serif;
     font-size: 30px;
     font-weight: 600;
-    margin: 25px;
-    margin-bottom: 20px;
+    margin: 0px;
   }
-  .box{
-    border: 1px solid black !important;
-    border-radius: 15px;
-    padding: 15px;
-    background-color: #fefefe;
-    margin-bottom: 50px;
+  .filter {
+    display: none !important;
   }
-  .boxTitle {
+  .tabTitle {
     font-family: 'Montagu Slab', serif !important;
     font-size: 20px !important;
-    font-weight: bolder;
-    margin-bottom: 20px;
+    font-weight: 400;
   }
-  .user {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 100%;
-    background-color: #F0EFEF;
-    border: 1px solid black;
-    border-radius: 15px;
-    margin-bottom: 25px;
-  }
-  .orderPic {
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 15px;
-  }
-  .orderPicBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  .orderTextBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderBtnBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderText {
-    font-family: 'Montagu Slab', serif;
-    font-size: 12px;
-    font-weight: 300;
-    margin-bottom: 3px !important;
-  }
-  .banBtn{
-    display: flex;
-    border: 1px solid #0D011B;
-    border-radius: 25px !important;
-    background-color: #fff !important;
-    color: #0D011B !important;
+  .tHead {
     font-family: 'Montagu Slab', serif !important;
-    font-size: 12px;
-    width: 100%;
-    justify-content: center;
+    font-size: 15px !important;
+    font-weight: 200;
   }
-  .reviewCard{
-    width: 150px;
+  .tBody {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    font-weight: lighter;
+  }
+  .categoryCard{
+    width: fit-content;
+    min-width: 100px !important;
     border: 1px solid #A66DE0 !important;
     border-radius: 10px !important;
     margin-bottom: 15px;
   }
-  .reviewCard:hover{
-    width: 150px;
+  .categoryCard:hover{
     border: 1px solid #000 !important;
-    border-radius: 10px !important;
-    margin-bottom: 10px;
-    margin-top: -5px;
     box-shadow: 0 6px 6px #A66DE0;
   }
   .cardImage{
     width: 100%;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
   }
   .categoryImage{
-    width: 80%;
+    font-size: 10px;
   }
-  .reviewCardBody{
+  .categoryCardBody{
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .reviewCardTitle{
+  .categoryCardText{
     font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
-    font-weight: 600;
-  }
-  .reviewCardText{
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 10px !important;
+    font-size: 15px !important;
     font-weight: 300;
   }
-  .backdrop{
-    width: 100% !important;
+  .saveBtn {
+    border: 1px solid #000 !important;
+    background-color: transparent !important;
+    width: fit-content;
+    padding: 10px !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    color: #000 !important;
+  }
+  .saveBtn:hover {
+    border: 1px solid #A66DE0 !important;
+    color: #A66DE0 !important;
   }
   .fieldLabel{
     font-family: 'Montagu Slab', serif;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
     margin-bottom: 0px;
   }
+  .inputField {
+    border-bottom: 1px solid #000 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-radius: 0px !important;
+  }
+  .inputField::placeholder {
+    font-family: 'Montagu Slab', serif;
+    font-size: 12px;
+    font-weight: 300;
+  }
 }
 
-@media (max-width: 425px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .logBox{
+    width: fit-content;
+    min-width: 720px;
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    padding: 5%;
+    background-color: #fefefe;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .logBoxTitle{
+    font-family: 'Montagu Slab', serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+  .logBoxForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+  }
+  .logBoxFormInput{
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  .logBoxBtn{
+    margin-top: 15px !important;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    width: fit-content !important;
+    padding: 10px !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+  .logBoxBtn:hover{
+    background-color: #000 !important;
+    border: 2px solid #7752B2 !important;
+    color: #fff !important;
+  }
+  .page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: 50vh;
+    width: 100vw;
+  }
+  .pageContent {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: flex-start !important;
+    padding: 50px;
+  }
   .adminNavbar{
     background-color: #fff;
     background-position: center;
@@ -922,21 +749,342 @@ li{
     width: 20%;
   }
   .logoImage {
-    width: 100% !important;
+    width: 100px !important;
   }
   .search{
     display: flex;
     justify-content: flex-end;
   }
   .searchField{
-    width: 40% !important;
+    width: 80% !important;
     margin-right: 5px;
     border-color: #7752B2 !important;
     border-top-left-radius: 25px !important;
     border-bottom-left-radius: 25px !important;
   }
   .navSearchBtn{
-    width: 35px !important;
+    width: 50px !important;
+    font-size: 15px !important;
+    border-color: #7752B2 !important;
+    border-top-right-radius: 25px !important;
+    border-bottom-right-radius: 25px !important;
+    color: #7752B2 !important;
+  }
+  .footer{
+    width: 100%;
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+  .footerMain{
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    background-color: #fefefe;
+    color: #0D011B;
+    margin: 0px !important;
+    padding: 0px !important;
+    align-items: center !important;
+  }
+  .footerBottom{
+    width: 100%;
+    justify-content: space-around !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+    background-color: #0D011B !important;
+    color: #fff !important;
+  }
+  .footerText{
+    font-size: 13px !important;
+    color: #fff !important;
+  }
+  .footerLogoBox {
+    display: flex;
+    justify-content: center;
+  }
+  .footerLogo{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .footerLinkBox {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+  .footerLinks{
+    display: flex !important;
+    align-items: flex-start;
+    padding: 20px;
+  }
+  .listHeader{
+    font-family: 'Montagu Slab';
+    font-size: 14px !important;
+    color: #111111;
+    font-weight: bold;
+  }
+  .listItem{
+    font-family: 'Montagu Slab' !important;
+    font-size: 10px !important;
+    color: #111111;
+    margin-left: 5px !important;
+  }
+  .sidebar{
+    display: none;
+  }
+  .sidebarCanvas {
+    display: flex;
+    flex-direction: column;
+  }
+  .adminContent {
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .searchBtn {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: lighter;
+    border: 1px solid black !important;
+    border-radius: 25px !important;
+    background-color: transparent !important;
+    color: black !important;
+    min-width: fit-content !important;
+    margin-bottom: 40px !important;
+  }
+  .searchIcon{
+    margin-right: 5px;
+  }
+  .accordionBtnOpen{
+    border: 1px solid black !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+  .accordionBtnOpen:hover {
+    border: 1px solid #7752B2 !important;
+    color: #7752B2;
+  }
+  .accordionBtnClosed{
+    border: 0px !important;
+    border-radius: 15px;
+    background-color: transparent !important;
+    display: flex;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .accordionBtnClosed:hover {
+    border: 1px solid black !important;
+  }
+  .content{
+    background-color: #fefefe;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .contentPane {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 5px;
+  }
+  .paneTitleBlock{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+  .paneTitle{
+    font-family: 'Montagu Slab', serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0px;
+  }
+  .filter {
+    display: flex !important;
+    background-color: transparent !important;
+    border: .5px solid #A66DE0 !important;
+    box-shadow: none !important;
+    color: #A66DE0 !important;
+  }
+  .tabTitle {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 15px !important;
+    font-weight: 400;
+  }
+  .tHead {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    font-weight: 200;
+  }
+  .tBody {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: lighter;
+  }
+  .categoryCard{
+    width: fit-content;
+    min-width: 100px !important;
+    border: 1px solid #A66DE0 !important;
+    border-radius: 10px !important;
+    margin-bottom: 15px;
+  }
+  .categoryCard:hover{
+    border: 1px solid #000 !important;
+    box-shadow: 0 6px 6px #A66DE0;
+  }
+  .cardImage{
+    width: 100%;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
+  }
+  .categoryImage{
+    font-size: 10px;
+  }
+  .categoryCardBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .categoryCardText{
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 12px !important;
+    font-weight: 300;
+  }
+  .saveBtn {
+    border: 1px solid #000 !important;
+    background-color: transparent !important;
+    width: fit-content;
+    padding: 10px !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    color: #000 !important;
+  }
+  .saveBtn:hover {
+    border: 1px solid #A66DE0 !important;
+    color: #A66DE0 !important;
+  }
+  .fieldLabel{
+    font-family: 'Montagu Slab', serif;
+    font-size: 10px;
+    font-weight: bold;
+    margin-bottom: 0px;
+  }
+  .inputField {
+    border-bottom: 1px solid #000 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-radius: 0px !important;
+  }
+  .inputField::placeholder {
+    font-family: 'Montagu Slab', serif;
+    font-size: 10px;
+    font-weight: 300;
+  }
+}
+
+@media (max-width: 767px) {
+  .logBox{
+    width: fit-content;
+    min-width: 720px;
+    display: flex;
+    flex-direction: column;
+    margin: 5%;
+    padding: 5%;
+    background-color: #fefefe;
+    border-radius: 25px;
+    border: 0px !important;
+  }
+  .logBoxTitle{
+    font-family: 'Montagu Slab', serif;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+    text-align: center;
+  }
+  .logBoxForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+  }
+  .logBoxFormInput{
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+  }
+  .logBoxBtn{
+    margin-top: 15px !important;
+    border: 1px solid #000 !important;
+    border-radius: 10px !important;
+    width: fit-content !important;
+    padding: 10px !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 20px !important;
+    color: #000 !important;
+    background-color: #fff !important;
+  }
+  .logBoxBtn:hover{
+    background-color: #000 !important;
+    border: 2px solid #7752B2 !important;
+    color: #fff !important;
+  }
+  .page {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    min-height: 50vh;
+    width: 100vw;
+  }
+  .pageContent {
+    display: flex !important;
+    justify-content: center;
+    padding: 3rem;
+    width: 100%;
+  }
+  .adminNavbar{
+    background-color: #fff;
+    background-position: center;
+    border: 1px solid black;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .logo{
+    width: 20%;
+  }
+  .logoImage {
+    width: 100px !important;
+  }
+  .search{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .searchField{
+    width: 80% !important;
+    margin-right: 5px;
+    border-color: #7752B2 !important;
+    border-top-left-radius: 25px !important;
+    border-bottom-left-radius: 25px !important;
+  }
+  .navSearchBtn{
+    width: 20% !important;
     font-size: 12px !important;
     border-color: #7752B2 !important;
     border-top-right-radius: 25px !important;
@@ -1001,15 +1149,16 @@ li{
     margin-left: 5px !important;
   }
   .sidebar{
-    width: 100%;
+    display: none;
+  }
+  .sidebarCanvas {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 10px;
-    background-color: #fefefe;
-    min-height: 200px;
+  }
+  .adminContent {
+    width: 100% !important;
+    margin: 0px !important;
+    padding: 0px !important;
   }
   .navLin{
     display: flex !important;
@@ -1022,6 +1171,7 @@ li{
     margin-top: 2px !important;
     margin-bottom: 2px !important;
     text-underline-offset: 5px;
+    width: fit-content;
   }
   .searchBtn {
     display: flex !important;
@@ -1034,7 +1184,7 @@ li{
     border-radius: 15px !important;
     background-color: transparent !important;
     color: black !important;
-    min-width: 30px !important;
+    min-width: fit-content !important;
     margin-bottom: 40px !important;
     margin-top: 10px !important;
     width: 100%;
@@ -1077,14 +1227,11 @@ li{
     border: 1px solid black !important;
   }
   .content{
-    width: 100%;
-    margin-right: 0px;
-    border: 1px solid black;
-    border-radius: 15px;
-    padding: 0px;
     background-color: #fefefe;
-    min-height: 30vh;
-    flex-wrap: nowrap;
+    margin: 5%;
+    padding: 5%;
+    border-radius: 25px;
+    border: 0px !important;
   }
   .contentPane {
     display: flex;
@@ -1093,125 +1240,103 @@ li{
     width: 100%;
     padding: 10px;
   }
-  .paneTitle{
-    font-family: 'Montagu Slab', serif;
-    font-size: 15px;
-    font-weight: 600;
-    margin: 25px;
-    margin-bottom: 20px;
+  .adminMenu {
+    width: fit-content !important;
   }
-  .box{
+  .paneTitleBlock{
     width: 100%;
-    border: 1px solid black !important;
-    border-radius: 15px;
-    padding: 15px;
-    background-color: #fefefe;
-    margin-bottom: 50px;
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-  }
-  .boxTitle {
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 15px !important;
-    font-weight: bolder;
-    margin-bottom: 20px;
-  }
-  .user {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    background-color: #F0EFEF;
-    border: 1px solid black;
-    border-radius: 15px;
+    align-items: center;
+    justify-content: space-between;
     margin-bottom: 25px;
   }
-  .orderPic {
-    width: 100%;
-    border: 1px solid black;
-    border-radius: 10px;
-  }
-  .orderPicBox {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 5px !important;
-  }
-  .orderTextBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderBtnBox {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    border-left: 1px dashed #666666;
-  }
-  .orderText {
+  .paneTitle{
     font-family: 'Montagu Slab', serif;
-    font-size: 8px;
-    font-weight: 300;
-    margin-bottom: 3px !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    margin: 0px;
   }
-  .banBtn{
-    display: flex;
-    border: 1px solid #0D011B;
-    border-radius: 25px !important;
-    background-color: #fff !important;
-    color: #0D011B !important;
+  .filter {
+    display: flex !important;
+    background-color: transparent !important;
+    border: .5px solid #A66DE0 !important;
+    box-shadow: none !important;
+    color: #A66DE0 !important;
+  }
+  .tabTitle {
     font-family: 'Montagu Slab', serif !important;
-    font-size: 8px;
-    width: 100%;
-    justify-content: center;
+    font-size: 10px !important;
+    font-weight: 400;
+  }
+  .tHead {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    font-weight: 200;
+  }
+  .tBody {
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 8px !important;
+    font-weight: lighter;
   }
   .categoryCard{
-    width: 150px;
+    width: fit-content;
+    min-width: 100px !important;
     border: 1px solid #A66DE0 !important;
     border-radius: 10px !important;
     margin-bottom: 15px;
   }
   .categoryCard:hover{
-    width: 150px;
     border: 1px solid #000 !important;
-    border-radius: 10px !important;
-    margin-bottom: 10px;
-    margin-top: -5px;
     box-shadow: 0 6px 6px #A66DE0;
   }
   .cardImage{
     width: 100%;
+    border-top-right-radius: 10px !important;
+    border-top-left-radius: 10px !important;
   }
   .categoryImage{
-    width: 80%;
+    font-size: 10px;
   }
   .categoryCardBody{
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .categoryCardTitle{
-    font-family: 'Montagu Slab', serif !important;
-    font-size: 20px !important;
-    font-weight: 600;
-  }
   .categoryCardText{
     font-family: 'Montagu Slab', serif !important;
     font-size: 10px !important;
     font-weight: 300;
   }
-  .backdrop{
-    width: 90% !important;
+  .saveBtn {
+    border: 1px solid #000 !important;
+    background-color: transparent !important;
+    width: fit-content;
+    padding: 10px !important;
+    font-family: 'Montagu Slab', serif !important;
+    font-size: 10px !important;
+    color: #000 !important;
+  }
+  .saveBtn:hover {
+    border: 1px solid #A66DE0 !important;
+    color: #A66DE0 !important;
   }
   .fieldLabel{
     font-family: 'Montagu Slab', serif;
     font-size: 10px;
     font-weight: bold;
     margin-bottom: 0px;
+  }
+  .inputField {
+    border-bottom: 1px solid #000 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-radius: 0px !important;
+  }
+  .inputField::placeholder {
+    font-family: 'Montagu Slab', serif;
+    font-size: 10px;
+    font-weight: 300;
   }
 }

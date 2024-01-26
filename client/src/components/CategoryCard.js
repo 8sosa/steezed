@@ -8,15 +8,15 @@ import styles from './index.module.css';
 
 export default function Category({category}) {
     return (
-        <Card className={styles.category} key={category._id}>
-            <Link to={`category/${category._id}/products`}>
-            <Card.Img variant="top" src={require(`../../../Images/${category.imageName}`)} className={styles.cardImage}/>
-            </Link>
-            <Card.Body>
-                <Card.Text href='/category' className={styles.categoryTitle}>
-                {category.name}
-                </Card.Text>
-            </Card.Body>
-        </Card>
+        <Link to={`category/${category._id}/products`} className={styles.link}>
+            <Card className={styles.category} key={category._id}>
+                <Card.Img variant="top" src={require(`../../../Images/${category.imageName}`)} className={styles.categoryImage}/>
+                <Card.Body className={styles.categoryBody}>
+                    <Card.Text href='/category' className={styles.categoryTitle}>
+                    {category.name}
+                    </Card.Text>
+                </Card.Body>
+            </Card>
+        </Link>
     )
 }

@@ -1,16 +1,14 @@
-import React, { useEffect, useState, useContext} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {useParams, useNavigate} from 'react-router-dom'
-import { Accordion, AccordionContext, Button, Card, Col, Container, Form, Image, Nav, Row, Tab, Tabs, useAccordionButton} from 'react-bootstrap'
+import { Accordion, Button, Card, Col, Container, Form, Nav, Row, Tab, Tabs, Offcanvas} from 'react-bootstrap'
 import styles from './index.module.css'
-import Backdrop from '../images/backdrop.png'
-import Logo from '../images/essential.png'
 import Loot from '../images/bigloot.png'
+import checkLogin from './auth'
 import { AiFillStar } from 'react-icons/ai'
 import { AiOutlineStar } from 'react-icons/ai'
 import { TbCash } from 'react-icons/tb'
 import { PiUserFocusThin } from 'react-icons/pi'
-import { AiOutlineUserDelete } from "react-icons/ai";
 import { FaClipboardList } from 'react-icons/fa'
 import { GiMoneyStack } from 'react-icons/gi'
 import { CiSearch } from 'react-icons/ci'
@@ -19,28 +17,7 @@ import LineChart from './LineChart'
 import RadarChart from './RadarChart'
 import BarChart from './BarChart'
 import HorChart from './HorizontalChart'
-
-
-function ContextAwareToggle({ children, eventKey, callback }) {
-  const { activeEventKey } = useContext(AccordionContext);
-
-  const decoratedOnClick = useAccordionButton(
-    eventKey,
-    () => callback && callback(eventKey),
-  );
-
-  const isCurrentEventKey = activeEventKey === eventKey;
-  return (
-    <button
-      type="button"
-      className={isCurrentEventKey ? styles.accordionBtnOpen : styles.accordionBtnClosed}
-      onClick={decoratedOnClick}
-    >
-      {children}
-    </button>
-  );
-}
-
+import { CgMenuRightAlt } from "react-icons/cg";
 
 
 export default function Home(props) {
@@ -57,8 +34,15 @@ export default function Home(props) {
   const [categories, setCategories] = useState([]);
   const [file, setFile] = useState()
   const [order, setOrder] = useState([]);
-  // const [orderProduct, setOrderProduct] = useState([])
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
+
+  const logout = () => {
+    localStorage.clear();
+    navigate(`/secret/admin/login`)
+  };
 
   const CreateProduct = async (e) => {
     e.preventDefault();
@@ -98,24 +82,9 @@ export default function Home(props) {
         headers: {Authorization: token}
       })
       console.log(res.data)
-      navigate(`/merchant/login`)
+      navigate(`/seller/login`)
     } catch (error) {
       console.log(error)
-    }
-  }
-
-  const updateSeller = async (e) => {
-    e.preventDefault(); 
-    try {
-        const form = document.forms.namedItem("merchant");
-        const formData = new FormData(form)
-        const token = localStorage.getItem('tokenStore');
-        const res = await axios.put(`/seller/${_id}`, formData, {
-            headers: {Authorization: token}
-        })
-        setSeller(res.data)
-    } catch (error) {
-        console.log(error)
     }
   }
 
@@ -158,180 +127,218 @@ export default function Home(props) {
   }
   
   useEffect(() => {
-    // getProductById()
-    const token = localStorage.getItem('tokenStore')
-    if(token){
-      setToken(token)
-      getProductsBySeller(token)
-      getSeller(token)
-      getCategories(token)
-    }
-  }, [])
+    const fetchData = async () => {
+      const isUserLoggedIn = await checkLogin();
+
+      if (isUserLoggedIn) {
+        const token = localStorage.getItem('tokenStore');
+        setToken(token);
+        getProductsBySeller(token);
+        getSeller(token);
+        getCategories(token);
+      } else {
+        // Handle case when the user is not logged in
+        // You might want to redirect to the login page or take appropriate action
+        navigate(`/seller/login`)
+      }
+    };
+
+    fetchData();
+  }, [order]);
   
   return (
     <>
       <Container className={styles.page}>
         <Tab.Container activeKey={activeTab} onSelect={handleTabSelect}>
-          <Row className={styles.merchantHome}>
-              <Col xs={4} className='d-flex'>
+          <Row sm={2} md={2} lg={2} className={styles.merchantHome}>
+              <Col md={3} lg={4}>
               <section className={styles.sidebar}>
                 <Button className={styles.searchBtn}><CiSearch className={styles.searchIcon} /> Search</Button>
-                <Nav variant='underline'>
-                <Nav.Item>
-                    <Accordion flush>
-                      <Nav.Link className={styles.navLin} disabled><li><ContextAwareToggle>Shop Manager</ContextAwareToggle></li></Nav.Link>
-                        <Accordion.Collapse className={styles.listbox}>
+                <Nav variant='underline' className='d-flex flex-column align-items-center'>
+                  <Accordion defaultActiveKey="0" flush>
+                    <Accordion.Item eventKey="0">
+                      <Nav.Item>
+                        <Accordion.Header className={styles.navLin} disabled><li className={styles.navLinList}>Shop Manager</li></Accordion.Header>
+                        <Accordion.Body className={styles.listbox}>
                           <ul>
                             <li><Nav.Link className={styles.navLinItem} eventKey='shop'>Store Information</Nav.Link></li>
                           </ul>
-                        </Accordion.Collapse>
-                    </Accordion>
-                </Nav.Item>
-                <Nav.Item>
-                  <Accordion>
-                    <Nav.Link className={styles.navLin} disabled><li><ContextAwareToggle>Product Manager</ContextAwareToggle></li></Nav.Link>
-                    <Accordion.Collapse className={styles.listbox}>
-                      <ul>
-                        <li><Nav.Link className={styles.navLinItem} eventKey='product1'>New Product</Nav.Link></li>
-                        <li><Nav.Link className={styles.navLinItem} eventKey='product2'>Product listings</Nav.Link></li>
-                        <li><Nav.Link className={styles.navLinItem} eventKey='product3'>Product Analytics</Nav.Link></li>
-                      </ul>
-                    </Accordion.Collapse>
-                  </Accordion>
-                </Nav.Item>
-                <Nav.Item>
-                    <Accordion>
-                      <Nav.Link className={styles.navLin} disabled><li><ContextAwareToggle>Order Manager</ContextAwareToggle></li></Nav.Link>
-                        <Accordion.Collapse className={styles.listbox}>
+                        </Accordion.Body>
+                      </Nav.Item>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="1">
+                      <Nav.Item>
+                        <Accordion.Header><Nav.Link className={styles.navLin} disabled><li>Product Manager</li></Nav.Link></Accordion.Header>
+                        <Accordion.Body className={styles.listbox}>
+                          <ul>
+                            <li><Nav.Link className={styles.navLinItem} eventKey='product1'>New Product</Nav.Link></li>
+                            <li><Nav.Link className={styles.navLinItem} eventKey='product2'>Product listings</Nav.Link></li>
+                            <li><Nav.Link className={styles.navLinItem} eventKey='product3' disabled>Product Analytics</Nav.Link></li>
+                          </ul>
+                        </Accordion.Body>
+                      </Nav.Item>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="2">
+                      <Nav.Item>
+                        <Accordion.Header><Nav.Link className={styles.navLin} disabled><li>Order Manager</li></Nav.Link></Accordion.Header>
+                        <Accordion.Body className={styles.listbox}>
                           <ul>
                             <li><Nav.Link className={styles.navLinItem} eventKey='order1'>Orders</Nav.Link></li>
-                            <li><Nav.Link className={styles.navLinItem} eventKey='order2'>Refunds & Returns</Nav.Link></li>
+                            <li><Nav.Link className={styles.navLinItem} eventKey='order2' disabled>Refunds & Returns</Nav.Link></li>
                           </ul>
-                        </Accordion.Collapse>
-                    </Accordion>
-                </Nav.Item>
-                <Nav.Item>
-                    <Accordion>
-                    <Nav.Link className={styles.navLin} disabled><li><ContextAwareToggle>Sale Manager</ContextAwareToggle></li></Nav.Link>
-                        <Accordion.Collapse className={styles.listbox}>
-                          <ul>
-                            <li><Nav.Link className={styles.navLinItem} eventKey='sale1'>Sales Overview</Nav.Link></li>
-                            <li><Nav.Link className={styles.navLinItem} eventKey='sale2'>Product Promotions</Nav.Link></li>
-                            <li><Nav.Link className={styles.navLinItem} eventKey='sale3'>User Reviews</Nav.Link></li> 
+                        </Accordion.Body>
+                      </Nav.Item>
+                    </Accordion.Item>
+                    <Accordion.Item eventKey="3">
+                      <Nav.Item>
+                        <Accordion.Header><Nav.Link className={styles.navLin} disabled><li>Sale Manager</li></Nav.Link></Accordion.Header>
+                        <Accordion.Body className={styles.listbox}>
+                        <ul>
+                            <li><Nav.Link className={styles.navLinItem} eventKey='sale1' disabled>Sales Overview</Nav.Link></li>
+                            <li><Nav.Link className={styles.navLinItem} eventKey='sale2' disabled>Product Promotions</Nav.Link></li>
+                            <li><Nav.Link className={styles.navLinItem} eventKey='sale3' disabled>User Reviews</Nav.Link></li> 
                           </ul>
-                        </Accordion.Collapse>
-                    </Accordion>
-                </Nav.Item>
+                        </Accordion.Body>
+                      </Nav.Item>
+                    </Accordion.Item>
+                  </Accordion>
                 </Nav>
-                <Button onClick={() => deleteSeller()} className={styles.someButton}>Delete Account <AiOutlineUserDelete size={25} /></Button>
               </section>
               </Col>
-              <Col xs={8}>
+              <Col md={7} lg={8} className={styles.merchantContent}>
                 <section className={styles.content}>
+                  <Offcanvas show={show} onHide={handleClose} placement='end' className={styles.merchantMenu}>
+                    <Offcanvas.Header closeButton>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body className={styles.sidebarCanvas}>
+                        <Button className={styles.searchBtn}><CiSearch className={styles.searchIcon} /> Search</Button>
+                        <Nav variant='underline' className='d-flex flex-column align-items-center'>
+                          <Accordion defaultActiveKey="0" flush>
+                            <Accordion.Item eventKey="0">
+                              <Nav.Item>
+                                <Accordion.Header><Nav.Link className={styles.navLin} disabled><li>Shop Manager</li></Nav.Link></Accordion.Header>
+                                <Accordion.Body className={styles.listbox}>
+                                  <ul>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='shop'>Store Information</Nav.Link></li>
+                                  </ul>
+                                </Accordion.Body>
+                              </Nav.Item>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="1">
+                              <Nav.Item>
+                                <Accordion.Header><Nav.Link className={styles.navLin} disabled><li>Product Manager</li></Nav.Link></Accordion.Header>
+                                <Accordion.Body className={styles.listbox}>
+                                  <ul>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='product1'>New Product</Nav.Link></li>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='product2'>Product listings</Nav.Link></li>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='product3' disabled>Product Analytics</Nav.Link></li>
+                                  </ul>
+                                </Accordion.Body>
+                              </Nav.Item>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="2">
+                              <Nav.Item>
+                                <Accordion.Header><Nav.Link className={styles.navLin} disabled><li>Order Manager</li></Nav.Link></Accordion.Header>
+                                <Accordion.Body className={styles.listbox}>
+                                  <ul>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='order1'>Orders</Nav.Link></li>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='order2' disabled>Refunds & Returns</Nav.Link></li>
+                                  </ul>
+                                </Accordion.Body>
+                              </Nav.Item>
+                            </Accordion.Item>
+                            <Accordion.Item eventKey="3">
+                              <Nav.Item>
+                                <Accordion.Header><Nav.Link className={styles.navLin} disabled><li>Sale Manager</li></Nav.Link></Accordion.Header>
+                                <Accordion.Body className={styles.listbox}>
+                                <ul>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='sale1' disabled>Sales Overview</Nav.Link></li>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='sale2' disabled>Product Promotions</Nav.Link></li>
+                                    <li><Nav.Link className={styles.navLinItem} eventKey='sale3' disabled>User Reviews</Nav.Link></li> 
+                                  </ul>
+                                </Accordion.Body>
+                              </Nav.Item>
+                            </Accordion.Item>
+                          </Accordion>
+                        </Nav>
+                    </Offcanvas.Body>
+                  </Offcanvas>
                   <Tab.Content>
                     <Tab.Pane eventKey='shop'>
                       <div className={styles.contentPane}>
-                        <h1 className={styles.paneTitle}>Shop Details</h1>
-                        <Form onSubmit={(e) => updateSeller(e, updateSeller)} name='merchant'>
-                          <Form.Group className={styles.imgSection}>
-                                <Image src={Backdrop} fluid className={styles.backdrop}/>
-                                <badge className={styles.logoBadge}><Image src={Logo} fluid className={styles.shopLogo}/></badge>
-                          </Form.Group>
-                          <div className={styles.pageSection}>
-                              <Form.Group className={styles.fullbox}>
-                                <Form.Label className={styles.fieldLabel}>Shop Name</Form.Label>
-                                <Form.Control type="text" name='shopName' className={styles.textbox} placeholder={seller.shopName}/>
-                              </Form.Group>
-                              <Form.Group className={styles.fullbox}>
-                                <Form.Label className={styles.fieldLabel}>Shop Description</Form.Label>
-                                <Form.Control as="textarea" name='shopDescription' rows={3} className={styles.checkBox} placeholder={seller.shopDescription}/>
-                              </Form.Group>
-                              <Form.Group className={styles.fullbox}>
-                                <Form.Label className={styles.fieldLabel}>User Name</Form.Label>
-                                <Form.Control type="text" name='userName' className={styles.textbox} placeholder={seller.userName}/>
-                              </Form.Group>
-                          </div>
-                          <div className='mb-5'>
-                            <div className={styles.fullbox}>
-                              <Form.Label className={styles.fieldLabel}>Contact Details</Form.Label>
-                              <Form.Group className={styles.checkBox}>
-                                <Form.Label className={styles.textLabel}>Phone Number</Form.Label>
-                                <Form.Control type="num" name='phoneNumber' placeholder={seller.phoneNumber} className={styles.textbox}/>
-                                <Form.Label className={styles.textLabel}>Email Address</Form.Label>
-                                <Form.Control type="email" name='email' placeholder={seller.email} className={styles.textbox}/>
-                                <Form.Label className={styles.textLabel}>Shop Address</Form.Label>
-                                <Form.Control type="text" name='shopAddress' placeholder={seller.shopAddress} className={styles.textbox}/>
-                              </Form.Group>
-                            </div>
-                          </div>
-                          <div className={styles.invisibleBox}>
-                            <Form.Label className={styles.fieldLabel}>Change Password</Form.Label>
-                            <Form.Group className={styles.checkBox}>
-                              <Row xs={1} md={2}>
-                                <Col>
-                                    <Form.Label className={styles.textLabel}>New Password</Form.Label>
-                                    <Form.Control type="password" />
-                                </Col>
-                                <Col>
-                                  <Form.Label className={styles.textLabel}>Confirm Password</Form.Label>
-                                  <Form.Control type="password" />
-                                </Col>
-                              </Row>
-                              <Button className={styles.btn}>Confirm</Button>
-                            </Form.Group>
-                          </div>
-                          <div className='d-flex justify-content-center'>
-                            <Button className={styles.accountDetailsBtn} type="submit">Update</Button>
-                          </div>
-                        </Form>
+                        <div className={styles.paneTitleBlock}>
+                          <h1 className={styles.paneTitle}>Shop Details</h1>
+                          <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                        </div>
+                          <label className={styles.fieldLabel}>Shop Name</label>
+                          <h1 className={styles.textbox}>{seller.shopName}</h1>
+                          <label className={styles.fieldLabel}>User Name</label>
+                          <h1 className={styles.textbox}>{seller.userName}</h1>
+                        <label className={styles.fieldLabel}>Contact Details</label>
+                        <div className={styles.checkBox}>
+                          <label className={styles.textLabel}>Phone Number</label>
+                          <h1 className={styles.textbox2}>{seller.phoneNumber}</h1>
+                          <label className={styles.textLabel}>Email Address</label>
+                          <h1 className={styles.textbox2}>{seller.email}</h1>
+                          <label className={styles.textLabel}>Shop Address</label>
+                          <h1 className={styles.textbox2}>{seller.shopAddress}</h1>
+                        </div>
+                        <div className='d-flex flex-row justify-content-space-between m-3 p-3'>
+                          <Button onClick={() => deleteSeller()} className={styles.someButton}>Delete Account</Button>
+                          <Button onClick={() => logout()} className={styles.someButton}>Logout</Button>
+                        </div>
                       </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey='product1'>
                     <>
                       <div className={styles.contentPane}>
-                        <h1 className={styles.paneTitle}>New Product</h1>
-                        <Form name='newLoot' onSubmit={CreateProduct} autoComplete='off'>
-                          <Row>
+                        <div className={styles.paneTitleBlock}>
+                          <h1 className={styles.paneTitle}>New Product</h1>
+                          <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                        </div>
+                        <Form name='newLoot' onSubmit={CreateProduct} autoComplete='off' className='d-flex flex-column align-items-center'>
+                          <Row xs={1} sm={2}>
                             <Col className={styles.pImage}>
-                            <Form.Label className={styles.fieldLabel}>Product Image</Form.Label>
-                            <Form.Group className='mb-3'>
-                              <input name='file' type='file' onChange={e => setFile(e.target.files[0])}/>
-                            </Form.Group>
-                            <Form.Label className={styles.fieldLabel}>Product Category</Form.Label>
-                            <Form.Group>
-                              <Form.Select 
-                                  value={product.category}
-                                  name='category'
-                                  onChange={onChangeSelectInput}
-                                  required
-                              >
-                                  <option value="">Select Category</option>
-                                  {categories.map(category => (
-                                      <option key={category._id} value={category._id}>{category.name}</option>
-                                  ))}
-                              </Form.Select>
-                            </Form.Group>
-                            </Col>
-                            <Col>
-                              <Form.Group className="mb-3">
+                              <Form.Group className={styles.square}>
                                 <Form.Label className={styles.fieldLabel}>Product Name</Form.Label>
                                 <Form.Control size="sm" type="text" value={product.productName} name="productName" onChange={ChangeInput} className={styles.textbox}/>
                               </Form.Group>
-                              <Form.Group className="mb-3">
+                              <Form.Group className={styles.square}>
                                 <Form.Label className={styles.fieldLabel}>Product Price</Form.Label>
                                 <Form.Control type="number" value={product.price} name="price" onChange={ChangeInput} className={styles.textbox}/>
                               </Form.Group>
-                              <Form.Group className="mb-3">
+                              <Form.Group className={styles.square}>
                                 <Form.Label className={styles.fieldLabel}>Product Quantity</Form.Label>
                                 <Form.Control type="number" value={product.quantity} name="quantity" onChange={ChangeInput} className={styles.textbox}/>
                               </Form.Group>
-                              <Form.Group className="mb-3">
+                              <Form.Group className={styles.square}>
+                                <Form.Label className={styles.fieldLabel}>Product Category</Form.Label>
+                                <Form.Select 
+                                  value={product.category}
+                                  name='category'
+                                  onChange={onChangeSelectInput}
+                                  className={styles.textbox}
+                                  required
+                                  >
+                                  <option value="">Select Category</option>
+                                  {categories.map(category => (
+                                    <option key={category._id} value={category._id}>{category.name}</option>
+                                  ))}
+                                </Form.Select>
+                              </Form.Group>
+                            </Col>
+                            <Col className={styles.pImage}>
+                              <Form.Group className={styles.square}>
                                 <Form.Label className={styles.fieldLabel}>Product Description</Form.Label>
                                 <Form.Control as="textarea" value={product.description} name="description" onChange={ChangeInput} rows={3} className={styles.textbox}/>
                               </Form.Group>
+                              <Form.Group className={styles.square}>
+                              <Form.Label className={styles.fieldLabel}>Product Image</Form.Label>
+                                <input name='file' type='file' onChange={e => setFile(e.target.files[0])} className={styles.textbox}/>
+                              </Form.Group>
                             </Col>
                           </Row>
-                          <Button variant="outline-secondary" type='submit' >Post!</Button>
+                          <Button variant="outline-secondary" type='submit' className='mt-5'>Post!</Button>
                         </Form>
                       </div>
                       </>
@@ -339,8 +346,11 @@ export default function Home(props) {
                     <Tab.Pane eventKey='product2'>
                       <>
                         <div className={styles.contentPane}>
-                          <h1 className={styles.paneTitle}>Product List</h1>
-                          <Row sm={1} md={2} lg={3} xl={4}>
+                          <div className={styles.paneTitleBlock}>
+                            <h1 className={styles.paneTitle}>Product List</h1>
+                            <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                          </div>
+                          <Row sm={1} md={3} lg={3} xl={4}>
                             {
                               products.map(product => (
                                 <Col className='d-flex justify-content-center'>
@@ -362,7 +372,10 @@ export default function Home(props) {
                     <Tab.Pane eventKey='product3'>
                       <>
                       <div className={styles.contentPane}>
-                        <h1 className={styles.paneTitle}>Analytics</h1>
+                          <div className={styles.paneTitleBlock}>
+                            <h1 className={styles.paneTitle}>Analytics</h1>
+                            <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                          </div>
                         <Tabs
                           defaultActiveKey="daily"
                           id="uncontrolled-tab-example"
@@ -516,83 +529,82 @@ export default function Home(props) {
                       </>
                     </Tab.Pane>
                     <Tab.Pane eventKey='order1'>
-                      <>
-                        <div className={styles.contentPane}>
+                      <div className={styles.contentPane}>
+                        <div className={styles.paneTitleBlock}>
                           <h1 className={styles.paneTitle}>Orders</h1>
-                          <Tabs
-                            defaultActiveKey="Pending"
-                            id="uncontrolled-tab-example"
-                            className="mb-3"
-                          >
-                            <Tab eventKey="All" title="All">
-                            <div className={styles.dColumn}>
-                              {
-                                order.map(orderItem => (
-                                  <Row className={styles.order}>
-                                    <Col xs={3} className={styles.orderPicBox}>
-                                      {/* <img src={require(`../../../../Images/${orderItem.product[0].imageName}`)} alt='loot' className={styles.orderPic}/> */}
-                                    </Col>
-                                    <Col xs={4} className={styles.orderTextBox}>
-                                      <p className={styles.orderText}>{orderItem.product[0].productName}</p>
-                                      <p className={styles.orderText}>{orderItem.quantity} X £{orderItem.product[0].price} = £{orderItem.quantity * orderItem.product[0].price}</p>
-                                      <Form.Select 
-                                        value={orderItem.status}
-                                        name='newStatus'
-                                        onChange={(e) => handleStatusChange(orderItem.orderId, e.target.value)}
-                                        required
-                                      >
-                                        {uniqueStatuses.map(status => (
-                                          <option key={status} value={status}>{status}</option>
-                                        ))}
-                                      </Form.Select>
-                                    </Col>
-                                    <Col xs={4} className={styles.orderTextBox}>
-                                      <p className={styles.orderText}>{orderItem.shopper}</p>
-                                      <p className={styles.orderText}>Door Delivery</p>
-                                      <p className={styles.orderText}>11 Kings View Rd.</p>
-                                    </Col>
-                                  </Row>
-                                ))
-                              }
-                            </div>
-                            </Tab>
-                            {
-                            uniqueStatuses.map(status => (
-                                <Tab eventKey={status} title={status}>
-                                    {
-                                        order.filter(orderItem => orderItem.status === status).map(filteredOrder => (
-                                          <Row className={styles.order}>
-                                            <Col xs={3} className={styles.orderPicBox}>
-                                              {/* <img src={require(`../../../../Images/${filteredOrder.product[0].imageName}`)} alt='loot' className={styles.orderPic}/> */}
-                                            </Col>
-                                            <Col xs={4} className={styles.orderTextBox}>
-                                              <p className={styles.orderText}>{filteredOrder.product[0].productName}</p>
-                                              <p className={styles.orderText}>{filteredOrder.quantity} X £{filteredOrder.product[0].price} = £{filteredOrder.quantity * filteredOrder.product[0].price}</p>
-                                              <Form.Select 
-                                                value={filteredOrder.status}
-                                                name='newStatus'
-                                                onChange={(e) => handleStatusChange(filteredOrder.orderId, e.target.value)}
-                                                required
-                                              >
-                                                {uniqueStatuses.map(status => (
-                                                  <option key={status} value={status}>{status}</option>
-                                                ))}
-                                              </Form.Select>
-                                            </Col>
-                                            <Col xs={4} className={styles.orderTextBox}>
-                                              <p className={styles.orderText}>{filteredOrder.shopper}</p>
-                                              <p className={styles.orderText}>Door Delivery</p>
-                                              <p className={styles.orderText}>11 Kings View Rd.</p>
-                                            </Col>
-                                          </Row>
-                                        ))
-                                    }
-                                </Tab>
-                            ))
-                        }
-                          </Tabs>
+                          <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
                         </div>
-                      </>
+                        <Tabs
+                          defaultActiveKey="Pending"
+                          id="uncontrolled-tab-example"
+                          className="mb-3"
+                        >
+                          <Tab eventKey="All" title="All">
+                          <div className={styles.dColumn}>
+                            { order.length === 0 ? (
+                              <h1 className={styles.fieldLabel}>You have no orders.</h1>
+                            ) : (
+                              order.map(orderItem => (
+                                <Row className={styles.order}>
+                                  <Col xs={4} className={styles.orderTextBox}>
+                                    <p className={styles.orderText}>{orderItem.product.productName}</p>
+                                    <p className={styles.orderText}>{orderItem.quantity} X £{orderItem.product.price} = £{orderItem.quantity * orderItem.product.price}</p>
+                                    <Form.Select 
+                                      value={orderItem.status}
+                                      name='newStatus'
+                                      onChange={(e) => handleStatusChange(orderItem.orderId, e.target.value)}
+                                      required
+                                    >
+                                      {uniqueStatuses.map(status => (
+                                        <option key={status} value={status}>{status}</option>
+                                      ))}
+                                    </Form.Select>
+                                  </Col>
+                                  <Col xs={4} className={styles.orderTextBox}>
+                                    <p className={styles.orderText}>{orderItem.shopper}</p>
+                                    <p className={styles.orderText}>Door Delivery</p>
+                                    <p className={styles.orderText}>11 Kings View Rd.</p>
+                                  </Col>
+                                </Row>
+                              ))
+                              )}
+                          </div>
+                          </Tab>
+                          {
+                          uniqueStatuses.map(status => (
+                              <Tab eventKey={status} title={status}>
+                                  { order.length === 0 ? (
+                                      <h1 className={styles.fieldLabel}>You have no {status} orders.</h1>
+                                    ) : (
+                                      order.filter(orderItem => orderItem.status === status).map(filteredOrder => (
+                                        <Row className={styles.order}>
+                                          <Col xs={4} className={styles.orderTextBox}>
+                                            <p className={styles.orderText}>{filteredOrder.product.productName}</p>
+                                            <p className={styles.orderText}>{filteredOrder.quantity} X £{filteredOrder.product.price} = £{filteredOrder.quantity * filteredOrder.product.price}</p>
+                                            <Form.Select 
+                                              value={filteredOrder.status}
+                                              name='newStatus'
+                                              onChange={(e) => handleStatusChange(filteredOrder.orderId, e.target.value)}
+                                              required
+                                            >
+                                              {uniqueStatuses.map(status => (
+                                                <option key={status} value={status}>{status}</option>
+                                              ))}
+                                            </Form.Select>
+                                          </Col>
+                                          <Col xs={4} className={styles.orderTextBox}>
+                                            <p className={styles.orderText}>{filteredOrder.shopper}</p>
+                                            <p className={styles.orderText}>Door Delivery</p>
+                                            <p className={styles.orderText}>11 Kings View Rd.</p>
+                                          </Col>
+                                        </Row>
+                                      ))
+                                  )}
+                              </Tab>
+                          ))
+                      }
+                        </Tabs>
+                      </div>
                     </Tab.Pane>
                     <Tab.Pane eventKey='order2'>
                       <>
@@ -604,7 +616,10 @@ export default function Home(props) {
                             >
                                 <Tab eventKey="policy" title="Update Policies">
                                 <div className={styles.contentPane}>
-                                    <h1 className={styles.paneTitle}>Refunds & Returns</h1>
+                                    <div className={styles.paneTitleBlock}>
+                                      <h1 className={styles.paneTitle}>Refunds & Returns</h1>
+                                      <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                                    </div>
                                     <p className={styles.paneText}>Welcome to our Refund & Returns Policy page. At [Your Company Name], we are committed to ensuring your satisfaction with every purchase. This policy is designed to provide you with clear information on how to request refunds or returns for products purchased on our website. Please take a moment to read through the following guidelines to understand our process better.</p>
                                     <div className={styles.refBox}>
                                       <h4 className={styles.boxTitle}>Refunds</h4>
@@ -808,7 +823,10 @@ export default function Home(props) {
                     <Tab.Pane eventKey='sale1'>
                       <>
                         <div className={styles.contentPane}>
-                          <h1 className={styles.paneTitle}>Sales Overview</h1>
+                          <div className={styles.paneTitleBlock}>
+                            <h1 className={styles.paneTitle}>Sales Overview</h1>
+                            <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                          </div>
                           <Row className={styles.box}>
                             <div className={styles.invisibleBox}>
                             <h2 className={styles.salesTitle}>Current Sales Metrics</h2>
@@ -877,7 +895,10 @@ export default function Home(props) {
                     <Tab.Pane eventKey='sale2'>
                       <>
                         <div className={styles.contentPane}>
-                          <h1 className={styles.paneTitle}>Product Promotions</h1>
+                          <div className={styles.paneTitleBlock}>
+                            <h1 className={styles.paneTitle}>Product Promotions</h1>
+                            <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                          </div>
                           <Tabs
                           defaultActiveKey="all"
                           id="uncontrolled-tab-example"
@@ -1000,7 +1021,10 @@ export default function Home(props) {
                     <Tab.Pane eventKey='sale3'>
                       <>
                         <div className={styles.contentPane}>
-                          <h1 className={styles.paneTitle}>Reviews</h1>
+                          <div className={styles.paneTitleBlock}>
+                            <h1 className={styles.paneTitle}>Reviews</h1>
+                            <Button onClick={handleShow} className={styles.filter}><CgMenuRightAlt size={12}/></Button>
+                          </div>
                           <Row sm={1} md={2} lg={3} xl={4}>
                             <Col className='d-flex justify-content-center'>
                               <Card className={styles.reviewCard}>

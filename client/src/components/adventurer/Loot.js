@@ -18,6 +18,7 @@ export default function Loot(props) {
     const handleShow = () => setShow(true);
     const [quantity, setQuantity] = useState(1);
     const [product, setProduct] = useState({});
+    const [categoryName, setCategoryName] = useState('');
     const [accessToken, setAccessToken] = useState("");
     const {_id} = useParams();
     const [cart, setCart] = useState([])
@@ -33,6 +34,8 @@ export default function Loot(props) {
                 const res = await axios.get(`/api/products/${_id}`)
                 setProduct(res.data)
                 getRelatedProducts(res.data.category)
+                const result = await axios.get(`/category/${res.data.category}`);
+                setCategoryName(result.data.name);
             }
         } catch (error) {
             console.error('Error fetching product data:', error);
@@ -46,7 +49,6 @@ export default function Loot(props) {
             console.log(error);
         }
     };
-
     const getCart = async (token) => {
         try {
           const res = await axios.get('/cart', {
@@ -58,12 +60,10 @@ export default function Loot(props) {
             console.log(error)
         }
     };
-
     const handleIncreaseQuantity = (productId, currentQuantity) => {
         const newQuantity = currentQuantity + 1;
         updateQuantity(productId, newQuantity);
     };
-    
     const handleDecreaseQuantity = (productId, currentQuantity) => {
         if (currentQuantity > 1) {
           const newQuantity = currentQuantity - 1;
@@ -74,7 +74,6 @@ export default function Loot(props) {
             updateQuantity(productId, newQuantity);
         }
     };
-
     const updateQuantity = async (productId, newQuantity) => {
         try {
             console.log(productId)
@@ -85,7 +84,6 @@ export default function Loot(props) {
             console.log(error)
         }
     };
-
     const removeProduct = async (productId) => {
         try {
             const token = localStorage.getItem('tokenStore');
@@ -95,7 +93,6 @@ export default function Loot(props) {
             console.log(error)
         }
     }
-
     const handleAddToCart = async () => {
         try {
             if (!accessToken) {
@@ -122,17 +119,14 @@ export default function Loot(props) {
             }
           }
     };
-
     const increaseQuantity = () => {
         setQuantity(quantity + 1);
     };
-
     const decreaseQuantity = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
         }
     };
-
     const addToWishlist = async () => {
         try {
             const res = await axios.post('/wishlist', {product_id: product._id}, {
@@ -147,111 +141,111 @@ export default function Loot(props) {
     const handleRelatedProductClick = (productId) => {
         // Update the URL and trigger a re-render with the new product ID
         navigate(`/api/products/${productId}`);
-      };
+    };
+    const handleCategoryChange = (categoryId) => {
+        // Update the URL and trigger a re-render with the new product ID
+        navigate(`/category/${categoryId}/products`);
+    };
     
     useEffect(() => {
-        getProductById()
         const token = localStorage.getItem('tokenStore')
         if (token) {
             setAccessToken(token)
             getCart(token)
         } 
+    }, [_id, cart])
+    
+    useEffect(() => {
+        getProductById()
         if (_id) {
             getRelatedProducts(_id);
         }
-    }, [_id])
+      }, [_id]);
     
   return (
     <>
-        <Container className={styles.itemPage}>
-            <Container className={styles.itemDetails}>
+        <Container className={styles.homePage}>
+            <section className={styles.itemDetails}>
                 <Row className={styles.itemRow}>
-                    <Col>
-                    <Card className={styles.itemCard}>
+                    <Col sm={5} md={5} xl={7}>
+                        <div className={styles.itemCard}>
                             {product.imageName && (
                                 <img src={require(`../../../../Images/${product.imageName}`)} alt='product' className={styles.itemImg}/>
                             )}                        
-                    </Card>
+                        <Button className={styles.listBtn} onClick={() => handleCategoryChange(product.category)}>
+                            {categoryName}
+                        </Button>     
+                        </div>
                     </Col>
-                    <Col>
-                        <h1 className={styles.itemTitle} title={product.productName}>{product.productName}</h1>
-                        <p className={styles.itemDescription}>{product.description}</p>
-                        <p className={styles.itemDescription}><span className={styles.itemAtt}>Price: </span> # {product.price}</p>
-                        <p className={styles.itemDescription}><span className={styles.itemAtt}>Limited Availability: </span> {product.quantity} pieces in stock.</p>
-                        <Row className={styles.itemQty}>
-                            <Col><p className={styles.itemAtt}>Qty:</p> </Col>
-                            <Col>
+                    <Col sm={7} md={7} xl={5} className='p-5'>
+                        <div className={styles.itemdeets}>
+                            <h1 className={styles.itemTitle} title={product.productName}>{product.productName}</h1>
+                            <p className={styles.itemDescription}>{product.description}</p>
+                                               
+                            <p className={styles.itemDescription}><span className={styles.itemAtt}>Price: </span> # {product.price}</p>
+                            <p className={styles.itemDescription}><span className={styles.itemAtt}>Limited Availability: </span> {product.quantity} pieces in stock.</p>
+                            <div className={styles.itemQty}>
+                                <p className={styles.itemAtt}>Qty:</p>                               
                                 <ButtonGroup aria-label="Basic example" className={styles.qtyBtn}>
                                     <Button variant="secondary" className={styles.minusBtn} onClick={decreaseQuantity}><BiMinus /></Button>
                                     <Button variant="secondary" className={styles.numBtn} disabled value={JSON.stringify(quantity)}>{quantity}</Button>
                                     <Button variant="secondary" className={styles.plusBtn} onClick={increaseQuantity}><BiPlus /></Button>
-                                </ButtonGroup>
-                            </Col>
-                        </Row>
-                        <ButtonToolbar className={styles.btnPair}>
-                            <Button onClick={handleAddToCart} className={styles.aTCBtn}>Add to cart <CiShoppingCart/></Button>
-                            <Button className={styles.aTCBtn} onClick={addToWishlist}><CiHeart/></Button>
-                        </ButtonToolbar>
+                                </ButtonGroup>                  
+                            </div>
+                            <ButtonToolbar className={styles.btnPair}>
+                                <Button className={styles.aTCBtn} onClick={addToWishlist}><CiHeart/></Button>
+                                <Button onClick={handleAddToCart} className={styles.aTCBtn}>Add to cart <CiShoppingCart/></Button>
+                            </ButtonToolbar>
+                        </div>
+                    </Col>
                         <Offcanvas show={show} onHide={handleClose} placement='end' className={styles.miniCart}>
                             <Offcanvas.Header closeButton>
                             <Offcanvas.Title className={styles.miniCartTitle}>Current Cart</Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body className={styles.miniCartOrders}>
-                                {
-                                    cart.map(cartItem => (
-                                        <Row className={styles.cartOrder}>
-                                            <Col>
-                                                <Card.Img variant="top" src={require(`../../../../Images/${cartItem.product.imageName}`)} className={styles.cardImage}/>
-                                            </Col>
-                                            <Col>
-                                            <h1 className={styles.miniCartOrderTitle}>{cartItem.product.productName}</h1>
-                                            <h1 className={styles.miniCartOrderQty}>
-                                                <Row>
-                                                    <Col><p>{cartItem.product.price}</p></Col>
-                                                </Row>
-                                            </h1>
-                                            </Col>
-                                            <Col>
-                                                <div className='mt-3'>
-                                                    <ButtonGroup aria-label="Basic example" className={styles.qtyBtn}>
-                                                        <Button variant="secondary" className={styles.minusBtn} onClick={() => handleDecreaseQuantity(cartItem.product._id, cartItem.quantity)}><BiMinus /></Button>
-                                                        <Button variant="secondary" className={styles.numBtn} disabled value={JSON.stringify(cartItem.quantity)}>{cartItem.quantity}</Button>
-                                                        <Button variant="secondary" className={styles.plusBtn} onClick={() => handleIncreaseQuantity(cartItem.product._id, cartItem.quantity)}><BiPlus /></Button>
-                                                    </ButtonGroup>
-                                                    <Button className={styles.delBtn} onClick={() => removeProduct(cartItem.product._id)}><CiTrash/></Button>
-                                                </div>
-                                            </Col>
-                                        </Row>
-                                    ))
-                                }
-                                <div className="mt-auto d-flex flex-column justify-content-center">
-                                    <Row className={styles.miniCartTotal}>
-                                        <Col>
-                                            <p className={styles.miniCartOrderTotalText}>Total:</p>
-                                        </Col>
-                                        <Col>
-                                        <p className={styles.miniCartOrderTotalText}>£ {total}</p>
-                                        </Col>
-                                    </Row>
-                                    <Button href='/cart' className={styles.miniCartBtn}><p className={styles.miniCartBtnText}>Go To Cart</p></Button>
+                                <div>
+                                    {
+                                        cart.map(cartItem => (
+                                            <Row className={styles.miniCartOrder} key={'c'+cartItem.product._id}>
+                                                <Col xs={4} xl={6} className={styles.height}>
+                                                    <Card.Img src={require(`../../../../Images/${cartItem.product.imageName}`)} className={styles.miniCartOrderImage}/>
+                                                    <h1 className={styles.miniCartOrderTitle}>{cartItem.product.productName}</h1>
+                                                    <h1 className={styles.miniCartOrderTitle}># {cartItem.product.price}</h1>
+                                                </Col>
+                                                <Col xs={8} xl={6} className={styles.height}>
+                                                    <div className={styles.qtyBtnBlock}>
+                                                        <ButtonGroup aria-label="Basic example" className={styles.qtyBtn}>
+                                                            <Button variant="secondary" className={styles.minusBtn} onClick={() => handleDecreaseQuantity(cartItem.product._id, cartItem.quantity)}><BiMinus /></Button>
+                                                            <Button variant="secondary" className={styles.numBtn} disabled value={JSON.stringify(cartItem.quantity)}>{cartItem.quantity}</Button>
+                                                            <Button variant="secondary" className={styles.plusBtn} onClick={() => handleIncreaseQuantity(cartItem.product._id, cartItem.quantity)}><BiPlus /></Button>
+                                                        </ButtonGroup>
+                                                        <Button className={styles.delBtn} onClick={() => removeProduct(cartItem.product._id)}><CiTrash/></Button>
+                                                    </div>
+                                                </Col>
+                                            </Row>
+                                        ))
+                                    }
                                 </div>
+                                    <div className={styles.miniCartTotal}>
+                                        <p className={styles.miniCartOrderTotalText}>Total: # {total}</p>
+                                        <Button href='/cart' className={styles.miniCartBtn}><p className={styles.miniCartBtnText}>Go To Cart</p></Button>
+                                    </div>
                             </Offcanvas.Body>
                         </Offcanvas>
-                    </Col>
                 </Row>
-            </Container>
-            <Container className={styles.relatedDrops}>
+            </section>
+            <section className={styles.relatedDrops}>
                 <h2 className={styles.bgText}>Related Drops</h2>                        
                 <Row xs={2} sm={2} md={3} lg={5} className="d-flex justify-content-center g-6">
                     {
                         relatedProducts.filter(relatedProduct => relatedProduct._id !== excludedProductId).slice(0, 4).map(relatedProduct => (
-                            <Col className='d-flex justify-content-center' key={product._id} onClick={() => handleRelatedProductClick(relatedProduct._id)}>
+                            <Col className={styles.categoryCol} key={'rp'+product._id} onClick={() => handleRelatedProductClick(relatedProduct._id)}>
                                 <CategoryProductCard relatedProduct={relatedProduct}/>
                             </Col>
                         ))
                     }
                 </Row>
-            </Container>
+            </section>
         </Container>
     </>
   )

@@ -6,6 +6,7 @@ const multer  = require('multer')
 const path = require('path')
 
 
+  const adminRouter = require('./routes/adminRouter')
   const shopperRouter = require('./routes/shopperRouter')
   const sellerRouter = require('./routes/sellerRouter')
   const productRouter = require('./routes/productRouter')
@@ -24,6 +25,7 @@ app.use(cors())
 
 
 //ROUTES
+app.use('/secret/admin', adminRouter)
 app.use('/shopper', shopperRouter)
 app.use('/seller', sellerRouter)
 app.use('/api/products', productRouter)

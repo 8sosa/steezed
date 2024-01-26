@@ -1,174 +1,97 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios';
-import {useParams, Link} from 'react-router-dom'
-import { Container, Row, Col, Button, Dropdown, InputGroup, Form, Offcanvas } from 'react-bootstrap'
-import { GoStar, GoStarFill } from 'react-icons/go';
+import {useParams, useNavigate} from 'react-router-dom'
+import { Container, Row, Col, Button, Offcanvas } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './index.module.css';
 import Product from '../CategoryProductCard';
-
+import { CgMenuRightAlt } from "react-icons/cg";
 
 export default function Shop(){
     const Sidebar = () => {
+        const [loading, setLoading] = useState(true);
+        const navigate = useNavigate();
         const [categories, setCategories] = useState([]);
         const [sellers, setSellers] = useState([]);
 
         const getCategories = async (token) =>{
+            setLoading(true);
             const res = await axios.get('/category')
             setCategories(res.data)
+            setLoading(false); // Set loading state to false
+              
         }
 
         const getSellers = async (token) => {
+            setLoading(true);
             const res = await axios.get('/seller')
             setSellers(res.data)
-          }
+            setLoading(false); // Set loading state to false
+        }
+
+        const handleCategoryChange = (categoryId) => {
+            // Update the URL and trigger a re-render with the new product ID
+            navigate(`/category/${categoryId}/products`);
+        };
+        const handleSellerChange = (sellerId) => {
+            // Update the URL and trigger a re-render with the new product ID
+            navigate(`/shop/${sellerId}`);
+        };
 
         useEffect(() =>{
             getCategories()
             getSellers()
         }, [])
 
+        if (loading === true) {
+            return (
+                <>
+                    <div>
+                        <h1>loading</h1>
+                    </div>
+                </>
+            )
+        }
+
         return (
-          <Container className={styles.CategorySidebar}>
-            {<section className={styles.CategoryLoots}>
-                            <div className="ms-2 me-auto">
-                                <ul className="list-unstyled">
-                                <li className={styles.listHeader}>Categories</li>
-                                {
-                                  categories.map(category => (
-                                    <li  className={styles.listItem}><Link to={{ pathname: `/category/${category._id}/products` }} className={styles.link}>{category.name}</Link></li>
-                                  ))
-                                }
-                                </ul>
-                            </div>
-                            <div className="ms-2 me-auto">
-                                <ul className="list-unstyled">
-                                    <li className={styles.listHeader}>Rating</li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
+            <Container className={styles.CategorySidebar}>
+                <section className={styles.CategoryLoots}>
+                    <ul className="list-unstyled">
+                        <li className={styles.listHeader}>Shops</li>
+                            <div className="d-flex flex-column">
+                            {
+                                sellers.map(seller => (
+                                    <li className='d-flex'>
+                                        <Button className={styles.listBtn} onClick={() => handleSellerChange(seller._id)}>
+                                            {seller.shopName}
+                                        </Button>
                                     </li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStar />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
+                                ))
+                            }
+                        </div>
+                    </ul>
+                    <ul className="list-unstyled">
+                        <li className={styles.listHeader}>Categories</li>
+                        <div className="d-flex flex-column">
+                            {
+                                categories.map(category => (
+                                    <li className='d-flex'>
+                                        <Button className={styles.listBtn} onClick={() => handleCategoryChange(category._id)}>
+                                            {category.name}
+                                        </Button>
                                     </li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStarFill />
-                                                <GoStar />
-                                                <GoStar />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
-                                    </li>
-                                    <li className={styles.listItem}>
-                                        <Row className={styles.sidebarRating}>
-                                            <div className={styles.starContainer}>
-                                                <GoStarFill />
-                                                <GoStar />
-                                                <GoStar />
-                                                <GoStar />
-                                                <GoStar />
-                                            </div>
-                                        </Row>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="ms-2 me-auto">
-                                <ul className="list-unstyled">
-                                    <li className={styles.listHeader}>Shops</li>
-                                    {
-                                        sellers.map(seller => (
-                                            <li  className={styles.listItem}><Link to={{ pathname: `/seller/${seller._id}` }} className={styles.link}>{seller.shopName}</Link></li>
-                                        ))
-                                    }
-                                </ul>
-                            </div>
-                            <div className='ms-2 me-auto'>
-                            <Form type="radio" name="options" defaultValue={1}>
-                                <ul className="list-unstyled">
-                                    <li className={styles.listHeader}>Price</li>
-                                    <li className={styles.listItem}>
-                                    <Form.Check
-                                        type={'radio'}
-                                        label="Under #10,000"
-                                        value={1}
-                                    />
-                                    </li>
-                                    <li className={styles.listItem}>
-                                    <Form.Check
-                                        type={'radio'}
-                                        label="#10,000 - #50,000"
-                                        value={2}
-                                    />
-                                    </li>
-                                    <li className={styles.listItem}>
-                                    <Form.Check
-                                        type={'radio'}
-                                        label="#50,000 - #100,000"
-                                        value={3}
-                                    />
-                                    </li>
-                                    <li className={styles.listItem}>
-                                    <Form.Check
-                                        type={'radio'}
-                                        label="#100,000 - #500,000"
-                                        value={4}
-                                    />
-                                    </li>
-                                    <li className='listItem'>
-                                        <InputGroup className="mb-3">
-                                            <Form.Control
-                                            type="number"
-                                            placeholder="Min"
-                                            className={styles.priceRange}
-                                            inputMode="numeric"
-                                            // value={minValue}
-                                            // onChange={(e) => setMinValue(e.target.value)}
-                                            />
-                                            
-                                            <Form.Control
-                                            type="number"
-                                            placeholder="Max"
-                                            className={styles.priceRange}
-                                            inputMode="numeric"
-                                            // value={maxValue}
-                                            // onChange={(e) => setMaxValue(e.target.value)}
-                                            />
-                                            <Button variant="primary" 
-                                            className={styles.priceCheckBtn}
-                                            // onClick={handleCheckClick}
-                                            >
-                                            Check
-                                            </Button>
-                                        </InputGroup>
-                                    </li>
-                                </ul>
-                            </Form>
-                            </div>
-                </section>}
-          </Container>
+                                ))
+                            }
+                        </div>
+                    </ul>
+                </section>
+            </Container>
         );
       };
       
       const Content = () => {
         const [show, setShow] = useState(false);
+        const [loading, setLoading] = useState(true);
         const handleClose = () => setShow(false);
         const handleShow = () => setShow(true);
         const {_id} = useParams();
@@ -176,18 +99,23 @@ export default function Shop(){
         const [seller, setSeller] = useState({})
 
 
-        const getProductsBySeller = async (token) => {
+        const getProductsBySeller = async (token, page = 1, itemsPerPage = 10) => {
+            setLoading(true);
             try {
               const res = await axios.get(`/seller/${_id}/products`, {
-                headers: {Authorization: token}
+                headers: {Authorization: token},
+                params: { page, itemsPerPage }
               })
               setProducts(res.data)
               console.log(res.data)
             } catch (error) {
               console.error('Error fetching product data:', error);
             }
-          };
+            setLoading(false);
+        };
+
           const getSeller = async (token) => {
+            setLoading(true);
             try {
                 const res = await axios.get(`/seller/${_id}`, {
                   headers: {Authorization: token}
@@ -196,53 +124,44 @@ export default function Shop(){
             } catch (error) {
               console.log(error)
             }
+            setLoading(false);
           };
 
         useEffect(() =>{
             getProductsBySeller()
             getSeller()
         }, [])
+
+        if (loading === true) {
+            return (
+                <>
+                    <div>
+                        <h1>loading</h1>
+                    </div>
+                </>
+            )
+        }
     
         return (
           <Container className={styles.CategoryContent}>
             { <section className={styles.CategoryLoots}>
-                <h2 className={styles.sideTitle}>{seller.shopName}</h2>
-                <Row className={styles.top}>
-                    <Col className='d-flex justify-content-start'>
-                        <div className={styles.filter1}>16 of 174 Loots</div>                                                    
-                    </Col>
-                    <Col className={styles.miniSidebar}>
-                        <Button onClick={handleShow} className={styles.filter}>PAY</Button>
-                        <Offcanvas show={show} onHide={handleClose} placement='end'>
-                            <Offcanvas.Header closeButton>
-                            </Offcanvas.Header>
-                            <Offcanvas.Body className={styles.billingDetails}>
-                                <Sidebar/>
-                            </Offcanvas.Body>
-                        </Offcanvas>
-                    </Col>
-                    <Col className='d-flex align-items-center justify-content-end'>
-                        <p className={styles.smText}>Sort by</p>  
-                        <Dropdown>
-                            <Dropdown.Toggle className={styles.filter} id="dropdown-basic">
-                                Ratings
-                            </Dropdown.Toggle>
-
-                            <Dropdown.Menu>
-                                <Dropdown.Item href="#/action-1">Price: High - Low</Dropdown.Item>
-                                <Dropdown.Item href="#/action-2">Name</Dropdown.Item>
-                                <Dropdown.Item href="#/action-3">Price: Low - High</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Col>
-                        
-                </Row>
-                <Row sm={2} className="d-flex justify-content-center g-6">
+                <div className={styles.miniSidebar}>
+                    <h2 className={styles.sideTitle}>{seller.shopName}</h2>
+                    <Button onClick={handleShow} className={styles.filter2}><CgMenuRightAlt /></Button>
+                </div>
+                <Offcanvas show={show} onHide={handleClose} placement='end' className={styles.Offcanvas}>
+                    <Offcanvas.Header closeButton className={styles.Offcanvas}>
+                    </Offcanvas.Header>
+                    <Offcanvas.Body className={styles.Offcanvas}>
+                        <Sidebar/>
+                    </Offcanvas.Body>
+                </Offcanvas>
+                <Row className="d-flex justify-content-center p-3">
                     {
                         products.map(relatedProduct => (
-                        <Col className='d-flex justify-content-center'>
-                            <Product relatedProduct={relatedProduct} />
-                        </Col>
+                            <Col className={styles.categoryCol}>
+                                <Product relatedProduct={relatedProduct} />
+                            </Col>
                         ))
                     }
                 </Row>

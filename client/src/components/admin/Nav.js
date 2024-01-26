@@ -10,11 +10,9 @@ export default function NavBar() {
     <>
         <Navbar expand="md" className={style.adminNavbar}>
             <Container fluid>
-                <Navbar.Brand href="/" className={style.logo}>
+                <Navbar.Brand href="/secret/admin" className={style.logo}>
                     <img src={logo} alt="Your Logo" className={style.logoImage}/>
                 </Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id='responsive-navbar-nav'>
                     <Form className={style.search}>
                         <Form.Control
                         type="search"
@@ -24,7 +22,6 @@ export default function NavBar() {
                         />
                         <Button variant="outline-success" className={style.navSearchBtn}><GoSearch /></Button>
                     </Form>
-                </Navbar.Collapse>
             </Container>
         </Navbar>
     </>

@@ -1,5 +1,21 @@
 const mongoose = require('mongoose');
 
+const productSchema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Product',
+  },
+  productName: {
+    type: String,
+  },
+  price: {
+    type: Number,
+  },
+  quantity: {
+    type: Number,
+  }
+});
+
 const sellerSchema = new mongoose.Schema({
   userName: {
     type: String,
@@ -9,7 +25,7 @@ const sellerSchema = new mongoose.Schema({
   orders: [
     {
       product: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: productSchema,
         ref: 'Product',
       },
       quantity: {
@@ -31,13 +47,6 @@ const sellerSchema = new mongoose.Schema({
       },
     }
   ],
-  image: {
-    data: Buffer,
-    contentType: String,
-  },
-  imageName: {
-    type: String,
-  },
   email: {
     type: String,
     required: true,
@@ -63,7 +72,6 @@ const sellerSchema = new mongoose.Schema({
   },
   shopDescription: {
     type: String,
-    required: true,
   },
   rating: {
     type: Number,

@@ -6,6 +6,8 @@ import styles from './index.module.css';
 import Product from '../Product'
 import Category from '../CategoryCard'
 
+import Hero from '../../components/images/hero.png'
+
 export default function Home(){
     
     const [products, setProducts] = useState([]);
@@ -37,6 +39,7 @@ export default function Home(){
         <>
             <Container className={styles.homePage}>
                 <section className={styles.hero}>
+                    <img src={Hero} alt='hero' className={styles.heroImg}/>
                 </section>
                 <section className={styles.steals}>
                     <h2 className={styles.bgText}>Steals</h2>                        
@@ -52,10 +55,10 @@ export default function Home(){
                 </section>
                 <section className={styles.categories}>
                     <h2 className={styles.bgText}>categories</h2>
-                    <Row xs={4} md={4} className="g-4">
+                    <Row className={styles.categoriesRow}>
                         {
-                            categories.slice(0, 4).map(category => (
-                                <Col className='d-flex justify-content-center' key={category._id}>    
+                            categories.map(category => (
+                                <Col className={styles.categoryCardCol} key={category._id}>    
                                     <Category category={category}/>
                                 </Col>
                             ))
@@ -74,18 +77,6 @@ export default function Home(){
                         }
                     </Row>
                 </section>
-                <section className={styles.categories}>
-                    <h2 className={styles.bgText}>categories</h2>
-                    <Row xs={4} md={4} className="g-4">
-                        {
-                            categories.slice(4, 8).map(category => (
-                                <Col className='d-flex justify-content-center' key={category._id}>    
-                                    <Category category={category}/>
-                                </Col>
-                            ))
-                        }
-                    </Row>
-                </section>
                 <section className={styles.steals}>
                     <h2 className={styles.bgText}>For the Dawgs!!!</h2>                        
                     <Row xs={2} sm={2} md={4} className='d-flex g-4 justify-content-center'>
@@ -93,18 +84,6 @@ export default function Home(){
                             products.slice(12, 20).map(product => (
                                 <Col className='d-flex justify-content-center' key={product._id}>
                                     <Product product={product}/>
-                                </Col>
-                            ))
-                        }
-                    </Row>
-                </section>
-                <section className={styles.categories}>
-                    <h2 className={styles.bgText}>categories</h2>
-                    <Row xs={4} md={4} className="g-4">
-                        {
-                            categories.slice(8, 12).map(category => (
-                                <Col className='d-flex justify-content-center' key={category._id}>    
-                                    <Category category={category}/>
                                 </Col>
                             ))
                         }

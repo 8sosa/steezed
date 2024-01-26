@@ -57,10 +57,12 @@ export default function Payment() {
 
   return (
     <>
-      <Container className={styles.payPage}>
-        <img src={Pic} alt='payment successful' className={styles.payVector}/>
-        <h1 className={styles.paymentTitle}>PAYMENT SUCCESSFUL!</h1>
-        <p className={styles.paymentText}>Order placed, Thank you for shopping here {shopper.userName}.</p>
+      <Container className={styles.homePage}>
+        <section className={styles.payPage}>
+          <img src={Pic} alt='payment successful' className={styles.payVector}/>
+          <h1 className={styles.paymentTitle}>PAYMENT SUCCESSFUL!</h1>
+          <p className={styles.paymentText}>Order placed, Thank you for shopping here {shopper.userName}.</p>
+        </section>
       </Container>
     </>
   )

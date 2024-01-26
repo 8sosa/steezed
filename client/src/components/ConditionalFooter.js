@@ -7,7 +7,7 @@ import AdminFooter from '../components/admin/Footer'
 function ConditionalFooter() {
   const location = useLocation();
 
-  const isMerchantRoute = location.pathname.includes('/merchant')
+  const isMerchantRoute = location.pathname.includes('/seller')
   const isAdminRoute = location.pathname.includes('/admin')
 
   return (

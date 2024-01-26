@@ -14,18 +14,17 @@ const orderCtrl = {
 
       for (const loot of productsArray) {
         const product = await Products.findById(loot.productId)
-
         if (!product) {
-          return res.status(404).json({ msg: 'Loot not found' })
+          return res.status(404).json({ error: 'Loot not found' })
         }
-
+        
         const requestedQuantity = parseInt(loot.quantity)
         const availableQuantity = parseInt(product.quantity)
-
+        
         if (requestedQuantity > availableQuantity) {
-          return res.status(404).json({ msg: `Sorry we only have ${availableQuantity} of that...` })
+          return res.status(404).json({ error: `Sorry we only have ${availableQuantity} ${product.productName}s left...` })
         }
-
+        
         const orderQuantity = Math.min(requestedQuantity, availableQuantity)
         const lootPrice = product.price
         const lootTotalPrice = lootPrice * orderQuantity
@@ -38,21 +37,20 @@ const orderCtrl = {
         })
         totalPrice += lootTotalPrice
       }
-      
       const newOrder = new Orders({
         products: orderProducts,
         totalPrice,
         shopper: req.user.id
       })
 
-      await newOrder.save()
-
       await updateSellerOrders(orderProducts, newOrder._id);
+      
+      await newOrder.save()
       await clearCart(userId);
 
       res.json({ msg: 'Order created', order: newOrder})
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+      return res.status(500).json({ error: err.message });
     }
   },
 
@@ -208,10 +206,10 @@ const updateSellerOrders = async (orderProducts, orderId) => {
       // Find the seller by ID
       const merchant = await Seller.findById(seller);
       const loot = await Products.findById(product);
-
+      
       // Check if the seller exists
       if (merchant) {
-
+        
         // Add the order to the seller's orders with product information
         merchant.orders.push({
           orderId,

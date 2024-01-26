@@ -63,26 +63,28 @@ export default function SignIn() {
   return (
     <>
       <Container fluid className={`app-container ${backgroundClass}`}>
-        <Card fluid className={styles.SignUpCard}>
-            <Card.Body className={styles.SignUpCardBody}>
-                <h1 className={styles.registerHeader}>login</h1>
-                <Form onSubmit={loginSubmit} action="/api/login" method="POST">
-                    <Form.Group className="mb-3" controlId="login-email">
-                        <Form.Control type="email" placeholder="Email address" className={styles.inputLine} name='email' value={shopper.email} onChange={onChangeInput} required/>
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="login-password">
-                        <Form.Control type="password" placeholder="Password" autoComplete='off' className={styles.inputLine} name='password' value={shopper.password} onChange={onChangeInput} required/>
-                    </Form.Group>
-                    <div className="d-flex justify-content-center">
+        <div>
+          <Card fluid className={styles.SignUpCard}>
+              <Card.Body className={styles.SignUpCardBody}>
+                  <h1 className={styles.registerHeader}>login</h1>
+                  <Form onSubmit={loginSubmit} action="/api/login" method="POST">
+                      <Form.Group className="mb-3" controlId="login-email">
+                          <Form.Control type="email" placeholder="Email address" className={styles.inputLine} name='email' value={shopper.email} onChange={onChangeInput} required/>
+                      </Form.Group>
+                      <Form.Group className="mb-3" controlId="login-password">
+                          <Form.Control type="password" placeholder="Password" autoComplete='off' className={styles.inputLine} name='password' value={shopper.password} onChange={onChangeInput} required/>
+                      </Form.Group>
+                      <div className="d-flex justify-content-center">
                       <Button type="submit" className={styles.registerBtn}>
                           LOGIN
                       </Button>
-                    </div>
-                </Form>
-                <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/register' className={styles.loginText}>Sign up!</a></p>
-            </Card.Body>
-            <h3 className={styles.errText}>{err}</h3>
-        </Card>
+                      </div>
+                  </Form>
+                  <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/register' className={styles.loginLink}>Sign up!</a></p>
+              </Card.Body>
+              <h3 className={styles.errText}>{err}</h3>
+          </Card>
+        </div>
       </Container>
     </>
     )

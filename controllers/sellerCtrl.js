@@ -3,19 +3,6 @@ const Product = require('../models/productModel')
 const Orders = require('../models/orderModel');
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const multer  = require('multer')
-const mongoose = require('mongoose')
-
-const Storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    return cb(null, "./Avatar")
-  },
-  filename: function (req, file, cb) {
-    return cb(null, `${Date.now()}_${file.originalname}`)
-  }
-})
-
-const upload = multer({storage: Storage}).single('file')
 
 const sellerCtrl = {
   getSellers: async (req, res) => {
@@ -38,48 +25,36 @@ const sellerCtrl = {
 
   registerSeller: async (req, res) => {
     try {
-      upload(req, res, async(err) => {
-        if (err) {
-          return res.json(err)
-        } 
-        else {
-          const {userName, shopDescription, email, password, phoneNumber, shopName, shopAddress} = req.body;
+      const {userName, shopDescription, email, password, phoneNumber, shopName, shopAddress} = req.body;
 
-          // Check if the email already exists
-          const existingSeller = await Seller.findOne({ email });
-          if (existingSeller) {
-            return res.status(400).json({ msg: 'Email already in use, another Merchant beat you to it it seems...' });
-          }
+      // Check if the email already exists
+      const existingSeller = await Seller.findOne({ email });
+      if (existingSeller) {
+        return res.status(400).json({ msg: 'Email already in use, another Merchant beat you to it it seems...' });
+      }
 
-          const existingShop = await Seller.findOne({ shopName });
-          if (existingShop) {
-            return res.status(400).json({ msg: 'Shop name already in use, another Merchant beat you to it it seems...' });
-          }
-        
-          // register a new shopper
-          const passwordHash = await bcrypt.hash(password, 15)
-          const newSeller = new Seller({
-            userName: userName,
-            email: email,
-            password: passwordHash,
-            phoneNumber: phoneNumber, 
-            shopName: shopName,
-            shopDescription: shopDescription,
-            shopAddress: shopAddress,
-            image: {
-              data: req.file.filename,
-              contentType: 'image/png'
-            },
-            imageName: req.file.filename,
-          });
+      const existingShop = await Seller.findOne({ shopName });
+      if (existingShop) {
+        return res.status(400).json({ msg: 'Shop name already in use, another Merchant beat you to it it seems...' });
+      }
+    
+      // register a new shopper
+      const passwordHash = await bcrypt.hash(password, 15)
+      const newSeller = new Seller({
+        userName: userName,
+        email: email,
+        password: passwordHash,
+        phoneNumber: phoneNumber, 
+        shopName: shopName,
+        shopDescription: shopDescription,
+        shopAddress: shopAddress
+      });
 
-          // Save the new shopper to the database
-          await newSeller.save();
+      // Save the new shopper to the database
+      await newSeller.save();
 
-          res.json({ msg:  `Welcome to the alliance Merchant ${newSeller.userName}, happy conning...` });        
-        }
-      })
-    } catch (err) {
+      res.json({ msg:  `Welcome to the alliance Merchant ${newSeller.userName}, happy conning...` });        
+      } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },

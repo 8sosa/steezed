@@ -1,18 +1,6 @@
 const Shopper = require('../models/shopperModel')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const multer  = require('multer')
-
-const Storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    return cb(null, "./Avatar")
-  },
-  filename: function (req, file, cb) {
-    return cb(null, `${Date.now()}_${file.originalname}`)
-  }
-})
-
-const upload = multer({storage: Storage}).single('file')
 
 const shopperCtrl = {
   getShoppers: async (req, res) => {
@@ -26,101 +14,58 @@ const shopperCtrl = {
 
   registerShopper: async (req, res) => {
     try {
-      upload(req, res, async(err) => {
-        if (err) {
-          return res.json(err)
-        } 
-        else {
-          const { firstName, lastName, userName, email, password, phoneNumber, address } = req.body;
+        const { firstName, lastName, userName, email, password, phoneNumber, address } = req.body;
 
-          // Check if the email already exists
-          const existingShopper = await Shopper.findOne({ email });
+        // Check if the email already exists
+        const existingShopper = await Shopper.findOne({ email });
 
-          if (existingShopper) {
-            return res.status(400).json({ msg: 'Email already in use, another Adventurer beat you to it it seems...' });
-          }
-          let image = {};
-          if (req.file) {
-            image = {
-              data: req.file.filename,
-              contentType: 'image/png'
-            };
-          }
-  
-          // Register a new shopper
-          const passwordHash = await bcrypt.hash(password, 15);
-          const newShopper = new Shopper({
-            firstName,
-            lastName,
-            userName,
-            image,
-            imageName: req.file ? req.file.filename : '', // handle the case when no file is uploaded
-            email,
-            password: passwordHash,
-            phoneNumber,
-            address
-          });
-
-          // Save the new shopper to the database
-          await newShopper.save();
-
-          res.json({ msg:  `Welcome adventurer ${newShopper.userName}, may the loot god bless your hands...` });
+        if (existingShopper) {
+          return res.status(400).json({ msg: 'Email already in use, another Adventurer beat you to it it seems...' });
         }
-      })
-    } catch (err) {
+
+        // Register a new shopper
+        const passwordHash = await bcrypt.hash(password, 15);
+        const newShopper = new Shopper({
+          firstName,
+          lastName,
+          userName,
+          email,
+          password: passwordHash,
+          phoneNumber,
+          address
+        });
+
+        // Save the new shopper to the database
+        await newShopper.save();
+
+        res.json({ msg:  `Welcome adventurer ${newShopper.userName}, may the loot god bless your hands...` });
+        } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
 
   updateShopper: async (req, res) => {
     try {
-      upload(req, res, async (err) => {
-        if (err) {
-          return res.json(err);
-        } else {
-          const { firstName, lastName, userName, email, password, phoneNumber, address } = req.body;
-          const shopperId = req.params.id; // Assuming you pass the shopper's ID in the URL parameters
-  
-          // Check if the shopper with the given ID exists
-          const existingShopper = await Shopper.findById(shopperId);
-  
-          if (!existingShopper) {
-            return res.status(404).json({ msg: 'Shopper not found.' });
-          }
+        const { firstName, lastName, userName, email, phoneNumber, address } = req.body;
 
-          // Update shopper details
-          existingShopper.firstName = firstName;
-          existingShopper.lastName = lastName;
-          existingShopper.userName = userName;
-          existingShopper.email = email;
-          existingShopper.phoneNumber = phoneNumber;
-          existingShopper.address = address;
-  
-          // Check if the password is provided and update it if necessary
-          if (password) {
-            const passwordHash = await bcrypt.hash(password, 15);
-            existingShopper.password = password || passwordHash;
-          }
-  
-          // Check if an image is uploaded and update it if necessary
-          if (req.file) {
-            existingShopper.image = {
-              data: req.file.filename,
-              contentType: 'image/png'
-            };
-            existingShopper.imageName = req.file.filename;
-          }
-  
-          // Save the updated shopper to the database
-          await existingShopper.save();
-  
-          res.json(existingShopper);
+        // Check if the shopper with the given ID exists
+        const existingShopper = await Shopper.findByIdAndUpdate(
+            req.params.id,
+            { firstName, lastName, userName, email, phoneNumber, address },
+            { new: true } // To return the updated document
+        );
+
+        if (!existingShopper) {
+            return res.status(404).json({ msg: 'Shopper not found.' });
         }
-      });
+
+        console.log(existingShopper);
+        res.json(existingShopper);
     } catch (err) {
-      return res.status(500).json({ msg: err.message });
+        return res.status(500).json({ msg: err.message });
     }
-  },
+},
+
 
   getShopper: async (req, res) => {
       try {

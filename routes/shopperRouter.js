@@ -7,7 +7,7 @@ router.post('/register', shopperCtrl.registerShopper)
 router.post('/login', shopperCtrl.loginShopper)
 
 router.route('/')
-        .get(auth, shopperCtrl.getShoppers)
+        .get( shopperCtrl.getShoppers)
 
 router.route('/:id')
         .get(auth, shopperCtrl.getShopper)

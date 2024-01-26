@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
-import { GoSearch } from "react-icons/go";
 import styles from './index.module.css';
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import SearchResults from "./SearchResultsList";
 
 
@@ -65,7 +64,6 @@ export default function SearchBar () {
                     className={styles.searchField}
                     aria-label="Search"
                     />
-                    <Button variant="outline-success" className={styles.navSearchBtn}><GoSearch /></Button>
                 </Form>
                 {filteredProducts.length > 0 && (
                   <div className={styles.resultsContainer}>
