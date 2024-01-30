@@ -99,7 +99,7 @@ export default function NavBar() {
                   </div>
                 </Nav>
                 : 
-                <Nav.Link to="/login" className={styles.logBtn}>
+                <Nav.Link href="/login" className={styles.logBtn}>
                   <h3 className={styles.btnText}>Login</h3>
                 </Nav.Link>
               }
