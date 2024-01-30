@@ -35,7 +35,7 @@ export default function SignUp() {
             })
             setShopper({ firstName: '', lastName: '', userName: '', email: '', password: '', phoneNumber: '', address: '' })
             setErr(res.data.msg)
-            navigate('/s/login');
+            navigate('/login');
         } catch (error) {
             setErr(error);
             console.log(error);

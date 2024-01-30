@@ -72,7 +72,7 @@ export default function NavBar() {
     <>
       <Navbar expand="lg" className={styles.navbar}>
         <Container fluid>
-          <Navbar.Brand href="/s/" className={styles.logo}>
+          <Navbar.Brand href="/" className={styles.logo}>
             <img src={logo} alt="Your Logo" className={styles.logoImage} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -85,10 +85,10 @@ export default function NavBar() {
                 ? 
                 <Nav className={styles.minNavBtns}>
                   <div className={styles.minNavBtn}>
-                    <Nav.Link href={`/s/shopper/${id}`}><img src={profile} alt='profile' className={styles.profileBtn}/></Nav.Link>
+                    <Nav.Link href={`/shopper/${id}`}><img src={profile} alt='profile' className={styles.profileBtn}/></Nav.Link>
                   </div>
                   <div className={styles.minNavBtn}>
-                    <Button as={Link} to='/s/cart' className={styles.navCartBtn}>
+                    <Button as={Link} to='/cart' className={styles.navCartBtn}>
                       <HiOutlineShoppingCart/>
                       Cart
                       ({cart.length})
@@ -99,7 +99,7 @@ export default function NavBar() {
                   </div>
                 </Nav>
                 : 
-                <Nav.Link to="/s/login" className={styles.logBtn}>
+                <Nav.Link to="/login" className={styles.logBtn}>
                   <h3 className={styles.btnText}>Login</h3>
                 </Nav.Link>
               }
