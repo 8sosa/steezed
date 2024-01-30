@@ -41,7 +41,7 @@ export default function Home(props) {
 
   const logout = () => {
     localStorage.clear();
-    navigate(`/secret/admin/login`)
+    navigate(`a/secret/admin/login`)
   };
 
   const CreateProduct = async (e) => {
@@ -82,7 +82,7 @@ export default function Home(props) {
         headers: {Authorization: token}
       })
       console.log(res.data)
-      navigate(`/seller/login`)
+      navigate(`m/seller/login`)
     } catch (error) {
       console.log(error)
     }
@@ -139,7 +139,7 @@ export default function Home(props) {
       } else {
         // Handle case when the user is not logged in
         // You might want to redirect to the login page or take appropriate action
-        navigate(`/seller/login`)
+        navigate(`/m/seller/login`)
       }
     };
 
@@ -283,7 +283,7 @@ export default function Home(props) {
                           <label className={styles.textLabel}>Shop Address</label>
                           <h1 className={styles.textbox2}>{seller.shopAddress}</h1>
                         </div>
-                        <div className='d-flex flex-row justify-content-space-between m-3 p-3'>
+                        <div className={styles.accountBtnGroup}>
                           <Button onClick={() => deleteSeller()} className={styles.someButton}>Delete Account</Button>
                           <Button onClick={() => logout()} className={styles.someButton}>Logout</Button>
                         </div>

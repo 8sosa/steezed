@@ -11,9 +11,9 @@ export default function SignUp() {
     const [shopper, setShopper] = useState({ firstName: '', lastName: '', userName: '', email: '', password: '', phoneNumber: '', address: '' });
     const [err, setErr] = useState('');
     const location = useLocation();
-    const backgroundClass = location.pathname === '/register' ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname === 's/register' ? `${styles.AppRegister}` : `${styles.App}`; 
     
-    if (window.location.pathname === '/register') {
+    if (window.location.pathname === 's/register') {
         localStorage.clear();
     }
 
@@ -35,7 +35,7 @@ export default function SignUp() {
             })
             setShopper({ firstName: '', lastName: '', userName: '', email: '', password: '', phoneNumber: '', address: '' })
             setErr(res.data.msg)
-            navigate('/login');
+            navigate('/s/login');
         } catch (error) {
             setErr(error);
             console.log(error);

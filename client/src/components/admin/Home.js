@@ -43,7 +43,7 @@ export default function Home() {
 
   const logout = () => {
     localStorage.clear();
-    navigate(`/secret/admin/login`)
+    navigate(`/a/secret/admin/login`)
   };
 
   const handleTabSelect = (selectedTab) => {
@@ -71,8 +71,6 @@ export default function Home() {
     const res = await axios.post(`/category/image`, formData, {
       headers: {Authorization: tokenStore}
     })
-    console.log(file)
-    console.log(res)
   }
 
   const getShoppers = async (token) => {
@@ -102,7 +100,7 @@ export default function Home() {
           getSellers(token)
         }
       } else {
-        navigate(`/secret/admin/login`)
+        navigate(`/a/secret/admin/login`)
       }
     };
 

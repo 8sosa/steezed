@@ -35,7 +35,7 @@ a {
   text-decoration: none !important;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1441px) {
   /* HOME PAGE START */
   .homePage {
     display: flex;
@@ -945,7 +945,7 @@ a {
   /* LOGIN PAGE END */
 }
 
-@media (min-width: 1024px) and (max-width: 1439px) {  
+@media (min-width: 1025px) and (max-width: 1440px) {  
   /* HOME PAGE START */
   .homePage {
     margin-bottom: 100px;
@@ -1842,7 +1842,7 @@ a {
   /* LOGIN PAGE END */
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   
   /* HOME PAGE START */
   .homePage {
@@ -2750,7 +2750,7 @@ a {
   /* LOGIN PAGE END */
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   /* HOME PAGE START */
   .homePage {
     margin-bottom: 100px;

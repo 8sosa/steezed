@@ -42,7 +42,7 @@ export default function SignIn () {
             setAdmin({ email: '', password: ''});
             setIsLogin(true);
             localStorage.setItem('tokenStore', res.data.Token)
-            navigate('/secret/admin/')
+            navigate('/a/secret/admin/')
         } catch (error) {
             setErr(error.response.data.error)
             console.log(error)

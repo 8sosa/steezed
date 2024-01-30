@@ -28,6 +28,8 @@ const orderCtrl = {
         const orderQuantity = Math.min(requestedQuantity, availableQuantity)
         const lootPrice = product.price
         const lootTotalPrice = lootPrice * orderQuantity
+
+        availableQuantity -= orderQuantity;
         
         orderProducts.push({
           product: product,
@@ -46,6 +48,7 @@ const orderCtrl = {
       await updateSellerOrders(orderProducts, newOrder._id);
       
       await newOrder.save()
+
       await clearCart(userId);
 
       res.json({ msg: 'Order created', order: newOrder})

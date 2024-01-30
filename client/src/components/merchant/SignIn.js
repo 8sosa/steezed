@@ -10,13 +10,38 @@ export default function MerchantSignIn() {
     const [seller, setSeller] = useState({ email: '', password: ''})
     const [err, setErr] = useState('')
     const location = useLocation();
-    const backgroundClass = location.pathname.includes('/seller') ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname === '/m/seller/login' ? `${styles.AppRegister}` : `${styles.App}`; 
     const [isLogin, setIsLogin] = useState([])
 
-    if (window.location.pathname === '/seller/login') {
+    if (window.location === '/m/seller/login'  ) {
         localStorage.clear();
-      }
+    }
 
+    const onChangeInput = e =>{
+      const {name, value} = e.target;
+      setSeller({ ...seller, [name]:value})
+      setErr('')
+    }
+
+    const loginSubmit = async e =>{
+      e.preventDefault()
+      try {
+          const res = await axios.post('/seller/login',{
+            email: seller.email,
+            password: seller.password
+          })
+          setSeller({name: '', email: '', password: ''})
+          localStorage.setItem('tokenStore', res.data.Token)
+          setIsLogin(true)
+          const id = res.data.seller.id
+          console.log(id)
+          navigate(`/m/seller/${id}/shop`)
+      } catch (error) {
+        setErr(error.response.data.msg)
+        console.log(error)
+      }
+    }
+        
     useEffect(() =>{
         const checkLogin = async () =>{
             const token = localStorage.getItem('tokenStore')
@@ -35,30 +60,6 @@ export default function MerchantSignIn() {
           checkLogin()
     }, [])
 
-    const onChangeInput = e =>{
-        const {name, value} = e.target;
-        setSeller({ ...seller, [name]:value})
-        setErr('')
-    }
-
-    const loginSubmit = async e =>{
-      e.preventDefault()
-      try {
-          const res = await axios.post('/seller/login',{
-            email: seller.email,
-            password: seller.password
-          })
-          setSeller({name: '', email: '', password: ''})
-          localStorage.setItem('tokenStore', res.data.Token)
-          setIsLogin(true)
-          const id = res.data.seller.id
-          console.log(id)
-          navigate(`/seller/${id}/shop`)
-      } catch (error) {
-        setErr(error.response.data.msg)
-        console.log(error)
-      }
-    }
     
   return (
          <Container fluid className={`app-container ${backgroundClass}`}>
@@ -79,7 +80,7 @@ export default function MerchantSignIn() {
                         </Button>
                         </div>
                     </Form>
-                    <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/seller/register' className={styles.loginLink}>Sign up!</a></p>
+                    <p className={styles.loginText}>Don’t have an account?&nbsp; <a href='/m/seller/register' className={styles.loginLink}>Sign up!</a></p>
                 </Card.Body>
                 <h3 className={styles.errText}>{err}</h3>
             </Card>

@@ -11,9 +11,9 @@ export default function MerchantSignUp() {
     const [err, setErr] = useState('')
     const [file, setFile] = useState()
     const location = useLocation();
-    const backgroundClass = location.pathname === '/seller/register' ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname === 'm/seller/register' ? `${styles.AppRegister}` : `${styles.App}`; 
 
-    if (window.location.pathname === '/seller/register') {
+    if (window.location.pathname === 'm/seller/register') {
         localStorage.clear();
     }
     
@@ -26,16 +26,21 @@ export default function MerchantSignUp() {
   const registerSubmit = async e =>{
     e.preventDefault()
     try {
-        const form = document.forms.namedItem("merchant");
-        const formData = new FormData(form)
-        const res = await axios.post('/seller/register', formData)
-        console.log('third')
-        console.log(file)
-        console.log(res)
-        navigate('/');
-    } catch (err) {
-        setErr(err.response.data.msg)
-        console.log(err)
+        const res = await axios.post('/seller/register', {
+            userName: seller.userName,
+            shopName: seller.shopName,
+            shopDescription: seller.shopDescription,
+            email: seller.email,
+            password: seller.password,
+            phoneNumber: seller.phoneNumber,
+            shopAddress: seller.shopAddress
+        })
+        setSeller({ userName: '', shopName: '', shopDescription: '', email: '', password: '', phoneNumber: '', shopAddress: '' })
+        setErr(res.data.msg)
+        navigate('/m/seller/login');
+    } catch (error) {
+        setErr(error);
+        console.log(error);
     }
 }
 
@@ -50,11 +55,11 @@ export default function MerchantSignUp() {
                         <Form.Group className="mb-3" controlId="register-shopName">
                             <Form.Control type="text" placeholder="Shop Name" className={styles.inputLine} name='shopName' value={seller.shopName} onChange={onChangeInput} required/>
                         </Form.Group>
-                        <Form.Group className='mb-3'>
-                            <input name='file' type='file' onChange={e => setFile(e.target.files[0])}/>
-                        </Form.Group>
                         <Form.Group className="mb-3" controlId="register-shopAddress">
                             <Form.Control type="text" placeholder="Shop Address" className={styles.inputLine} name='shopAddress' value={seller.shopAddress} onChange={onChangeInput} required/>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="register-shopDescription">
+                            <Form.Control type="text" placeholder="Shop Description" className={styles.inputLine} name='shopDescription' value={seller.shopDescription} onChange={onChangeInput} required/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="register-PhoneNumber">
                             <Form.Control type="tel" placeholder="Phone Number" className={styles.inputLine} name='phoneNumber' value={seller.phoneNumber} onChange={onChangeInput} required/>
@@ -74,7 +79,7 @@ export default function MerchantSignUp() {
                         </Button>
                         </div>
                     </Form>
-                    <p className={styles.loginText}>Already have an account?&nbsp;<a href='/seller/login' className={styles.loginLink}> Sign In!</a></p>
+                    <p className={styles.loginText}>Already have an account?&nbsp;<a href='/m/seller/login' className={styles.loginLink}> Sign In!</a></p>
                 </Card.Body>
                 <h3 className={styles.errText}>{err}</h3>
             </Card>

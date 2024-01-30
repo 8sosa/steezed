@@ -30,7 +30,7 @@ export default function SignUp () {
             })
             setAdmin({ userName: '', email: '', password: '', phoneNumber: '' })
             setErr(res.data.error)
-            navigate('/secret/admin/login')
+            navigate('/a/secret/admin/login')
         } catch (error) {
             setErr(error)
             console.log(error)

@@ -22,7 +22,7 @@ code {
   width: 100%;
 }
 
-@media (min-width: 1440px) {
+@media (min-width: 1441px) {
   .searchBar {
     display: flex;
     flex-direction: column;
@@ -130,7 +130,7 @@ code {
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1439px) {
+@media (min-width: 1025px) and (max-width: 1440px) {
   .searchBar {
     display: flex;
     flex-direction: column;
@@ -237,7 +237,7 @@ code {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .searchBar {
     display: flex;
     flex-direction: column;
@@ -346,7 +346,7 @@ code {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .searchBar {
     display: flex;
     flex-direction: column;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import styles from './index.module.css';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
@@ -10,12 +10,14 @@ import profile from "../images/profile.png";
 import SearchBar from '../SearchBar';
 
 export default function NavBar() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [id, setId] = useState('');
   const [cart, setCart] = useState([]);
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.clear();        
+    navigate('s/')
   };
 
   const getCart = async (token) => {
@@ -70,7 +72,7 @@ export default function NavBar() {
     <>
       <Navbar expand="lg" className={styles.navbar}>
         <Container fluid>
-          <Navbar.Brand href="/" className={styles.logo}>
+          <Navbar.Brand href="/s/" className={styles.logo}>
             <img src={logo} alt="Your Logo" className={styles.logoImage} />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -83,10 +85,10 @@ export default function NavBar() {
                 ? 
                 <Nav className={styles.minNavBtns}>
                   <div className={styles.minNavBtn}>
-                    <Nav.Link href={`/shopper/${id}`}><img src={profile} alt='profile' className={styles.profileBtn}/></Nav.Link>
+                    <Nav.Link href={`/s/shopper/${id}`}><img src={profile} alt='profile' className={styles.profileBtn}/></Nav.Link>
                   </div>
                   <div className={styles.minNavBtn}>
-                    <Button as={Link} to='/cart' className={styles.navCartBtn}>
+                    <Button as={Link} to='/s/cart' className={styles.navCartBtn}>
                       <HiOutlineShoppingCart/>
                       Cart
                       ({cart.length})
@@ -97,9 +99,9 @@ export default function NavBar() {
                   </div>
                 </Nav>
                 : 
-                <Link to="/login" className={styles.logBtn}>
+                <Nav.Link to="/s/login" className={styles.logBtn}>
                   <h3 className={styles.btnText}>Login</h3>
-                </Link>
+                </Nav.Link>
               }
             </div>
           </Navbar.Collapse>

@@ -46,7 +46,7 @@ export default function SignIn() {
         setShopper({email: '', password: ''})
         setIsLogin(true)
         localStorage.setItem('tokenStore', res.data.Token)
-        navigate('/')
+        navigate('/s/')
       } catch (error) {
         setErr(error.response.data.msg)
       console.log(error)

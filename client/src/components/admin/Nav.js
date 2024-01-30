@@ -10,7 +10,7 @@ export default function NavBar() {
     <>
         <Navbar expand="md" className={style.adminNavbar}>
             <Container fluid>
-                <Navbar.Brand href="/secret/admin" className={style.logo}>
+                <Navbar.Brand href="a/secret/admin" className={style.logo}>
                     <img src={logo} alt="Your Logo" className={style.logoImage}/>
                 </Navbar.Brand>
                     <Form className={style.search}>
