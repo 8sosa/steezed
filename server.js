@@ -2,7 +2,6 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const multer  = require('multer')
 const path = require('path')
 
 
@@ -14,7 +13,6 @@ const categoryRouter = require('./routes/categoryRouter')
 const wishlistRouter = require('./routes/wishlistRouter')
 const orderRouter = require('./routes/orderRouter')
 const cartRouter = require('./routes/cartRouter')
-const checkoutRouter = require('./routes/checkoutRouter')
 
 const app = express()
 app.use(express.json( { limit: '20mb' } ))
@@ -30,7 +28,6 @@ app.use('/category', categoryRouter)
 app.use('/order', orderRouter)
 app.use('/wishlist', wishlistRouter)
 app.use('/cart', cartRouter)
-app.use('/checkout', checkoutRouter)
 
 
 app.get("*", function (req, res) {

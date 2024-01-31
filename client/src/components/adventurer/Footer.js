@@ -1,10 +1,43 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import styles from './index.module.css';
 import logo from "../images/logo.png"
 import { Col, Row, Nav, Navbar } from 'react-bootstrap'
 
 
 export default function Footer() {
+    const [isLogin, setIsLogin] = useState(false);
+    const [id, setId] = useState('');
+
+    const checkLogin = async () => {
+        const token = localStorage.getItem('tokenStore');
+        if (token) {
+          try {
+            const verified = await axios.get('/shopper/verify/a', {
+              headers: { Authorization: token }
+            });
+            if (verified.data && isLogin !== true) {
+              setIsLogin(true);
+              setId(verified.data.id);
+            } else {
+              setIsLogin(false);
+              setId('');
+            }
+          } catch (error) {
+            console.error("Error while verifying:", error);
+            setIsLogin(false);
+            setId('');
+          }
+        } else {
+          setIsLogin(false);
+          setId('');
+        }
+    };
+
+    const token = localStorage.getItem('tokenStore');
+    useEffect(() => {
+        checkLogin();
+    }, [token]);
   return (
       <>
         <div className={styles.footer}>
@@ -16,22 +49,18 @@ export default function Footer() {
                 <Row className={styles.footerLinks}>
                     <Col>
                         <ul className="list-unstyled">
-                            <li className={styles.listHeader}>About Us</li>
-                            <li className={styles.listItem}>Careers</li>
-                            <li className={styles.listItem}>Blog</li>
-                            <li className={styles.listItem}>About Steezed</li>
-                            <li className={styles.listItem}>Investor Relations</li>
-                            <li className={styles.listItem}>Steezed Science</li>
+                            <li className={styles.listHeader}>Your Steezed</li>
+                            <a href={`/shopper/${id}`}><li className={styles.listItem}>Your Profile</li></a>
+                            <a href={`/shopper/${id}`}><li className={styles.listItem}>Your Orders</li></a>
+                            <a href={`/shopper/${id}`}><li className={styles.listItem}>Your Wishlist</li></a>
                         </ul>
                     </Col>
                     <Col className="p-0">
                         <ul className="list-unstyled p-0">
                             <li className={styles.listHeader}>Collaborate</li>
-                            <li className={styles.listItem}>Sell products on Steezed</li>
-                            <li className={styles.listItem}>Sell on Steezed</li>
-                            <li className={styles.listItem}>Sell apps on Steezed</li>
-                            <li className={styles.listItem}>Become an Affiliate</li>
-                            <li className={styles.listItem}>Advertise Your Products</li>
+                            <a href="/m/seller/register"><li className={styles.listItem}>Sell products on Steezed</li></a>
+                            <a href="/m/seller/register"><li className={styles.listItem}>Sell on Steezed</li></a>
+                            <a href="/m/seller/register"><li className={styles.listItem}>Sell apps on Steezed</li></a>
                         </ul>
                     </Col>
                 </Row>

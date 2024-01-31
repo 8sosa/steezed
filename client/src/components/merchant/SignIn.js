@@ -13,7 +13,7 @@ export default function MerchantSignIn() {
     const backgroundClass = location.pathname === '/m/seller/login' ? `${styles.AppRegister}` : `${styles.App}`; 
     const [isLogin, setIsLogin] = useState([])
 
-    if (window.location === '/m/seller/login'  ) {
+    if (window.location.pathname === '/m/seller/login'  ) {
         localStorage.clear();
     }
 

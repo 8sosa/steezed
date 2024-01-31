@@ -13,12 +13,12 @@ export default function Cart() {
     const [cart, setCart] = useState([]);
     const [total, setTotal] = useState([]);
     const [err, setErr] = useState('')
-    // const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate();
 
 
-    const getCart = async (token) => {
+    const getCart = async () => {
         try {
+            const token = localStorage.getItem('tokenStore');
           const res = await axios.get('/cart', {
             headers: { Authorization: token }
           })
@@ -27,10 +27,9 @@ export default function Cart() {
         } catch (error) {
             console.log(error)
         }
-        // setIsLoading(false);
     }
 
-    const createOrder = async (token) => {
+    const createOrder = async () => {
         try {
             const cartArray = cart.map((loot) => ({
                 productId: loot.product,

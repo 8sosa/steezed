@@ -19,7 +19,7 @@ const orderCtrl = {
         }
         
         const requestedQuantity = parseInt(loot.quantity)
-        const availableQuantity = parseInt(product.quantity)
+        let availableQuantity = parseInt(product.quantity)
         
         if (requestedQuantity > availableQuantity) {
           return res.status(404).json({ error: `Sorry we only have ${availableQuantity} ${product.productName}s left...` })

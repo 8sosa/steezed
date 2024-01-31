@@ -9,7 +9,6 @@ export default function MerchantSignUp() {
     const navigate = useNavigate();
     const [seller, setSeller] = useState({ userName: '', email: '', password: '', phoneNumber: '', shopName: '', shopAddress: '' })
     const [err, setErr] = useState('')
-    const [file, setFile] = useState()
     const location = useLocation();
     const backgroundClass = location.pathname === 'm/seller/register' ? `${styles.AppRegister}` : `${styles.App}`; 
 

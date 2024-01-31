@@ -30,6 +30,7 @@ function ContextAwareToggle({ children, eventKey, callback }) {
 }
 
 export default function Profile() {
+    const token = localStorage.getItem('tokenStore');
     const [activeTab, setActiveTab] = useState('first');
     const [wishlist, setWishlist] = useState([]);
     const [orders, setOrders] = useState([]);
@@ -46,7 +47,7 @@ export default function Profile() {
     const handleTabSelect = (selectedTab) => {
         setActiveTab(selectedTab);
     }
-    const getWishlist = async (token) => {
+    const getWishlist = async () => {
         try {
             const res = await axios.get('/wishlist', {
                 headers: { Authorization: token}
@@ -56,7 +57,7 @@ export default function Profile() {
             console.log(error)
         }
     }
-    const getShopper = async (token) => {
+    const getShopper = async () => {
         try {
             const res = await axios.get(`/shopper/${_id}`, {
                 headers: {Authorization: token}
@@ -68,7 +69,6 @@ export default function Profile() {
     }
     const deleteShopper = async () => {
         try {
-            const token = localStorage.getItem('tokenStore')
             const res = await axios.delete(`/shopper/${_id}`, {
                 headers: {Authorization: token}
             })
@@ -78,7 +78,7 @@ export default function Profile() {
             console.log(error)
         }
     }
-    const getOrders = async (token) => {
+    const getOrders = async () => {
         try {
             const res = await axios.get(`/order`, {
                 headers: {Authorization: token}
@@ -94,12 +94,9 @@ export default function Profile() {
             const isUserLoggedIn = await checkLogin();
 
             if (isUserLoggedIn) {
-                const token = localStorage.getItem('tokenStore')
-                if (token) {
-                    getShopper(token)
-                    getOrders(token)
-                    getWishlist(token)
-                } 
+                getShopper(token)
+                getOrders(token)
+                getWishlist(token)
             } else {
                 navigate('/login')
             }

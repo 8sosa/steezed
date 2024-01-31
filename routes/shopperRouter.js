@@ -10,7 +10,7 @@ router.route('/')
         .get( shopperCtrl.getShoppers)
 
 router.route('/:id')
-        .get(auth, shopperCtrl.getShopper)
+        .get( shopperCtrl.getShopper)
         .put(auth, shopperCtrl.updateShopper)
         .delete(auth, shopperCtrl.deleteShopper)
 

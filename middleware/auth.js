@@ -1,6 +1,9 @@
 const jwt = require('jsonwebtoken')
 const auth = (req, res, next) => {
   try {
+
+    console.log('Authorization Header:', req.header('Authorization'));
+    
     const token = req.header('Authorization');
     
     // Define an array of routes that are accessible without authentication
