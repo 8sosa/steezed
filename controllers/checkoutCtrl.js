@@ -13,7 +13,7 @@ const checkoutCtrl = {
       const params = JSON.stringify({
         "email": shopper.email,
         "amount": "" + ( order.totalPrice * 100),
-        "callback_url" : "http://localhost:3000/pay/"+orderId
+        "callback_url" : "http://localhost:5000/pay/"+orderId
       })
 
       const options = {
