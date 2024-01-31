@@ -11,10 +11,10 @@ export default function SignUp() {
     const [shopper, setShopper] = useState({ firstName: '', lastName: '', userName: '', email: '', password: '', phoneNumber: '', address: '' });
     const [err, setErr] = useState('');
     const location = useLocation();
-    const backgroundClass = location.pathname === 's/register' ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname === '/register' ? `${styles.AppRegister}` : `${styles.App}`; 
     
-    if (window.location.pathname === 's/register') {
-        localStorage.clear();
+    if (window.location.pathname === '/register') {
+        localStorage.removeItem('tokenStore');
     }
 
     const onChangeInput = (e) => {

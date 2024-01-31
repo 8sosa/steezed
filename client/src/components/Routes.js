@@ -31,12 +31,12 @@ export default function SteezedRouter() {
                   <Route path='/m/seller/login' element={<MerchantSignIn/>} exact/>
                   <Route path='/login' element={<SignIn/>} exact/>
                   <Route path='/register' element={<SignUp/>} exact/>
-                  <Route path='/shopper/:_id' element={<Profile/>} exact/>
-                  <Route path='/cart' element={<Cart/>} exact/>
-                  <Route path='/category/:id/products' element={<Category/>} exact/>
+                  <Route path='/p/shopper/:_id' element={<Profile/>} exact/>
+                  <Route path='/c/cart' element={<Cart/>} exact/>
+                  <Route path='/c/category/:id/products' element={<Category/>} exact/>
                   <Route path='/' element={<Home/>} exact/>
                   <Route path='/shop/:_id/' element={<Shop />} exact/>
-                  <Route path='/api/products/:_id' element={<Loot/>} exact/>
+                  <Route path='/p/api/products/:_id' element={<Loot/>} exact/>
                   <Route path='/pay/:orderid' element={<Pay/>} exact/>
               </Routes>
             <ConditionalFooter />

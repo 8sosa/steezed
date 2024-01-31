@@ -50,9 +50,9 @@ export default function Footer() {
                     <Col>
                         <ul className="list-unstyled">
                             <li className={styles.listHeader}>Your Steezed</li>
-                            <a href={`/shopper/${id}`}><li className={styles.listItem}>Your Profile</li></a>
-                            <a href={`/shopper/${id}`}><li className={styles.listItem}>Your Orders</li></a>
-                            <a href={`/shopper/${id}`}><li className={styles.listItem}>Your Wishlist</li></a>
+                            <a href={`/p/shopper/${id}`}><li className={styles.listItem}>Your Profile</li></a>
+                            <a href={`/p/shopper/${id}`}><li className={styles.listItem}>Your Orders</li></a>
+                            <a href={`/p/shopper/${id}`}><li className={styles.listItem}>Your Wishlist</li></a>
                         </ul>
                     </Col>
                     <Col className="p-0">

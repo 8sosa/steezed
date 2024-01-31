@@ -14,7 +14,7 @@ const checkLogin = async () => {
       const isUserLoggedIn = response.data;
 
       if (!isUserLoggedIn) {
-        localStorage.clear();
+        localStorage.removeItem('tokenStore');
         return false; // User is not logged in
       }
 

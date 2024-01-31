@@ -1763,7 +1763,6 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     width: 600px;
-    height: 600px !important;
     padding: 20px;
     border: 1px solid #fefefe !important;
   }

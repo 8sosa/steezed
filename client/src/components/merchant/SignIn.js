@@ -14,7 +14,7 @@ export default function MerchantSignIn() {
     const [isLogin, setIsLogin] = useState([])
 
     if (window.location.pathname === '/m/seller/login'  ) {
-        localStorage.clear();
+      localStorage.removeItem('tokenStore');
     }
 
     const onChangeInput = e =>{
@@ -52,7 +52,9 @@ export default function MerchantSignIn() {
               console.log(verified)
               setIsLogin(verified.data)
               console.log(isLogin)
-              if(verified.data === false) return localStorage.clear()
+              if(verified.data === false) {
+                localStorage.removeItem('tokenStore');
+              }
             }else{
               setIsLogin(false)
             }

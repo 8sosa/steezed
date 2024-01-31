@@ -13,13 +13,13 @@ export default function SearchResults ( {filteredProducts} ) {
                     <h1 className={styles.searchResultHeader}>Products</h1>
                     {
                         filteredProducts.map((result, id) => (
-                            <li key={id}><Link to={`/api/products/${result._id}`} className={styles.searchResult}>{result.productName}</Link></li>
+                            <li key={id}><Link to={`/p/api/products/${result._id}`} className={styles.searchResult}>{result.productName}</Link></li>
                         ))
                     }
                     <h1 className={styles.searchResultHeader}>Merchants</h1>
                     {
                         filteredProducts.map((result, id) => (
-                            <li key={id} className={styles.searchResult}>{result.shopName}</li>
+                            <li key={id}><Link to={`/shop/${result._id}`} className={styles.searchResult}>{result.shopName}</Link></li>
                         ))
                     }
                 </ul>

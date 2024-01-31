@@ -31,7 +31,7 @@ export default function Shop(){
 
         const handleCategoryChange = (categoryId) => {
             // Update the URL and trigger a re-render with the new product ID
-            navigate(`/category/${categoryId}/products`);
+            navigate(`/c/category/${categoryId}/products`);
         };
         const handleSellerChange = (sellerId) => {
             // Update the URL and trigger a re-render with the new product ID

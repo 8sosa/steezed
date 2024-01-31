@@ -40,7 +40,7 @@ export default function Home(props) {
 
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem('tokenStore');
     navigate(`a/secret/admin/login`)
   };
 

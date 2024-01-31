@@ -12,8 +12,9 @@ export default function SignIn() {
   const location = useLocation();
   const backgroundClass = location.pathname === '/login' ? `${styles.AppRegister}` : `${styles.App}`; 
   const [isLogin, setIsLogin] = useState([])
+  
   if (window.location.pathname === '/login') {
-    localStorage.clear();
+    localStorage.removeItem('tokenStore');
   }
 
   const checkLogin = async () =>{
@@ -24,7 +25,9 @@ export default function SignIn() {
       })
       setIsLogin(verified.data)
       console.log(isLogin)
-      if(verified.data === false) return localStorage.clear()
+      if(verified.data === false) {
+        localStorage.removeItem('tokenStore');
+      }
     }else{
       setIsLogin(false)
     }

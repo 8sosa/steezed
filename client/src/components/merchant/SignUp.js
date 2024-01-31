@@ -10,10 +10,10 @@ export default function MerchantSignUp() {
     const [seller, setSeller] = useState({ userName: '', email: '', password: '', phoneNumber: '', shopName: '', shopAddress: '' })
     const [err, setErr] = useState('')
     const location = useLocation();
-    const backgroundClass = location.pathname === 'm/seller/register' ? `${styles.AppRegister}` : `${styles.App}`; 
+    const backgroundClass = location.pathname === '/m/seller/register' ? `${styles.AppRegister}` : `${styles.App}`; 
 
-    if (window.location.pathname === 'm/seller/register') {
-        localStorage.clear();
+    if (window.location.pathname === '/m/seller/register') {
+        localStorage.removeItem('tokenStore');
     }
     
     const onChangeInput = e =>{

@@ -5,7 +5,7 @@ import styles from './index.module.css';
 
 export default function Product({ product }) {
     return (
-        <Link to={`/api/products/${product._id}`} className={styles.link} key={'p'+product._id}>
+        <Link to={`/p/api/products/${product._id}`} className={styles.link} key={'p'+product._id}>
             <Card className={styles.product}>
                 <Card.Img variant="top" src={require(`../../../Images/${product.imageName}`)} className={styles.productImage}/>
                 <Card.Body className={styles.productBody}>

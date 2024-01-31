@@ -25,7 +25,7 @@ export default function SignIn () {
             })
             setIsLogin(verified.data)
             if (verified.data === false) {
-                localStorage.clear();
+                localStorage.removeItem('tokenStore');
             }
         } else {
             setIsLogin(false)

@@ -42,7 +42,7 @@ export default function Home() {
   const [file, setFile] = useState()
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem('tokenStore');
     navigate(`/a/secret/admin/login`)
   };
 

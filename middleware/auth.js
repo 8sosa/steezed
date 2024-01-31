@@ -1,13 +1,10 @@
 const jwt = require('jsonwebtoken')
 const auth = (req, res, next) => {
-  try {
-
-    console.log('Authorization Header:', req.header('Authorization'));
-    
+  try {    
     const token = req.header('Authorization');
     
     // Define an array of routes that are accessible without authentication
-    const publicRoutes = ['/category','/category/:id','/category/:id/products','/api/products/:id']; // Add other public routes as needed
+    const publicRoutes = ['/c/category/:id/products','/p/api/products/:id'];
     
     // Check if the requested route is in the publicRoutes array
     if (publicRoutes.includes(req.path)) {

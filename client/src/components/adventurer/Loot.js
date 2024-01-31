@@ -140,11 +140,11 @@ export default function Loot(props) {
     };
     const handleRelatedProductClick = (productId) => {
         // Update the URL and trigger a re-render with the new product ID
-        navigate(`/api/products/${productId}`);
+        navigate(`/p/api/products/${productId}`);
     };
     const handleCategoryChange = (categoryId) => {
         // Update the URL and trigger a re-render with the new product ID
-        navigate(`/category/${categoryId}/products`);
+        navigate(`/c/category/${categoryId}/products`);
     };
     
     useEffect(() => {
@@ -228,7 +228,7 @@ export default function Loot(props) {
                                 </div>
                                     <div className={styles.miniCartTotal}>
                                         <p className={styles.miniCartOrderTotalText}>Total: # {total}</p>
-                                        <Button href='/cart' className={styles.miniCartBtn}><p className={styles.miniCartBtnText}>Go To Cart</p></Button>
+                                        <Button href='/c/cart' className={styles.miniCartBtn}><p className={styles.miniCartBtnText}>Go To Cart</p></Button>
                                     </div>
                             </Offcanvas.Body>
                         </Offcanvas>

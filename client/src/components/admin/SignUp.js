@@ -11,7 +11,7 @@ export default function SignUp () {
     const [admin, setAdmin] = useState({ userName: '', email: '', password: '', phoneNumber: '' });
 
     if (window.location.pathname.includes('/register')) {
-        localStorage.clear();
+        localStorage.removeItem('tokenStore');
     }
 
     const onChangeInput = (e) => {

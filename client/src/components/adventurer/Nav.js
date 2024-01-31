@@ -16,7 +16,7 @@ export default function NavBar() {
   const [cart, setCart] = useState([]);
 
   const logout = () => {
-    localStorage.clear();        
+    localStorage.removeItem('tokenStore');
     navigate('/')
   };
 
@@ -85,10 +85,10 @@ export default function NavBar() {
                 ? 
                 <Nav className={styles.minNavBtns}>
                   <div className={styles.minNavBtn}>
-                    <Nav.Link href={`/shopper/${id}`}><img src={profile} alt='profile' className={styles.profileBtn}/></Nav.Link>
+                    <Nav.Link href={`/p/shopper/${id}`}><img src={profile} alt='profile' className={styles.profileBtn}/></Nav.Link>
                   </div>
                   <div className={styles.minNavBtn}>
-                    <Button as={Link} to='/cart' className={styles.navCartBtn}>
+                    <Button as={Link} to='/c/cart' className={styles.navCartBtn}>
                       <HiOutlineShoppingCart/>
                       Cart
                       ({cart.length})
